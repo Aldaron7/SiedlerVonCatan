@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.StageStyle;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.view.View;
 
 public class Rohstoffauswahl
 {
@@ -24,7 +25,7 @@ public class Rohstoffauswahl
     public static Rohstoff getRohstoff(String text)
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add("siedlervoncatan/view/stylesheet.css");
+        alert.getDialogPane().getScene().getStylesheets().add(View.STYLESHEET.getPfad());
         alert.setTitle("Rohstoffauswahl");
         alert.setHeaderText(text);
         alert.initStyle(StageStyle.UNDECORATED);

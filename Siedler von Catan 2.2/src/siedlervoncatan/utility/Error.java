@@ -3,6 +3,7 @@ package siedlervoncatan.utility;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
+import siedlervoncatan.view.View;
 
 public class Error
 {
@@ -15,7 +16,7 @@ public class Error
     public Error(String text)
     {
         Alert alert = new Alert(AlertType.ERROR);
-        alert.getDialogPane().getScene().getStylesheets().add("siedlervoncatan/view/stylesheet.css");
+        alert.getDialogPane().getScene().getStylesheets().add(View.STYLESHEET.getPfad());
         alert.setTitle("Fehler");
         alert.setContentText(text);
         alert.initStyle(StageStyle.UNDECORATED);

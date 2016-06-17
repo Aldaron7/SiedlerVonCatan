@@ -3,6 +3,7 @@ package siedlervoncatan.utility;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
+import siedlervoncatan.view.View;
 
 public class Info
 {
@@ -14,7 +15,7 @@ public class Info
     public Info(String text)
     {
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.getDialogPane().getScene().getStylesheets().add("siedlervoncatan/view/stylesheet.css");
+        alert.getDialogPane().getScene().getStylesheets().add(View.STYLESHEET.getPfad());
         alert.setTitle("");
         alert.setHeaderText("");
         alert.setContentText(text);

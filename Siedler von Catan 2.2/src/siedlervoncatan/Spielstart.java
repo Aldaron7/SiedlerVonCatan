@@ -35,7 +35,7 @@ public class Spielstart extends Application
     private Menuefx             menue;
 
     // test für github
-    // test 2 
+    // test 2
     @Override
     public void start(Stage primaryStage)
     {
@@ -127,7 +127,7 @@ public class Spielstart extends Application
     public void beenden()
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add("siedlervoncatan/view/stylesheet.css");
+        alert.getDialogPane().getScene().getStylesheets().add(View.STYLESHEET.getPfad());
         alert.setTitle("Spiel beenden?");
         alert.setContentText("Möchten Sie das Spiel ohne zu speichern beenden?");
         alert.initStyle(StageStyle.UNDECORATED);

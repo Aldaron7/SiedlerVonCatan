@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" stylesheets="@stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.SpielerHandelAuswahlController">
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" stylesheets="@stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.SpielerHandelAuswahlController">
    <children>
       <GridPane AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
