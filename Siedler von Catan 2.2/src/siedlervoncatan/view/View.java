@@ -6,7 +6,7 @@ public enum View
     HAUPT_MENUE("view/fxml/Hauptmenue.fxml"), KARTEN_ABGEBEN_MENUE("view/fxml/KartenAbgebenMenue.fxml"), NEUES_SPIEL_MENUE("view/fxml/NeuesSpielMenue.fxml"),
     ROOTLAYOUT("view/fxml/RootLayout.fxml"), SIEGER("view/fxml/Sieger.fxml"), SPIELER_ANLEGEN("view/fxml/SpielerAnlegen.fxml"),
     SPIELER_HANDEL_AUSWAHL("view/fxml/SpielerHandelAuswahl.fxml"), SPIELFELD("view/fxml/Spielfeld.fxml"), SPIEL_INFOS("view/fxml/SpielInfos.fxml"),
-    WUERFEL_MENUE("view/fxml/WuerfelMenue.fxml"), ZUG_MENUE("view/fxml/ZugMenue.fxml"), STYLESHEET("view/fxml/stylesheet.css");
+    WUERFEL_MENUE("view/fxml/WuerfelMenue.fxml"), ZUG_MENUE("view/fxml/ZugMenue.fxml"), STYLESHEET("siedlervoncatan/view/fxml/stylesheet.css");
 
     private String pfad;
 
