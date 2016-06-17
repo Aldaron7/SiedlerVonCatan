@@ -32,7 +32,7 @@ import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Wuerfel;
-import siedlervoncatan.view.SpielfeldController;
+import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Spiel implements Serializable, PropertyChangeListener
 {

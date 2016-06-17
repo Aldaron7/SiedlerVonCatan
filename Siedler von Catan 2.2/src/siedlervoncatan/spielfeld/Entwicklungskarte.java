@@ -12,7 +12,7 @@ import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Rohstoffauswahl;
-import siedlervoncatan.view.SpielfeldController;
+import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Entwicklungskarte implements Serializable, PropertyChangeListener
 {

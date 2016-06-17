@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -20,13 +20,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spielfeld.Landschaftsfeld;
 import siedlervoncatan.spielfeld.Ortschaft;
 import siedlervoncatan.spielfeld.Strasse;
 import siedlervoncatan.utility.Position;
+import siedlervoncatan.view.Controller;
 
-public class SpielfeldController implements MapChangeListener
+public class SpielfeldController implements MapChangeListener, Controller
 {
 
     private Spiel                         spiel;
@@ -842,6 +844,7 @@ public class SpielfeldController implements MapChangeListener
         this.messages.setText(message);
     }
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;
@@ -885,6 +888,11 @@ public class SpielfeldController implements MapChangeListener
             Image image = this.spiel.getSpielfeld().getStrassen().get(key).getImage();
             this.kanten.get(key).setImage(image);
         }
+    }
+
+    @Override
+    public void setStage(Stage stage)
+    {
     }
 
 }

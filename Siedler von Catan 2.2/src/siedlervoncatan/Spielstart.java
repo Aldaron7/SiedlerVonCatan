@@ -22,8 +22,9 @@ import javafx.stage.StageStyle;
 import siedlervoncatan.io.Menuefx;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Error;
-import siedlervoncatan.view.RootLayoutController;
-import siedlervoncatan.view.SpielfeldController;
+import siedlervoncatan.view.View;
+import siedlervoncatan.view.controller.RootLayoutController;
+import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Spielstart extends Application
 {
@@ -34,6 +35,7 @@ public class Spielstart extends Application
     private Menuefx             menue;
 
     // test für github
+    // test 2
     @Override
     public void start(Stage primaryStage)
     {
@@ -60,7 +62,7 @@ public class Spielstart extends Application
         try
         {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/RootLayout.fxml"));
+            loader.setLocation(Spielstart.class.getResource(View.ROOTLAYOUT.getPfad()));
             this.rootLayout = loader.load();
             Scene scene = new Scene(this.rootLayout);
             this.primaryStage.setScene(scene);

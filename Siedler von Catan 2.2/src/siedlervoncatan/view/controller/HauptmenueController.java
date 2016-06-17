@@ -1,12 +1,15 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import java.io.File;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import siedlervoncatan.Spielstart;
+import siedlervoncatan.spiel.Spiel;
+import siedlervoncatan.view.Controller;
 
-public class HauptmenueController
+public class HauptmenueController implements Controller
 {
     private Spielstart spielstart;
 
@@ -39,6 +42,16 @@ public class HauptmenueController
     private void handleBeenden()
     {
         System.exit(0);
+    }
+
+    @Override
+    public void setSpiel(Spiel spiel)
+    {
+    }
+
+    @Override
+    public void setStage(Stage stage)
+    {
     }
 
 }

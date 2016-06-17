@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import java.beans.PropertyChangeSupport;
 
@@ -13,8 +13,9 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Handel;
+import siedlervoncatan.view.Controller;
 
-public class SpielerHandelAuswahlController
+public class SpielerHandelAuswahlController implements Controller
 {
     @FXML
     private ChoiceBox<Spieler>      spieler;
@@ -34,11 +35,13 @@ public class SpielerHandelAuswahlController
         this.support = new PropertyChangeSupport(this);
     }
 
+    @Override
     public void setStage(Stage stage)
     {
         this.stage = stage;
     }
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;

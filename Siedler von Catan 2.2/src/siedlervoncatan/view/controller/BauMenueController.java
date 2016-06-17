@@ -1,15 +1,17 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.enums.Zustand;
 import siedlervoncatan.spiel.Spiel;
+import siedlervoncatan.view.Controller;
 
-public class BauMenueController
+public class BauMenueController implements Controller
 {
     @FXML
     private ListView<Rohstoff>  karten;
@@ -23,6 +25,7 @@ public class BauMenueController
     private Spiel               spiel;
     private SpielfeldController controller;
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;
@@ -68,6 +71,11 @@ public class BauMenueController
     {
         this.spiel.setZustand(null);
         this.spiel.getMenue().zeigeZug();
+    }
+
+    @Override
+    public void setStage(Stage stage)
+    {
     }
 
 }

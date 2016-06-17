@@ -2,36 +2,27 @@ package siedlervoncatan.io;
 
 import java.io.IOException;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
-import siedlervoncatan.view.BauMenueController;
-import siedlervoncatan.view.EntwicklungskartenController;
-import siedlervoncatan.view.HandelMenueController;
-import siedlervoncatan.view.HauptmenueController;
-import siedlervoncatan.view.KartenAbgebenMenueController;
-import siedlervoncatan.view.NeuesSpielMenueController;
-import siedlervoncatan.view.SiegerController;
-import siedlervoncatan.view.SpielInfosController;
-import siedlervoncatan.view.SpielerAnlegenController;
-import siedlervoncatan.view.SpielerHandelAuswahlController;
-import siedlervoncatan.view.SpielfeldController;
-import siedlervoncatan.view.WuerfelMenueController;
-import siedlervoncatan.view.ZugMenueController;
+import siedlervoncatan.view.View;
+import siedlervoncatan.view.ViewController;
+import siedlervoncatan.view.controller.HauptmenueController;
+import siedlervoncatan.view.controller.KartenAbgebenMenueController;
+import siedlervoncatan.view.controller.SpielerHandelAuswahlController;
+import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Menuefx
 {
-    private Spielstart spielstart;
+    private Spielstart     spielstart;
+    private ViewController viewController;
 
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
+        this.viewController = new ViewController(spielstart.getPrimaryStage(), spielstart.getSpiel());
     }
 
     /**
@@ -41,12 +32,11 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/Hauptmenue.fxml"));
-            AnchorPane menue = loader.load();
-            this.spielstart.getRootLayout().setCenter(menue);
+            Pane pane = this.viewController.initPane(View.HAUPT_MENUE);
+
+            this.spielstart.getRootLayout().setCenter(pane);
             this.spielstart.getRootLayout().setRight(null);
-            HauptmenueController controller = loader.getController();
+            HauptmenueController controller = this.viewController.getLoader().getController();
             controller.setSpielstart(this.spielstart);
         }
         catch (IOException e)
@@ -62,12 +52,9 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/Spielfeld.fxml"));
-            AnchorPane spielfeld = loader.load();
-            this.spielstart.getRootLayout().setCenter(spielfeld);
-            SpielfeldController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
+            Pane pane = this.viewController.initPane(View.SPIELFELD);
+            this.spielstart.getRootLayout().setCenter(pane);
+            SpielfeldController controller = this.viewController.getLoader().getController();
             this.spielstart.setSpielfeldController(controller);
         }
         catch (IOException e)
@@ -83,13 +70,8 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/NeuesSpielMenue.fxml"));
-            AnchorPane menue = loader.load();
-            this.spielstart.getRootLayout().setRight(menue);
-
-            NeuesSpielMenueController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
+            Pane pane = this.viewController.initPane(View.NEUES_SPIEL_MENUE);
+            this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
         {
@@ -104,21 +86,7 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/SpielerAnlegen.fxml"));
-            AnchorPane pane = loader.load();
-
-            Scene scene = new Scene(pane);
-            Stage stage = new Stage();
-            stage.setTitle("Neuer Spieler");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(this.spielstart.getPrimaryStage());
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-
-            SpielerAnlegenController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
-            controller.setStage(stage);
+            Stage stage = this.viewController.createStage(View.SPIELER_ANLEGEN, "Neuer Spieler");
             stage.showAndWait();
         }
         catch (IOException e)
@@ -134,14 +102,8 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/WuerfelMenue.fxml"));
-            AnchorPane menue = loader.load();
-            this.spielstart.getRootLayout().setRight(menue);
-
-            WuerfelMenueController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
-
+            Pane pane = this.viewController.initPane(View.WUERFEL_MENUE);
+            this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
         {
@@ -157,14 +119,8 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/ZugMenue.fxml"));
-            AnchorPane menue = loader.load();
-            this.spielstart.getRootLayout().setRight(menue);
-
-            ZugMenueController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
-
+            Pane pane = this.viewController.initPane(View.ZUG_MENUE);
+            this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
         {
@@ -181,21 +137,7 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/Entwicklungskarten.fxml"));
-            AnchorPane pane = loader.load();
-
-            Scene scene = new Scene(pane);
-            Stage stage = new Stage();
-            stage.setTitle("Entwicklungskarten");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(this.spielstart.getPrimaryStage());
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-
-            EntwicklungskartenController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
-            controller.setStage(stage);
+            Stage stage = this.viewController.createStage(View.ENTWICKLUNGSKARTEN, "Entwicklungskarten");
             stage.showAndWait();
         }
         catch (IOException e)
@@ -212,13 +154,8 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/BauMenue.fxml"));
-            AnchorPane menue = loader.load();
-            this.spielstart.getRootLayout().setRight(menue);
-
-            BauMenueController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
+            Pane pane = this.viewController.initPane(View.BAU_MENUE);
+            this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
         {
@@ -234,14 +171,8 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/SpielInfos.fxml"));
-            AnchorPane menue = loader.load();
-            this.spielstart.getRootLayout().setLeft(menue);
-
-            SpielInfosController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
-
+            Pane pane = this.viewController.initPane(View.SPIEL_INFOS);
+            this.spielstart.getRootLayout().setLeft(pane);
         }
         catch (IOException e)
         {
@@ -257,23 +188,8 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/HandelMenue.fxml"));
-            AnchorPane pane = loader.load();
-
-            Scene scene = new Scene(pane);
-            Stage stage = new Stage();
-            stage.setTitle("Handeln");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(this.spielstart.getPrimaryStage());
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-
-            HandelMenueController controller = loader.getController();
-            controller.setStage(stage);
-            controller.setSpiel(this.spielstart.getSpiel());
+            Stage stage = this.viewController.createStage(View.HANDEL_MENUE, "Handeln");
             stage.showAndWait();
-
         }
         catch (IOException e)
         {
@@ -291,24 +207,9 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/SpielerHandelAuswahl.fxml"));
-            AnchorPane pane = loader.load();
-
-            Scene scene = new Scene(pane);
-            Stage stage = new Stage();
-            stage.setTitle("Wähle Spieler zum Handeln.");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(this.spielstart.getPrimaryStage());
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-
-            SpielerHandelAuswahlController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
-            controller.setAngebotNachfrage(handel);
-            controller.setStage(stage);
+            Stage stage = this.viewController.createStage(View.SPIELER_HANDEL_AUSWAHL, "Wähle Spieler zum Handeln.");
+            ((SpielerHandelAuswahlController) this.viewController.getLoader().getController()).setAngebotNachfrage(handel);
             stage.showAndWait();
-
         }
         catch (IOException e)
         {
@@ -328,22 +229,11 @@ public class Menuefx
 
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/KartenAbgebenMenue.fxml"));
-            AnchorPane pane = loader.load();
+            Stage stage = this.viewController.createStage(View.KARTEN_ABGEBEN_MENUE, "Karten Abgeben");
 
-            Scene scene = new Scene(pane);
-            Stage stage = new Stage();
-            stage.setTitle("Rohstoffauswahl");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(this.spielstart.getPrimaryStage());
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-
-            KartenAbgebenMenueController controller = loader.getController();
+            KartenAbgebenMenueController controller = this.viewController.getLoader().getController();
             controller.setAnzahl(anzahl);
             controller.setSpieler(spieler);
-            controller.setStage(stage);
             stage.showAndWait();
         }
         catch (IOException e)
@@ -360,20 +250,7 @@ public class Menuefx
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/Sieger.fxml"));
-            AnchorPane pane = loader.load();
-
-            Scene scene = new Scene(pane);
-            Stage stage = new Stage(StageStyle.UNDECORATED);
-            stage.setTitle("Sieger");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(this.spielstart.getPrimaryStage());
-            stage.setScene(scene);
-
-            SiegerController controller = loader.getController();
-            controller.setSpiel(this.spielstart.getSpiel());
-            controller.setStage(stage);
+            Stage stage = this.viewController.createStage(View.SIEGER, "Sieger");
             stage.showAndWait();
         }
         catch (IOException e)

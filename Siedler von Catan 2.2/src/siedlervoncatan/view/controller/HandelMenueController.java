@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import java.beans.PropertyChangeSupport;
 
@@ -13,8 +13,9 @@ import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Handel;
+import siedlervoncatan.view.Controller;
 
-public class HandelMenueController
+public class HandelMenueController implements Controller
 {
     @FXML
     private TableView<Rohstoff>             angebotTable;
@@ -47,11 +48,13 @@ public class HandelMenueController
         this.nachfrageColumn.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue()));
     }
 
+    @Override
     public void setStage(Stage stage)
     {
         this.stage = stage;
     }
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;

@@ -1,18 +1,21 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
+import siedlervoncatan.view.Controller;
 
-public class NeuesSpielMenueController
+public class NeuesSpielMenueController implements Controller
 {
     @FXML
     private ListView<Spieler> alleSpieler;
 
     private Spiel             spiel;
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;
@@ -44,6 +47,11 @@ public class NeuesSpielMenueController
             this.spiel.getSpielstart().getRootLayout().setRight(null);
             this.spiel.spielen();
         }
+    }
+
+    @Override
+    public void setStage(Stage stage)
+    {
     }
 
 }

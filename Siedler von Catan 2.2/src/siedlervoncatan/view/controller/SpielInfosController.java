@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -8,10 +8,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
+import siedlervoncatan.view.Controller;
 
-public class SpielInfosController
+public class SpielInfosController implements Controller
 {
     @FXML
     private Label                 spieler1;
@@ -87,6 +89,7 @@ public class SpielInfosController
         this.support = new PropertyChangeSupport(this);
     }
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;
@@ -180,5 +183,10 @@ public class SpielInfosController
             Spieler spieler = this.spiel.getAlleSpieler().get(3);
             this.support.firePropertyChange("Spieler", null, spieler);
         }
+    }
+
+    @Override
+    public void setStage(Stage stage)
+    {
     }
 }

@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,8 +8,9 @@ import javafx.stage.Stage;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spielfeld.Entwicklungskarte;
 import siedlervoncatan.utility.Error;
+import siedlervoncatan.view.Controller;
 
-public class EntwicklungskartenController
+public class EntwicklungskartenController implements Controller
 {
     @FXML
     private ListView<Entwicklungskarte> entwicklungskarten;
@@ -20,11 +21,13 @@ public class EntwicklungskartenController
 
     private Stage                       stage;
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.entwicklungskarten.setItems(spiel.getAktiverSpieler().getEntwickulungskarten());
     }
 
+    @Override
     public void setStage(Stage stage)
     {
         this.stage = stage;

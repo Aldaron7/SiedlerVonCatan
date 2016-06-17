@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -8,8 +8,9 @@ import siedlervoncatan.enums.Farbe;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
+import siedlervoncatan.view.Controller;
 
-public class SpielerAnlegenController
+public class SpielerAnlegenController implements Controller
 {
     private Spiel           spiel;
     private Stage           stage;
@@ -25,6 +26,7 @@ public class SpielerAnlegenController
         this.farbe.getItems().addAll(Spiel.farben);
     }
 
+    @Override
     public void setStage(Stage stage)
     {
         this.stage = stage;
@@ -55,6 +57,7 @@ public class SpielerAnlegenController
         this.stage.close();
     }
 
+    @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;

@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -6,10 +6,13 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import siedlervoncatan.Spielstart;
+import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Error;
+import siedlervoncatan.view.Controller;
 
-public class RootLayoutController
+public class RootLayoutController implements Controller
 {
     private Spielstart spielstart;
 
@@ -82,6 +85,16 @@ public class RootLayoutController
             new Error("Die Anleitung konnte nicht geöffnet werden.");
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setSpiel(Spiel spiel)
+    {
+    }
+
+    @Override
+    public void setStage(Stage stage)
+    {
     }
 
 }

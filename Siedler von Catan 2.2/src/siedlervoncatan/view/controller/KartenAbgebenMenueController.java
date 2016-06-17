@@ -1,4 +1,4 @@
-package siedlervoncatan.view;
+package siedlervoncatan.view.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,12 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
+import siedlervoncatan.view.Controller;
 
-public class KartenAbgebenMenueController
+public class KartenAbgebenMenueController implements Controller
 {
     @FXML
     private Label              labelSpieler;
@@ -27,6 +29,7 @@ public class KartenAbgebenMenueController
     private Stage              stage;
     private int                anzahl;
 
+    @Override
     public void setStage(Stage stage)
     {
         this.stage = stage;
@@ -62,6 +65,11 @@ public class KartenAbgebenMenueController
             this.spieler.removeKarten(rohstoffe);
             this.stage.close();
         }
+    }
+
+    @Override
+    public void setSpiel(Spiel spiel)
+    {
     }
 
 }
