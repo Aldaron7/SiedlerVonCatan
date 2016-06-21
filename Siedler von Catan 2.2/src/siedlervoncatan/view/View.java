@@ -7,7 +7,8 @@ public enum View
     ROOTLAYOUT("view/fxml/RootLayout.fxml"), SIEGER("view/fxml/Sieger.fxml"), SPIELER_ANLEGEN("view/fxml/SpielerAnlegen.fxml"),
     SPIELER_HANDEL_AUSWAHL("view/fxml/SpielerHandelAuswahl.fxml"), SPIELFELD("view/fxml/Spielfeld.fxml"), SPIEL_INFOS("view/fxml/SpielInfos.fxml"),
     WUERFEL_MENUE("view/fxml/WuerfelMenue.fxml"), ZUG_MENUE("view/fxml/ZugMenue.fxml"), STYLESHEET("siedlervoncatan/view/fxml/stylesheet.css"),
-    LEERES_MENUE("view/fxml/LeeresMenue.fxml");
+    LEERES_MENUE("view/fxml/LeeresMenue.fxml"), HOLZ("file:bilder/holz.png"), LEHM("file:bilder/lehm.png"), WOLLE("file:bilder/wolle.png"),
+    KORN("file:bilder/korn.png"), ERZ("file:bilder/erz.png");
 
     private String pfad;
 
