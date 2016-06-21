@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
-import siedlervoncatan.view.View;
+import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.HauptmenueController;
 import siedlervoncatan.view.controller.KartenAbgebenMenueController;
@@ -32,7 +32,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.HAUPT_MENUE);
+            Pane pane = this.viewController.initPane(Pfade.HAUPT_MENUE);
 
             this.spielstart.getRootLayout().setCenter(pane);
             this.spielstart.getRootLayout().setRight(null);
@@ -52,7 +52,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.SPIELFELD);
+            Pane pane = this.viewController.initPane(Pfade.SPIELFELD);
             this.spielstart.getRootLayout().setCenter(pane);
             SpielfeldController controller = this.viewController.getLoader().getController();
             this.spielstart.setSpielfeldController(controller);
@@ -70,7 +70,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.NEUES_SPIEL_MENUE);
+            Pane pane = this.viewController.initPane(Pfade.NEUES_SPIEL_MENUE);
             this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
@@ -83,7 +83,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.LEERES_MENUE);
+            Pane pane = this.viewController.initPane(Pfade.LEERES_MENUE);
             this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
@@ -99,7 +99,7 @@ public class Menuefx
     {
         try
         {
-            Stage stage = this.viewController.createStage(View.SPIELER_ANLEGEN, "Neuer Spieler");
+            Stage stage = this.viewController.createStage(Pfade.SPIELER_ANLEGEN, "Neuer Spieler");
             stage.showAndWait();
         }
         catch (IOException e)
@@ -115,7 +115,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.WUERFEL_MENUE);
+            Pane pane = this.viewController.initPane(Pfade.WUERFEL_MENUE);
             this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
@@ -132,7 +132,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.ZUG_MENUE);
+            Pane pane = this.viewController.initPane(Pfade.ZUG_MENUE);
             this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
@@ -150,7 +150,7 @@ public class Menuefx
     {
         try
         {
-            Stage stage = this.viewController.createStage(View.ENTWICKLUNGSKARTEN, "Entwicklungskarten");
+            Stage stage = this.viewController.createStage(Pfade.ENTWICKLUNGSKARTEN, "Entwicklungskarten");
             stage.showAndWait();
         }
         catch (IOException e)
@@ -167,7 +167,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.BAU_MENUE);
+            Pane pane = this.viewController.initPane(Pfade.BAU_MENUE);
             this.spielstart.getRootLayout().setRight(pane);
         }
         catch (IOException e)
@@ -184,7 +184,7 @@ public class Menuefx
     {
         try
         {
-            Pane pane = this.viewController.initPane(View.SPIEL_INFOS);
+            Pane pane = this.viewController.initPane(Pfade.SPIEL_INFOS);
             this.spielstart.getRootLayout().setLeft(pane);
         }
         catch (IOException e)
@@ -201,7 +201,7 @@ public class Menuefx
     {
         try
         {
-            Stage stage = this.viewController.createStage(View.HANDEL_MENUE, "Handeln");
+            Stage stage = this.viewController.createStage(Pfade.HANDEL_MENUE, "Handeln");
             stage.showAndWait();
         }
         catch (IOException e)
@@ -220,7 +220,7 @@ public class Menuefx
     {
         try
         {
-            Stage stage = this.viewController.createStage(View.SPIELER_HANDEL_AUSWAHL, "Wähle Spieler zum Handeln.");
+            Stage stage = this.viewController.createStage(Pfade.SPIELER_HANDEL_AUSWAHL, "Wähle Spieler zum Handeln.");
             ((SpielerHandelAuswahlController) this.viewController.getLoader().getController()).setAngebotNachfrage(handel);
             stage.showAndWait();
         }
@@ -242,7 +242,7 @@ public class Menuefx
 
         try
         {
-            Stage stage = this.viewController.createStage(View.KARTEN_ABGEBEN_MENUE, "Karten Abgeben");
+            Stage stage = this.viewController.createStage(Pfade.KARTEN_ABGEBEN_MENUE, "Karten Abgeben");
 
             KartenAbgebenMenueController controller = this.viewController.getLoader().getController();
             controller.setAnzahl(anzahl);
@@ -263,7 +263,7 @@ public class Menuefx
     {
         try
         {
-            Stage stage = this.viewController.createStage(View.SIEGER, "Sieger");
+            Stage stage = this.viewController.createStage(Pfade.SIEGER, "Sieger");
             stage.showAndWait();
         }
         catch (IOException e)

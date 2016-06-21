@@ -8,7 +8,6 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.StageStyle;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.view.View;
 
 public class Handel
 {
@@ -34,7 +33,7 @@ public class Handel
     public void handeln()
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add(View.STYLESHEET.getPfad());
+        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET.getPfad());
         alert.initStyle(StageStyle.UNDECORATED);
         alert.setContentText(String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
         alert.showAndWait().ifPresent(response -> {

@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.spiel.Spiel;
+import siedlervoncatan.utility.Pfade;
 
 public class ViewController
 {
@@ -23,7 +24,7 @@ public class ViewController
         this.spiel = spiel;
     }
 
-    public Pane initPane(View view) throws IOException
+    public Pane initPane(Pfade view) throws IOException
     {
         this.loader = new FXMLLoader();
         this.loader.setLocation(Spielstart.class.getResource(view.getPfad()));
@@ -36,7 +37,7 @@ public class ViewController
         return pane;
     }
 
-    public Stage createStage(View view, String titel) throws IOException
+    public Stage createStage(Pfade view, String titel) throws IOException
     {
         Pane pane = this.initPane(view);
         Scene scene = new Scene(pane);

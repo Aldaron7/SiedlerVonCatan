@@ -1,6 +1,6 @@
-package siedlervoncatan.view;
+package siedlervoncatan.utility;
 
-public enum View
+public enum Pfade
 {
     BAU_MENUE("view/fxml/BauMenue.fxml"), ENTWICKLUNGSKARTEN("view/fxml/Entwicklungskarten.fxml"), HANDEL_MENUE("view/fxml/HandelMenue.fxml"),
     HAUPT_MENUE("view/fxml/Hauptmenue.fxml"), KARTEN_ABGEBEN_MENUE("view/fxml/KartenAbgebenMenue.fxml"), NEUES_SPIEL_MENUE("view/fxml/NeuesSpielMenue.fxml"),
@@ -12,7 +12,7 @@ public enum View
 
     private String pfad;
 
-    private View(String pfad)
+    private Pfade(String pfad)
     {
         this.pfad = pfad;
     }

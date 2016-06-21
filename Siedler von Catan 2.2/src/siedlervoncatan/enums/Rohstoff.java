@@ -1,12 +1,12 @@
 package siedlervoncatan.enums;
 
 import javafx.scene.image.Image;
-import siedlervoncatan.view.View;
+import siedlervoncatan.utility.Pfade;
 
 public enum Rohstoff
 {
-    LEHM(new Image(View.LEHM.getPfad())), ERZ(new Image(View.ERZ.getPfad())), HOLZ(new Image(View.HOLZ.getPfad())), WOLLE(new Image(View.WOLLE.getPfad())),
-    KORN(new Image(View.KORN.getPfad()));
+    LEHM(new Image(Pfade.LEHM.getPfad())), ERZ(new Image(Pfade.ERZ.getPfad())), HOLZ(new Image(Pfade.HOLZ.getPfad())), WOLLE(new Image(Pfade.WOLLE.getPfad())),
+    KORN(new Image(Pfade.KORN.getPfad()));
 
     private Image image;
 

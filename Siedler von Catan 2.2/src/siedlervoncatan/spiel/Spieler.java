@@ -35,11 +35,11 @@ import siedlervoncatan.spielfeld.Stadt;
 import siedlervoncatan.spielfeld.Strasse;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Info;
+import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Rohstoffauswahl;
 import siedlervoncatan.utility.Wuerfel;
 import siedlervoncatan.utility.Zusatzpunkte;
-import siedlervoncatan.view.View;
 
 public class Spieler implements PropertyChangeListener, Serializable
 {
@@ -473,7 +473,7 @@ public class Spieler implements PropertyChangeListener, Serializable
             final int tauschkurs = umtauschkurs;
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.initStyle(StageStyle.UNDECORATED);
-            alert.getDialogPane().getScene().getStylesheets().add(View.STYLESHEET.getPfad());
+            alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET.getPfad());
             alert.setContentText(String.format("Wolen Sie %s gegen %s im Verhältnis %d:1 tauschen?", abzugeben, erhalten, tauschkurs));
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK)
