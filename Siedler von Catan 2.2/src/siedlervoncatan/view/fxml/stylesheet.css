@@ -29,6 +29,10 @@
 	-fx-background-color: #4daaf2;
 	}
 
+.button{
+	-fx-effect: dropshadow(one-pass-box, black, 10,0,2,2) 
+}
+
 .button Text {
 	-fx-fill: white;
 	-fx-effect: dropshadow(gaussian, blue, 10,0,1,1) ; 

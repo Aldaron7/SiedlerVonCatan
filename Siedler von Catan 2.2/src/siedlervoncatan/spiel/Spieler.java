@@ -408,8 +408,8 @@ public class Spieler implements PropertyChangeListener, Serializable
      */
     public void versetzeRauber()
     {
-        this.getSpiel().setNotSaveable();
-        this.getSpiel().getSpielstart().getRootLayout().getRight().setVisible(false);
+        this.spiel.setNotSaveable();
+        this.spiel.getMenue().zeigeLeeresMenue();
         this.spiel.getSpielstart().getSpielfeldController().setMessages(this + " bitte versetzen Sie den Räuber.");
         this.spiel.setZustand(Zustand.LANDSCHAFTSFELD);
     }

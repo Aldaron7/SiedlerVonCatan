@@ -79,6 +79,19 @@ public class Menuefx
         }
     }
 
+    public void zeigeLeeresMenue()
+    {
+        try
+        {
+            Pane pane = this.viewController.initPane(View.LEERES_MENUE);
+            this.spielstart.getRootLayout().setRight(pane);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Erzeugt das SpielerAnlegenMenü in einem Popup Fenster. Menü: Name, Farbe, Ok, Abbrechen.
      */

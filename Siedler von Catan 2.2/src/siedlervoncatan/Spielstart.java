@@ -34,8 +34,6 @@ public class Spielstart extends Application
     private SpielfeldController spielfeldController;
     private Menuefx             menue;
 
-    // test für github
-    // test 2
     @Override
     public void start(Stage primaryStage)
     {
@@ -43,7 +41,7 @@ public class Spielstart extends Application
         this.primaryStage.setTitle("Siedler von Catan");
         this.primaryStage.getIcons().add(new Image("file:bilder/logo.png"));
         this.primaryStage.initStyle(StageStyle.UNIFIED);
-        this.primaryStage.setMinHeight(750);
+        this.primaryStage.setMinHeight(730);
         this.primaryStage.setMinWidth(920);
 
         this.menue = new Menuefx();

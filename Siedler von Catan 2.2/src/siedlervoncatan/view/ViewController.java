@@ -29,7 +29,10 @@ public class ViewController
         this.loader.setLocation(Spielstart.class.getResource(view.getPfad()));
         Pane pane = this.loader.load();
         Controller controller = this.loader.getController();
-        controller.setSpiel(this.spiel);
+        if (controller != null)
+        {
+            controller.setSpiel(this.spiel);
+        }
         return pane;
     }
 
@@ -44,7 +47,10 @@ public class ViewController
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         Controller controller = this.loader.getController();
-        controller.setStage(stage);
+        if (controller != null)
+        {
+            controller.setStage(stage);
+        }
         return stage;
     }
 

@@ -24,7 +24,7 @@ public class Rohstoffauswahl
      */
     public static Rohstoff getRohstoff(String text)
     {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+        Alert alert = new Alert(AlertType.NONE);
         alert.getDialogPane().getScene().getStylesheets().add(View.STYLESHEET.getPfad());
         alert.setTitle("Rohstoffauswahl");
         alert.setHeaderText(text);

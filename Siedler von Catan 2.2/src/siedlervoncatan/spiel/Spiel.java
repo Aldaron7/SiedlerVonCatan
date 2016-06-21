@@ -458,7 +458,7 @@ public class Spiel implements Serializable, PropertyChangeListener
             {
                 this.zustand = Zustand.SPIELER;
                 this.spielstart.getSpielfeldController().setMessages(this.aktiverSpieler + " wählen Sie den Spieler bei dem Sie ziehen möchten.");
-                this.spielstart.getRootLayout().getRight().setVisible(false);
+                this.menue.zeigeLeeresMenue();
             }
         }
     }
