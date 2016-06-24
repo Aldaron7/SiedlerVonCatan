@@ -1,24 +1,27 @@
 package siedlervoncatan.utility;
 
-public enum Pfade
+public class Pfade
 {
-    BAU_MENUE("view/fxml/BauMenue.fxml"), ENTWICKLUNGSKARTEN("view/fxml/Entwicklungskarten.fxml"), HANDEL_MENUE("view/fxml/HandelMenue.fxml"),
-    HAUPT_MENUE("view/fxml/Hauptmenue.fxml"), KARTEN_ABGEBEN_MENUE("view/fxml/KartenAbgebenMenue.fxml"), NEUES_SPIEL_MENUE("view/fxml/NeuesSpielMenue.fxml"),
-    ROOTLAYOUT("view/fxml/RootLayout.fxml"), SIEGER("view/fxml/Sieger.fxml"), SPIELER_ANLEGEN("view/fxml/SpielerAnlegen.fxml"),
-    SPIELER_HANDEL_AUSWAHL("view/fxml/SpielerHandelAuswahl.fxml"), SPIELFELD("view/fxml/Spielfeld.fxml"), SPIEL_INFOS("view/fxml/SpielInfos.fxml"),
-    WUERFEL_MENUE("view/fxml/WuerfelMenue.fxml"), ZUG_MENUE("view/fxml/ZugMenue.fxml"), STYLESHEET("siedlervoncatan/view/fxml/stylesheet.css"),
-    LEERES_MENUE("view/fxml/LeeresMenue.fxml"), HOLZ("file:bilder/holz.png"), LEHM("file:bilder/lehm.png"), WOLLE("file:bilder/wolle.png"),
-    KORN("file:bilder/korn.png"), ERZ("file:bilder/erz.png");
+    public static final String BAU_MENUE              = "view/fxml/BauMenue.fxml";
+    public static final String ENTWICKLUNGSKARTEN     = "view/fxml/Entwicklungskarten.fxml";
+    public static final String HANDEL_MENUE           = "view/fxml/HandelMenue.fxml";
+    public static final String HAUPT_MENUE            = "view/fxml/Hauptmenue.fxml";
+    public static final String KARTEN_ABGEBEN_MENUE   = "view/fxml/KartenAbgebenMenue.fxml";
+    public static final String NEUES_SPIEL_MENUE      = "view/fxml/NeuesSpielMenue.fxml";
+    public static final String ROOTLAYOUT             = "view/fxml/RootLayout.fxml";
+    public static final String SIEGER                 = "view/fxml/Sieger.fxml";
+    public static final String SPIELER_ANLEGEN        = "view/fxml/SpielerAnlegen.fxml";
+    public static final String SPIELER_HANDEL_AUSWAHL = "view/fxml/SpielerHandelAuswahl.fxml";
+    public static final String SPIELFELD              = "view/fxml/Spielfeld.fxml";
+    public static final String SPIEL_INFOS            = "view/fxml/SpielInfos.fxml";
+    public static final String WUERFEL_MENUE          = "view/fxml/WuerfelMenue.fxml";
+    public static final String ZUG_MENUE              = "view/fxml/ZugMenue.fxml";
+    public static final String STYLESHEET             = "siedlervoncatan/view/fxml/stylesheet.css";
+    public static final String LEERES_MENUE           = "view/fxml/LeeresMenue.fxml";
+    public static final String HOLZ                   = "file:bilder/holz.png";
+    public static final String LEHM                   = "file:bilder/lehm.png";
+    public static final String WOLLE                  = "file:bilder/wolle.png";
+    public static final String KORN                   = "file:bilder/korn.png";
+    public static final String ERZ                    = "file:bilder/erz.png";
 
-    private String pfad;
-
-    private Pfade(String pfad)
-    {
-        this.pfad = pfad;
-    }
-
-    public String getPfad()
-    {
-        return this.pfad;
-    }
 }

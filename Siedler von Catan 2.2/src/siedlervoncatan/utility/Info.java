@@ -14,7 +14,7 @@ public class Info
     public Info(String text)
     {
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET.getPfad());
+        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
         alert.setTitle("");
         alert.setHeaderText("");
         alert.setContentText(text);

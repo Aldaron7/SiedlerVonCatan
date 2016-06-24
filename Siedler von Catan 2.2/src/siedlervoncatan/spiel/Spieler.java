@@ -473,7 +473,7 @@ public class Spieler implements PropertyChangeListener, Serializable
             final int tauschkurs = umtauschkurs;
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.initStyle(StageStyle.UNDECORATED);
-            alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET.getPfad());
+            alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
             alert.setContentText(String.format("Wolen Sie %s gegen %s im Verhältnis %d:1 tauschen?", abzugeben, erhalten, tauschkurs));
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK)

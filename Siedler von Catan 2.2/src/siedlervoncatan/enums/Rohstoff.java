@@ -5,8 +5,7 @@ import siedlervoncatan.utility.Pfade;
 
 public enum Rohstoff
 {
-    LEHM(new Image(Pfade.LEHM.getPfad())), ERZ(new Image(Pfade.ERZ.getPfad())), HOLZ(new Image(Pfade.HOLZ.getPfad())), WOLLE(new Image(Pfade.WOLLE.getPfad())),
-    KORN(new Image(Pfade.KORN.getPfad()));
+    LEHM(new Image(Pfade.LEHM)), ERZ(new Image(Pfade.ERZ)), HOLZ(new Image(Pfade.HOLZ)), WOLLE(new Image(Pfade.WOLLE)), KORN(new Image(Pfade.KORN));
 
     private Image image;
 

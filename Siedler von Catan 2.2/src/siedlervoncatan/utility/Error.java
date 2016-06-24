@@ -15,7 +15,7 @@ public class Error
     public Error(String text)
     {
         Alert alert = new Alert(AlertType.ERROR);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET.getPfad());
+        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
         alert.setTitle("Fehler");
         alert.setContentText(text);
         alert.initStyle(StageStyle.UNDECORATED);

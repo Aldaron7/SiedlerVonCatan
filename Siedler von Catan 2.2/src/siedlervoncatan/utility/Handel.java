@@ -33,7 +33,7 @@ public class Handel
     public void handeln()
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET.getPfad());
+        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
         alert.initStyle(StageStyle.UNDECORATED);
         alert.setContentText(String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
         alert.showAndWait().ifPresent(response -> {

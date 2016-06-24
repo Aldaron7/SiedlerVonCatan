@@ -60,7 +60,7 @@ public class Spielstart extends Application
         try
         {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource(Pfade.ROOTLAYOUT.getPfad()));
+            loader.setLocation(Spielstart.class.getResource(Pfade.ROOTLAYOUT));
             this.rootLayout = loader.load();
             Scene scene = new Scene(this.rootLayout);
             this.primaryStage.setScene(scene);
@@ -125,7 +125,7 @@ public class Spielstart extends Application
     public void beenden()
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET.getPfad());
+        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
         alert.setTitle("Spiel beenden?");
         alert.setContentText("Möchten Sie das Spiel ohne zu speichern beenden?");
         alert.initStyle(StageStyle.UNDECORATED);
