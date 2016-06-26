@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="630.0" minWidth="600.0" prefHeight="630.0" prefWidth="600.0" style="-fx-background-color: #4daaf2;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.SpielfeldController">
+<AnchorPane minHeight="630.0" minWidth="600.0" prefHeight="630.0" prefWidth="900.0" style="-fx-background-color: #4daaf2;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.SpielfeldController">
    <children>
       <StackPane fx:id="stackPaneInsel" alignment="CENTER" layoutY="70.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
@@ -1005,12 +1005,12 @@
             </Group>
          </children>
       </StackPane>
-      <Label fx:id="messages" alignment="TOP_CENTER" layoutX="20.0" layoutY="42.0" text="Messages" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+      <Label fx:id="messages" alignment="TOP_CENTER" layoutX="20.0" layoutY="42.0" text="Messages" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="30.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="runde" layoutX="20.0" layoutY="23.0" text="00" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+      <Label fx:id="runde" layoutX="20.0" layoutY="23.0" text="00" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <Label text="Runde" />
          </graphic></Label>

@@ -8,43 +8,49 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="450.0" maxWidth="550.0" prefHeight="450.0" prefWidth="550.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.EntwicklungskartenController">
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.EntwicklungskartenController">
    <children>
-      <GridPane hgap="10.0" layoutX="55.0" layoutY="55.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <AnchorPane maxHeight="450.0" maxWidth="550.0" prefHeight="450.0" prefWidth="550.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css">
          <children>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <GridPane hgap="10.0" layoutX="55.0" layoutY="55.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <ListView fx:id="entwicklungskarten" focusTraversable="false" layoutX="-2.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
-                  <Label focusTraversable="false" layoutX="14.0" layoutY="14.0" text="Entwicklungskarten" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.columnIndex="1">
-               <children>
-                  <ButtonBar buttonMinWidth="100.0" layoutX="-19.0" layoutY="344.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                    <buttons>
-                      <Button mnemonicParsing="false" onAction="#handleSpielen" text="Spielen" />
-                        <Button mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
-                    </buttons>
-                  </ButtonBar>
-                  <TextFlow layoutX="-2.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="bla&#10;bla&#10;bla" />
+                        <ListView fx:id="entwicklungskarten" focusTraversable="false" layoutX="-2.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
+                        <Label focusTraversable="false" layoutX="14.0" layoutY="14.0" text="Entwicklungskarten" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                      </children>
-                  </TextFlow>
-                  <Label fx:id="entwicklung" focusTraversable="false" layoutX="14.0" layoutY="14.0" text="Entwicklung" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <ButtonBar buttonMinWidth="100.0" layoutX="-19.0" layoutY="344.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#handleSpielen" text="Spielen" />
+                              <Button mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
+                          </buttons>
+                        </ButtonBar>
+                        <TextFlow layoutX="-2.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+                           <children>
+                              <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="bla&#10;bla&#10;bla" />
+                           </children>
+                        </TextFlow>
+                        <Label fx:id="entwicklung" focusTraversable="false" layoutX="14.0" layoutY="14.0" text="Entwicklung" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                     </children>
+                  </AnchorPane>
                </children>
-            </AnchorPane>
+            </GridPane>
          </children>
-      </GridPane>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

@@ -55,8 +55,8 @@ public class EntwicklungskartenController implements Controller
         Entwicklungskarte selectedItem = this.entwicklungskarten.getSelectionModel().getSelectedItem();
         if (selectedItem != null && selectedItem.getDarfGespieltWerden())
         {
-            selectedItem.ausspielen();
             this.layoutController.removeFromCenter(this.self);
+            selectedItem.ausspielen();
         }
         else
         {
@@ -69,6 +69,14 @@ public class EntwicklungskartenController implements Controller
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenter(this.self);
+        if (this.spiel.hatGewuerfelt())
+        {
+            this.spiel.getMenue().zeigeZug();
+        }
+        else
+        {
+            this.spiel.getMenue().zeigeWuerfel();
+        }
     }
 
     @Override

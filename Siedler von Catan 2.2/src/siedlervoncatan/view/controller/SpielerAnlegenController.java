@@ -26,6 +26,7 @@ public class SpielerAnlegenController implements Controller
     private void initialize()
     {
         this.farbe.getItems().addAll(Spiel.farben);
+        this.name.requestFocus();
     }
 
     @FXML
@@ -59,17 +60,20 @@ public class SpielerAnlegenController implements Controller
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;
+        this.name.requestFocus();
     }
 
     @Override
     public void setLayoutController(RootLayoutController layoutController)
     {
         this.layoutController = layoutController;
+        this.name.requestFocus();
     }
 
     @Override
     public void setNode(Node self)
     {
         this.self = self;
+        this.name.requestFocus();
     }
 }

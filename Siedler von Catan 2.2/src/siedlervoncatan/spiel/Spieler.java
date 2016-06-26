@@ -348,31 +348,6 @@ public class Spieler implements PropertyChangeListener, Serializable
     }
 
     /**
-     * Fügt den karten alle Rohstoffe vom Typ rohstoff hinzu, die die anderen Spieler besitzten und entfernt sie bei
-     * ihnen.
-     * 
-     * @param rohstoff
-     */
-    public void rohstoffmonopol(Rohstoff rohstoff)
-    {
-        for (Spieler spieler : this.spiel.getAlleSpieler())
-        {
-            if (!spieler.isAktiv())
-            {
-                List<Rohstoff> kopieKarten = new ArrayList<>(spieler.karten);
-                for (Rohstoff rohstoffKarte : kopieKarten)
-                {
-                    if (rohstoff.equals(rohstoffKarte))
-                    {
-                        spieler.removeKarte(rohstoff);
-                        this.addKarte(rohstoff);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
      * Entfernt einen zufälligen Rohstoff aus den karten.
      * 
      * @return den entfernten Rohstoff.
@@ -409,7 +384,8 @@ public class Spieler implements PropertyChangeListener, Serializable
     public void versetzeRauber()
     {
         this.spiel.setNotSaveable();
-        this.spiel.getMenue().zeigeLeeresMenue();
+        // TODO
+        // this.spiel.getMenue().zeigeLeeresMenue();
         this.spiel.getSpielstart().getSpielfeldController().setMessages(this + " bitte versetzen Sie den Räuber.");
         this.spiel.setZustand(Zustand.LANDSCHAFTSFELD);
     }
@@ -439,7 +415,7 @@ public class Spieler implements PropertyChangeListener, Serializable
     public void seehandel()
     {
         Rohstoff abzugeben = Rohstoffauswahl.getRohstoff(this + " wählen Sie den Rohstoff, den Sie abgeben möchten.");
-        Rohstoff erhalten = Rohstoffauswahl.getRohstoff(this + "wählen Sie den Rohstoff, gegen den Sie tauschen möchten.");
+        Rohstoff erhalten = Rohstoffauswahl.getRohstoff(this + " wählen Sie den Rohstoff, gegen den Sie tauschen möchten.");
 
         this.tauscheRohstoffe(abzugeben, erhalten);
     }
@@ -463,7 +439,7 @@ public class Spieler implements PropertyChangeListener, Serializable
 
         for (Hafen hafen : this.haefen)
         {
-            if (hafen.getRohstoff().equals(abzugeben))
+            if (abzugeben.equals(hafen.getRohstoff()))
             {
                 umtauschkurs = 2;
             }

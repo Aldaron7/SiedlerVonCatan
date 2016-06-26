@@ -19,24 +19,26 @@ import siedlervoncatan.view.Controller;
 public class BauMenueController implements Controller
 {
     @FXML
-    private VBox                bauButtons;
+    private VBox                 bauButtons;
     @FXML
-    private Label               spieler;
+    private Label                spieler;
     @FXML
-    private Tooltip             tooltipSpieler;
+    private Tooltip              tooltipSpieler;
     @FXML
-    private Label               anzahlHolzL;
+    private Label                anzahlHolzL;
     @FXML
-    private Label               anzahlLehmL;
+    private Label                anzahlLehmL;
     @FXML
-    private Label               anzahlWolleL;
+    private Label                anzahlWolleL;
     @FXML
-    private Label               anzahlKornL;
+    private Label                anzahlKornL;
     @FXML
-    private Label               anzahlErzL;
+    private Label                anzahlErzL;
 
-    private Spiel               spiel;
-    private SpielfeldController controller;
+    private Spiel                spiel;
+    private SpielfeldController  controller;
+    private Node                 self;
+    private RootLayoutController layoutController;
 
     @Override
     public void setSpiel(Spiel spiel)
@@ -84,7 +86,7 @@ public class BauMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
         this.spiel.setZustand(Zustand.STARSSE_BAUEN);
-        this.bauButtons.setVisible(false);
+        this.layoutController.removeFromCenter(this.self);
     }
 
     @FXML
@@ -93,7 +95,7 @@ public class BauMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
         this.spiel.setZustand(Zustand.SIEDLUNG_BAUEN);
-        this.bauButtons.setVisible(false);
+        this.layoutController.removeFromCenter(this.self);
     }
 
     @FXML
@@ -102,7 +104,7 @@ public class BauMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
         this.spiel.setZustand(Zustand.STADT_BAUEN);
-        this.bauButtons.setVisible(false);
+        this.layoutController.removeFromCenter(this.self);
     }
 
     @FXML
@@ -110,6 +112,7 @@ public class BauMenueController implements Controller
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.entwicklungKaufen();
+        this.layoutController.removeFromCenter(this.self);
     }
 
     @FXML
@@ -117,17 +120,20 @@ public class BauMenueController implements Controller
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.setZustand(null);
+        this.layoutController.removeFromCenter(this.self);
         this.spiel.getMenue().zeigeZug();
     }
 
     @Override
     public void setLayoutController(RootLayoutController layoutController)
     {
+        this.layoutController = layoutController;
     }
 
     @Override
     public void setNode(Node self)
     {
+        this.self = self;
     }
 
 }

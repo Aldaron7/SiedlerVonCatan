@@ -35,7 +35,7 @@ public class Spielstart extends Application
     private Spiel                spiel;
     private SpielfeldController  spielfeldController;
     private Menuefx              menue;
-    private Sound                sound;
+    private transient Sound      sound;
 
     @Override
     public void start(Stage primaryStage)
@@ -122,7 +122,6 @@ public class Spielstart extends Application
         this.spiel = new Spiel();
         this.spiel.setSpielstart(this);
         this.spiel.getMenue().zeigeSpielfeld();
-        this.spiel.getMenue().zeigeSpielInfos();
         this.spiel.starten();
     }
 

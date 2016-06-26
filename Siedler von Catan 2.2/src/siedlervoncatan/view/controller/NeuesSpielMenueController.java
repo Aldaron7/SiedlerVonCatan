@@ -12,9 +12,11 @@ import siedlervoncatan.view.Controller;
 public class NeuesSpielMenueController implements Controller
 {
     @FXML
-    private ListView<Spieler> alleSpieler;
+    private ListView<Spieler>    alleSpieler;
 
-    private Spiel             spiel;
+    private Spiel                spiel;
+    private Node                 self;
+    private RootLayoutController layoutController;
 
     @Override
     public void setSpiel(Spiel spiel)
@@ -49,17 +51,20 @@ public class NeuesSpielMenueController implements Controller
         {
             this.spiel.getSpielstart().getRootLayout().setRight(null);
             this.spiel.spielen();
+            this.layoutController.removeFromCenter(this.self);
         }
     }
 
     @Override
     public void setLayoutController(RootLayoutController layoutController)
     {
+        this.layoutController = layoutController;
     }
 
     @Override
     public void setNode(Node self)
     {
+        this.self = self;
     }
 
 }

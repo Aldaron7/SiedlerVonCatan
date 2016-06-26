@@ -6,33 +6,39 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="250.0" maxWidth="250.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.HauptmenueController">
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.HauptmenueController">
    <children>
-      <GridPane layoutX="24.0" layoutY="35.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <AnchorPane maxHeight="250.0" maxWidth="250.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" styleClass="pergamentrolle2" stylesheets="@stylesheet.css">
          <children>
-            <VBox alignment="CENTER" spacing="5.0" stylesheets="@stylesheet.css">
+            <GridPane layoutX="24.0" layoutY="35.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleNeu" prefHeight="35.0" prefWidth="150.0" text="Neu" textAlignment="CENTER">
-                     <VBox.margin>
+                  <VBox alignment="CENTER" spacing="5.0" stylesheets="@stylesheet.css">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleNeu" prefHeight="35.0" prefWidth="150.0" text="Neu" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#handleLaden" prefHeight="35.0" prefWidth="150.0" text="Laden" />
+                        <Button mnemonicParsing="false" onAction="#handleBeenden" prefHeight="35.0" prefWidth="150.0" text="Beenden" />
+                     </children>
+                     <opaqueInsets>
                         <Insets />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#handleLaden" prefHeight="35.0" prefWidth="150.0" text="Laden" />
-                  <Button mnemonicParsing="false" onAction="#handleBeenden" prefHeight="35.0" prefWidth="150.0" text="Beenden" />
+                     </opaqueInsets>
+                  </VBox>
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </VBox>
+            </GridPane>
          </children>
-      </GridPane>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

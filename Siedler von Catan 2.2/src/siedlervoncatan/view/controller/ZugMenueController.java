@@ -17,21 +17,23 @@ import siedlervoncatan.view.Controller;
 public class ZugMenueController implements Controller
 {
     @FXML
-    private Label   spieler;
+    private Label                spieler;
     @FXML
-    private Tooltip tooltipSpieler;
+    private Tooltip              tooltipSpieler;
     @FXML
-    private Label   anzahlHolzL;
+    private Label                anzahlHolzL;
     @FXML
-    private Label   anzahlLehmL;
+    private Label                anzahlLehmL;
     @FXML
-    private Label   anzahlWolleL;
+    private Label                anzahlWolleL;
     @FXML
-    private Label   anzahlKornL;
+    private Label                anzahlKornL;
     @FXML
-    private Label   anzahlErzL;
+    private Label                anzahlErzL;
 
-    private Spiel   spiel;
+    private Spiel                spiel;
+    private Node                 self;
+    private RootLayoutController layoutController;
 
     @Override
     public void setSpiel(Spiel spiel)
@@ -76,6 +78,7 @@ public class ZugMenueController implements Controller
     private void handleEntwicklungskarte()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.layoutController.removeFromCenter(this.self);
         this.spiel.getMenue().zeigeEntwicklungskarten();
     }
 
@@ -83,6 +86,7 @@ public class ZugMenueController implements Controller
     private void handleBauen()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.layoutController.removeFromCenter(this.self);
         this.spiel.getMenue().zeigeBau();
     }
 
@@ -106,16 +110,19 @@ public class ZugMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getAktiverSpieler().erhoeheGespielteRunden();
         this.spiel.getAktiverSpieler().setNichtAktiv();
+        this.layoutController.removeFromCenter(this.self);
         this.spiel.naechsteRunde();
     }
 
     @Override
     public void setLayoutController(RootLayoutController layoutController)
     {
+        this.layoutController = layoutController;
     }
 
     @Override
     public void setNode(Node self)
     {
+        this.self = self;
     }
 }

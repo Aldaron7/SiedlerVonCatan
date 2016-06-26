@@ -3,6 +3,8 @@ package siedlervoncatan.spielfeld;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import siedlervoncatan.enums.Entwicklung;
@@ -48,6 +50,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
             new Info(this.besitzer + " spilet die karte Siegpunkt.");
             this.besitzer.erhoeheSiegpunkte();
             this.besitzer.getEntwickulungskarten().remove(this);
+            this.zeigeMenue();
             return true;
         }
         if (!this.besitzer.entwicklungskarteGespielt())
@@ -63,8 +66,23 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                 case ROHSTOFFMONOPOL:
                     Rohstoff rohstoff = Rohstoffauswahl.getRohstoff();
                     new Info(this.besitzer + " spielt die Karte Rohstoffmonopol und bekommt alles " + rohstoff + ".");
-                    this.besitzer.rohstoffmonopol(rohstoff);
+                    for (Spieler spieler : this.besitzer.getSpiel().getAlleSpieler())
+                    {
+                        if (!this.besitzer.equals(spieler))
+                        {
+                            List<Rohstoff> kopieKarten = new ArrayList<>(spieler.getKarten());
+                            for (Rohstoff rohstoffKarte : kopieKarten)
+                            {
+                                if (rohstoff.equals(rohstoffKarte))
+                                {
+                                    spieler.removeKarte(rohstoff);
+                                    this.besitzer.addKarte(rohstoff);
+                                }
+                            }
+                        }
+                    }
                     Entwicklung.addEntwicklung(this.entwicklung);
+                    this.zeigeMenue();
                     break;
                 case STRASSENBAU:
                     this.strasse1 = true;
@@ -83,7 +101,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                     rohstoff = Rohstoffauswahl.getRohstoff();
                     this.besitzer.addKarte(rohstoff);
                     Entwicklung.addEntwicklung(this.entwicklung);
-                    this.besitzer.getSpiel().setSaveable();
+                    this.zeigeMenue();
                     break;
                 case SIEGPUNKT:
                     break;
@@ -120,9 +138,21 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
             {
                 spielfeldController.removeListener(this);
                 spielfeldController.setMessages("");
-                this.besitzer.getSpiel().setSaveable();
-                this.besitzer.getSpiel().getSpielstart().getRootLayout().getRight().setVisible(true);
+                this.zeigeMenue();
             }
+        }
+    }
+
+    private void zeigeMenue()
+    {
+        this.besitzer.getSpiel().setSaveable();
+        if (this.besitzer.getSpiel().hatGewuerfelt())
+        {
+            this.besitzer.getSpiel().getMenue().zeigeZug();
+        }
+        else
+        {
+            this.besitzer.getSpiel().getMenue().zeigeWuerfel();
         }
     }
 

@@ -9,7 +9,7 @@ import javafx.scene.media.MediaPlayer;
 public class Sound
 {
     public static final MediaPlayer MUSIK_MENUE        = new MediaPlayer(new Media(new File("sounds/menue.wav").toURI().toString()));
-    public static final MediaPlayer MUSIK_MEER         = new MediaPlayer(new Media(new File("sounds/island.wav").toURI().toString()));
+    public static final MediaPlayer MUSIK_MEER         = new MediaPlayer(new Media(new File("sounds/meer.wav").toURI().toString()));
     public static final MediaPlayer MUSIK_HANDEL       = new MediaPlayer(new Media(new File("sounds/handel.wav").toURI().toString()));
     public static final AudioClip   WUERFEL_CLIP       = new AudioClip(new File("sounds/dice.wav").toURI().toString());
     public static final AudioClip   WUERFEL_SHAKE_CLIP = new AudioClip(new File("sounds/diceshake.wav").toURI().toString());

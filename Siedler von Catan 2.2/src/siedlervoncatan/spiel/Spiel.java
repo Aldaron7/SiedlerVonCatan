@@ -54,7 +54,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     private Zustand                           zustand;
     private boolean                           hatGewuerfelt;
     private boolean                           saveable;
-    private Sound                             sound;
+    private transient Sound                   sound;
 
     public Spiel()
     {
@@ -84,8 +84,6 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void starten()
     {
         this.spielstart.getSpielfeldController().addListener(this);
-        // erzeugt ein leeres menue links
-        this.menue.zeigeSpielInfos();
         this.menue.zeigeNeuesspielMenue();
     }
 
@@ -460,7 +458,6 @@ public class Spiel implements Serializable, PropertyChangeListener
             {
                 this.zustand = Zustand.SPIELER;
                 this.spielstart.getSpielfeldController().setMessages(this.aktiverSpieler + " wählen Sie den Spieler bei dem Sie ziehen möchten.");
-                this.menue.zeigeLeeresMenue();
             }
         }
     }
@@ -582,6 +579,11 @@ public class Spiel implements Serializable, PropertyChangeListener
     public Sound getSound()
     {
         return this.sound;
+    }
+
+    public boolean hatGewuerfelt()
+    {
+        return this.hatGewuerfelt;
     }
 
     /**
