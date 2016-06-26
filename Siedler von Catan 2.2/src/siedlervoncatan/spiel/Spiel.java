@@ -24,6 +24,7 @@ import siedlervoncatan.enums.Farbe;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.enums.Zustand;
 import siedlervoncatan.io.Menuefx;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spielfeld.Entwicklungskarte;
 import siedlervoncatan.spielfeld.Landschaftsfeld;
 import siedlervoncatan.spielfeld.Raeuber;
@@ -53,6 +54,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     private Zustand                           zustand;
     private boolean                           hatGewuerfelt;
     private boolean                           saveable;
+    private Sound                             sound;
 
     public Spiel()
     {
@@ -66,7 +68,6 @@ public class Spiel implements Serializable, PropertyChangeListener
         this.anzahlRunden = new SimpleIntegerProperty(1);
         this.hatGewuerfelt = false;
         this.saveable = false;
-
     }
 
     public void setSpielstart(Spielstart spielstart)
@@ -74,6 +75,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         this.spielstart = spielstart;
         this.menue = new Menuefx();
         this.menue.setSpielstart(spielstart);
+        this.sound = spielstart.getSound();
     }
 
     /**
@@ -473,6 +475,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     {
         if (this.raeuber.getAngrenzendeSpieler().contains(spieler) && !this.aktiverSpieler.equals(spieler))
         {
+            this.sound.playSoundeffekt(Sound.EVIL_LAUGH_CLIP);
             this.aktiverSpieler.zieheKarte(spieler);
             this.zustand = null;
             this.spielstart.getSpielfeldController().setMessages("");
@@ -574,6 +577,11 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void setNotSaveable()
     {
         this.saveable = false;
+    }
+
+    public Sound getSound()
+    {
+        return this.sound;
     }
 
     /**

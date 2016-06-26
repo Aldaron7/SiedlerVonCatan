@@ -7,11 +7,12 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
@@ -48,17 +49,13 @@ public class KartenAbgebenMenueController implements Controller
     @FXML
     private Label                    anzahlErzAbgabeL;
 
+    private Spiel                    spiel;
     private Spieler                  spieler;
-    private Stage                    stage;
+    private Node                     self;
+    private RootLayoutController     layoutController;
     private int                      anzahl;
     private ObservableList<Rohstoff> abgabe;
     private ObservableList<Rohstoff> karten;
-
-    @Override
-    public void setStage(Stage stage)
-    {
-        this.stage = stage;
-    }
 
     public void setSpieler(Spieler spieler)
     {
@@ -122,6 +119,7 @@ public class KartenAbgebenMenueController implements Controller
     @FXML
     private void handleOK()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         // neue Liste damit beim remove nicht auf verschiedenen Threads sich die Liste ändert.
         if (this.abgabe.size() != this.anzahl)
         {
@@ -130,13 +128,14 @@ public class KartenAbgebenMenueController implements Controller
         else
         {
             this.spieler.removeKarten(this.abgabe);
-            this.stage.close();
+            this.layoutController.removeFromCenter(this.self);
         }
     }
 
     @FXML
     private void handleKarteClicked(Event event)
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         Button button = (Button) event.getSource();
         String rohstoffString = button.getText();
         Rohstoff rohstoff = Rohstoff.getRohstoff(rohstoffString);
@@ -150,6 +149,7 @@ public class KartenAbgebenMenueController implements Controller
     @FXML
     private void handleAbgabeClicked(Event event)
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         Button button = (Button) event.getSource();
         String rohstoffString = button.getText();
         Rohstoff rohstoff = Rohstoff.getRohstoff(rohstoffString);
@@ -163,6 +163,19 @@ public class KartenAbgebenMenueController implements Controller
     @Override
     public void setSpiel(Spiel spiel)
     {
+        this.spiel = spiel;
+    }
+
+    @Override
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+        this.layoutController = layoutController;
+    }
+
+    @Override
+    public void setNode(Node self)
+    {
+        this.self = self;
     }
 
 }

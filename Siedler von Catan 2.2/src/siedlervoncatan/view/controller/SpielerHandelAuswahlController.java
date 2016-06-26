@@ -6,13 +6,14 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
@@ -32,8 +33,10 @@ public class SpielerHandelAuswahlController implements Controller
 
     private ObservableList<Spieler> andereSpieler;
     private PropertyChangeSupport   support;
-    private Stage                   stage;
     private Handel                  handel;
+    private Spiel                   spiel;
+    private Node                    self;
+    private RootLayoutController    layoutController;
 
     public SpielerHandelAuswahlController()
     {
@@ -41,14 +44,9 @@ public class SpielerHandelAuswahlController implements Controller
     }
 
     @Override
-    public void setStage(Stage stage)
-    {
-        this.stage = stage;
-    }
-
-    @Override
     public void setSpiel(Spiel spiel)
     {
+        this.spiel = spiel;
         this.support.addPropertyChangeListener(spiel);
         this.andereSpieler = FXCollections.observableArrayList(spiel.getAlleSpieler());
         this.andereSpieler.remove(spiel.getAktiverSpieler());
@@ -82,6 +80,7 @@ public class SpielerHandelAuswahlController implements Controller
     @FXML
     private void handleOK()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         Spieler andererSpieler = this.spielerCB.getSelectionModel().getSelectedItem();
 
         if (andererSpieler != null)
@@ -90,7 +89,8 @@ public class SpielerHandelAuswahlController implements Controller
             {
                 this.handel.setNachfrager(andererSpieler);
                 this.handel.handeln();
-                this.stage.close();
+                this.spiel.getSound().playMusik(Sound.MUSIK_MEER);
+                this.layoutController.removeFromCenter(this.self);
             }
             else
             {
@@ -106,7 +106,21 @@ public class SpielerHandelAuswahlController implements Controller
     @FXML
     private void handleAbbrechen()
     {
-        this.stage.close();
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.spiel.getSound().playMusik(Sound.MUSIK_MEER);
+        this.layoutController.removeFromCenter(this.self);
+    }
+
+    @Override
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+        this.layoutController = layoutController;
+    }
+
+    @Override
+    public void setNode(Node self)
+    {
+        this.self = self;
     }
 
 }

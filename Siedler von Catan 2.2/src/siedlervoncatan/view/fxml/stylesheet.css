@@ -25,6 +25,23 @@
 	-fx-background-repeat: no-repeat  ;
 }
 
+.pergamentrolle{
+	-fx-background-image: url("file:bilder/pergamentrolle.png");
+	-fx-background-size: 100%;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat ;
+	-fx-background-color: transparent ;
+}
+
+.pergamentrolle2{
+	-fx-background-image: url("file:bilder/pergamentrolle2.png");
+	-fx-background-size: stretch ;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat ;
+	-fx-background-color: transparent ;
+	
+}
+
 .blau{
 	-fx-background-color: #4daaf2;
 	}

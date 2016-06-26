@@ -1,10 +1,11 @@
 package siedlervoncatan.view.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import siedlervoncatan.enums.Farbe;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
@@ -12,13 +13,14 @@ import siedlervoncatan.view.Controller;
 
 public class SpielerAnlegenController implements Controller
 {
-    private Spiel           spiel;
-    private Stage           stage;
+    private Spiel                spiel;
+    private Node                 self;
+    private RootLayoutController layoutController;
 
     @FXML
-    private TextField       name;
+    private TextField            name;
     @FXML
-    private ComboBox<Farbe> farbe;
+    private ComboBox<Farbe>      farbe;
 
     @FXML
     private void initialize()
@@ -26,15 +28,10 @@ public class SpielerAnlegenController implements Controller
         this.farbe.getItems().addAll(Spiel.farben);
     }
 
-    @Override
-    public void setStage(Stage stage)
-    {
-        this.stage = stage;
-    }
-
     @FXML
     private void handleOK()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         Farbe farbe = this.farbe.getValue();
         Spiel.farben.remove(farbe);
         String name = this.name.getText().toString();
@@ -42,7 +39,7 @@ public class SpielerAnlegenController implements Controller
         {
             Spieler spieler = new Spieler(name, farbe, this.spiel);
             this.spiel.addSpieler(spieler);
-            this.stage.close();
+            this.layoutController.removeFromCenter(this.self);
         }
         else
         {
@@ -54,12 +51,25 @@ public class SpielerAnlegenController implements Controller
     @FXML
     private void handleAbbrechen()
     {
-        this.stage.close();
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.layoutController.removeFromCenter(this.self);
     }
 
     @Override
     public void setSpiel(Spiel spiel)
     {
         this.spiel = spiel;
+    }
+
+    @Override
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+        this.layoutController = layoutController;
+    }
+
+    @Override
+    public void setNode(Node self)
+    {
+        this.self = self;
     }
 }

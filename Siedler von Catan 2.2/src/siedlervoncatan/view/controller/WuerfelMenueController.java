@@ -2,13 +2,17 @@ package siedlervoncatan.view.controller;
 
 import java.util.Collections;
 
+import javax.swing.Timer;
+
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
@@ -75,17 +79,27 @@ public class WuerfelMenueController implements Controller
     @FXML
     private void handleEntwicklungskarte()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getMenue().zeigeEntwicklungskarten();
     }
 
     @FXML
     private void handleWuerfeln()
     {
-        this.spiel.wuerfeln();
+        Sound sound = this.spiel.getSound();
+        sound.playSoundeffekt(Sound.WUERFEL_CLIP);
+        Timer timer = new Timer(1000, e -> Platform.runLater(() -> this.spiel.wuerfeln()));
+        timer.setRepeats(false);
+        timer.start();
     }
 
     @Override
-    public void setStage(Stage stage)
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+    }
+
+    @Override
+    public void setNode(Node self)
     {
     }
 

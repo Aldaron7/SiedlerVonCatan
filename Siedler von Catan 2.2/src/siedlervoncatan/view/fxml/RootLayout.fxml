@@ -4,6 +4,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="900.0" prefHeight="700.0" prefWidth="900.0" styleClass="hintergrundbild" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.RootLayoutController">
    <top>
@@ -17,6 +18,11 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleBeenden" text="Beenden" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Optionen">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleAudio" text="Audio" />
+              </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Hilfe">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#handleAnleitung" text="Anleitung" />
@@ -25,4 +31,7 @@
         </menus>
       </MenuBar>
    </top>
+   <center>
+      <StackPane fx:id="centerSP" minHeight="630.0" minWidth="600.0" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

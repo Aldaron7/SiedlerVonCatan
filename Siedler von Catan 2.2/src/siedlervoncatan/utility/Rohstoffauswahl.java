@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.StageStyle;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.sound.Sound;
 
 public class Rohstoffauswahl
 {
@@ -38,6 +39,7 @@ public class Rohstoffauswahl
         alert.getButtonTypes().setAll(holz, lehm, wolle, korn, erz);
 
         Optional<ButtonType> result = alert.showAndWait();
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
 
         if (result.get() == holz)
         {

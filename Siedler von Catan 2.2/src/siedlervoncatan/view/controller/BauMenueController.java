@@ -5,12 +5,13 @@ import java.util.Collections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.enums.Zustand;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
@@ -80,6 +81,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleStrasse()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
         this.spiel.setZustand(Zustand.STARSSE_BAUEN);
         this.bauButtons.setVisible(false);
@@ -88,6 +90,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleSiedlung()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
         this.spiel.setZustand(Zustand.SIEDLUNG_BAUEN);
         this.bauButtons.setVisible(false);
@@ -96,6 +99,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleStadt()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
         this.spiel.setZustand(Zustand.STADT_BAUEN);
         this.bauButtons.setVisible(false);
@@ -104,18 +108,25 @@ public class BauMenueController implements Controller
     @FXML
     private void handleEntwicklung()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.entwicklungKaufen();
     }
 
     @FXML
     private void handleAbbrechen()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.setZustand(null);
         this.spiel.getMenue().zeigeZug();
     }
 
     @Override
-    public void setStage(Stage stage)
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+    }
+
+    @Override
+    public void setNode(Node self)
     {
     }
 

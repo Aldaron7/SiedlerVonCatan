@@ -3,6 +3,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="150.0" style="-fx-background-color: derive(-fx-base,26.4%);" stylesheets="@stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65">
+<AnchorPane maxHeight="650.0" maxWidth="200.0" prefHeight="650.0" prefWidth="200.0" styleClass="pergamentrolle2" stylesheets="@stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65">
 	<!-- TODO Add Nodes -->
 </AnchorPane>

@@ -1,8 +1,9 @@
 package siedlervoncatan.view.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Error;
@@ -25,6 +26,7 @@ public class NeuesSpielMenueController implements Controller
     @FXML
     private void handleSpielerHinzufuegen()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         if (this.spiel.getAlleSpieler().size() >= 4)
         {
             new Error("Die maximale Spieleranzahl ist bereits erreicht.");
@@ -38,6 +40,7 @@ public class NeuesSpielMenueController implements Controller
     @FXML
     private void handleSpielStarten()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         if (this.spiel.getAlleSpieler().size() <= 1)
         {
             new Error("Zu wenige Spieler.");
@@ -50,7 +53,12 @@ public class NeuesSpielMenueController implements Controller
     }
 
     @Override
-    public void setStage(Stage stage)
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+    }
+
+    @Override
+    public void setNode(Node self)
     {
     }
 

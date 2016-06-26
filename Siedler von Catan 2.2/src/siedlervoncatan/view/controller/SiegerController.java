@@ -1,18 +1,20 @@
 package siedlervoncatan.view.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.Controller;
 
 public class SiegerController implements Controller
 {
     @FXML
-    private Label labelSpieler;
+    private Label                labelSpieler;
 
-    private Spiel spiel;
-    private Stage stage;
+    private Spiel                spiel;
+    private Node                 self;
+    private RootLayoutController layoutController;
 
     @Override
     public void setSpiel(Spiel spiel)
@@ -21,24 +23,32 @@ public class SiegerController implements Controller
         this.labelSpieler.setText(spiel.getSieger().getName());
     }
 
-    @Override
-    public void setStage(Stage stage)
-    {
-        this.stage = stage;
-    }
-
     @FXML
     private void handleNeu()
     {
-        this.stage.close();
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.layoutController.removeFromCenter(this.self);
         this.spiel.getSpielstart().neuesSpiel();
     }
 
     @FXML
     private void handleEnde()
     {
-        this.stage.close();
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.layoutController.removeFromCenter(this.self);
         System.exit(0);
+    }
+
+    @Override
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+        this.layoutController = layoutController;
+    }
+
+    @Override
+    public void setNode(Node self)
+    {
+        this.self = self;
     }
 
 }

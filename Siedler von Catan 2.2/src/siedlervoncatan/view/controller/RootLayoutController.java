@@ -5,8 +5,9 @@ import java.io.File;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Error;
@@ -14,11 +15,23 @@ import siedlervoncatan.view.Controller;
 
 public class RootLayoutController implements Controller
 {
+    @FXML
+    private StackPane  centerSP;
     private Spielstart spielstart;
 
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
+    }
+
+    public void addToCenter(Node node)
+    {
+        this.centerSP.getChildren().add(node);
+    }
+
+    public void removeFromCenter(Node node)
+    {
+        this.centerSP.getChildren().remove(node);
     }
 
     @FXML
@@ -73,6 +86,12 @@ public class RootLayoutController implements Controller
     }
 
     @FXML
+    private void handleAudio()
+    {
+        this.spielstart.getMenue().zeigeAudiomenue();
+    }
+
+    @FXML
     private void handleAnleitung()
     {
         File file = new File("data/die_siedler_von_catan_jubilaeumsausgabe_almanach.pdf");
@@ -93,7 +112,12 @@ public class RootLayoutController implements Controller
     }
 
     @Override
-    public void setStage(Stage stage)
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+    }
+
+    @Override
+    public void setNode(Node self)
     {
     }
 

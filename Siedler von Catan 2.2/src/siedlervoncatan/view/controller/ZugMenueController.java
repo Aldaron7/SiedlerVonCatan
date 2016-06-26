@@ -5,10 +5,11 @@ import java.util.Collections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
@@ -74,37 +75,47 @@ public class ZugMenueController implements Controller
     @FXML
     private void handleEntwicklungskarte()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getMenue().zeigeEntwicklungskarten();
     }
 
     @FXML
     private void handleBauen()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getMenue().zeigeBau();
     }
 
     @FXML
     private void handleSeehandel()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getAktiverSpieler().seehandel();
     }
 
     @FXML
     private void handleHandeln()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getMenue().zeigeHandel();
     }
 
     @FXML
     private void handleEnde()
     {
+        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getAktiverSpieler().erhoeheGespielteRunden();
         this.spiel.getAktiverSpieler().setNichtAktiv();
         this.spiel.naechsteRunde();
     }
 
     @Override
-    public void setStage(Stage stage)
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+    }
+
+    @Override
+    public void setNode(Node self)
     {
     }
 }

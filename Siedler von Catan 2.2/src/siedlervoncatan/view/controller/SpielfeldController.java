@@ -15,12 +15,13 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spielfeld.Landschaftsfeld;
 import siedlervoncatan.spielfeld.Ortschaft;
@@ -881,17 +882,24 @@ public class SpielfeldController implements MapChangeListener, Controller
         {
             Image image = this.spiel.getSpielfeld().getBauplaetze().get(key).getImage();
             this.Ecken.get(key).setImage(image);
+            this.spiel.getSound().playSoundeffekt(Sound.BAU_CLIP);
         }
         // change der Map strassen
         if (key instanceof Set<?>)
         {
             Image image = this.spiel.getSpielfeld().getStrassen().get(key).getImage();
             this.kanten.get(key).setImage(image);
+            this.spiel.getSound().playSoundeffekt(Sound.BAU_CLIP);
         }
     }
 
     @Override
-    public void setStage(Stage stage)
+    public void setLayoutController(RootLayoutController layoutController)
+    {
+    }
+
+    @Override
+    public void setNode(Node self)
     {
     }
 

@@ -1,11 +1,14 @@
 package siedlervoncatan.view;
 
-import javafx.stage.Stage;
+import javafx.scene.Node;
 import siedlervoncatan.spiel.Spiel;
+import siedlervoncatan.view.controller.RootLayoutController;
 
 public interface Controller
 {
     public void setSpiel(Spiel spiel);
 
-    public void setStage(Stage stage);
+    public void setLayoutController(RootLayoutController layoutController);
+
+    public void setNode(Node self);
 }

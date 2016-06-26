@@ -3,6 +3,7 @@ package siedlervoncatan.utility;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
+import siedlervoncatan.sound.Sound;
 
 public class Info
 {
@@ -20,6 +21,7 @@ public class Info
         alert.setContentText(text);
         alert.initStyle(StageStyle.UNDECORATED);
         alert.showAndWait();
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
     }
 
 }

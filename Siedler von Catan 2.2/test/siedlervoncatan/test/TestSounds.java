@@ -2,7 +2,7 @@ package siedlervoncatan.test;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import siedlervoncatan.sounds.Sound;
+import siedlervoncatan.sound.Sound;
 
 public class TestSounds extends Application
 {
@@ -15,10 +15,9 @@ public class TestSounds extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Sound sound = new Sound();
-        sound.playBauen();
+        Sound sound = Sound.getInstanz();
+        sound.playSoundeffekt(Sound.BAU_CLIP);
         System.out.println("Musik played");
-
     }
 
 }

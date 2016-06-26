@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import siedlervoncatan.io.Menuefx;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Pfade;
@@ -28,11 +29,13 @@ import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Spielstart extends Application
 {
-    private Stage               primaryStage;
-    private BorderPane          rootLayout;
-    private Spiel               spiel;
-    private SpielfeldController spielfeldController;
-    private Menuefx             menue;
+    private Stage                primaryStage;
+    private BorderPane           rootLayout;
+    private RootLayoutController layoutController;
+    private Spiel                spiel;
+    private SpielfeldController  spielfeldController;
+    private Menuefx              menue;
+    private Sound                sound;
 
     @Override
     public void start(Stage primaryStage)
@@ -44,9 +47,10 @@ public class Spielstart extends Application
         this.primaryStage.setMinHeight(730);
         this.primaryStage.setMinWidth(920);
 
+        this.sound = Sound.getInstanz();
+        this.initRootLayout();
         this.menue = new Menuefx();
         this.menue.setSpielstart(this);
-        this.initRootLayout();
         this.menue.zeigeHauptmenue();
     }
 
@@ -65,8 +69,8 @@ public class Spielstart extends Application
             Scene scene = new Scene(this.rootLayout);
             this.primaryStage.setScene(scene);
 
-            RootLayoutController controller = loader.getController();
-            controller.setSpielstart(this);
+            this.layoutController = loader.getController();
+            this.layoutController.setSpielstart(this);
 
             this.primaryStage.show();
         }
@@ -131,6 +135,7 @@ public class Spielstart extends Application
         alert.initStyle(StageStyle.UNDECORATED);
 
         Optional<ButtonType> result = alert.showAndWait();
+        this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
         if (result.get() == ButtonType.OK)
         {
             System.exit(0);
@@ -160,6 +165,21 @@ public class Spielstart extends Application
     public Spiel getSpiel()
     {
         return this.spiel;
+    }
+
+    public Sound getSound()
+    {
+        return this.sound;
+    }
+
+    public Menuefx getMenue()
+    {
+        return this.menue;
+    }
+
+    public RootLayoutController getLayoutController()
+    {
+        return this.layoutController;
     }
 
 }

@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.StageStyle;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spieler;
 
 public class Handel
@@ -45,6 +46,7 @@ public class Handel
                 this.nachfrager.addKarten(this.angebot);
             }
         });
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
 
     }
 
