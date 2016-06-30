@@ -1005,12 +1005,12 @@
             </Group>
          </children>
       </StackPane>
-      <Label fx:id="messages" alignment="TOP_CENTER" layoutX="20.0" layoutY="42.0" text="Messages" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="30.0">
+      <Label fx:id="messages" alignment="TOP_CENTER" layoutX="20.0" layoutY="42.0" text="Messages" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="30.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="runde" layoutX="20.0" layoutY="23.0" text="00" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
+      <Label fx:id="runde" layoutX="20.0" layoutY="23.0" text="00" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <Label text="Runde" />
          </graphic></Label>

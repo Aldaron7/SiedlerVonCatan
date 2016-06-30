@@ -86,7 +86,6 @@ public class BauMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
         this.spiel.setZustand(Zustand.STARSSE_BAUEN);
-        this.layoutController.removeFromCenter(this.self);
     }
 
     @FXML
@@ -95,7 +94,6 @@ public class BauMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
         this.spiel.setZustand(Zustand.SIEDLUNG_BAUEN);
-        this.layoutController.removeFromCenter(this.self);
     }
 
     @FXML
@@ -104,7 +102,6 @@ public class BauMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
         this.spiel.setZustand(Zustand.STADT_BAUEN);
-        this.layoutController.removeFromCenter(this.self);
     }
 
     @FXML
@@ -119,6 +116,7 @@ public class BauMenueController implements Controller
     private void handleAbbrechen()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.controller.setMessages("");
         this.spiel.setZustand(null);
         this.layoutController.removeFromCenter(this.self);
         this.spiel.getMenue().zeigeZug();

@@ -2,7 +2,9 @@ package siedlervoncatan.io;
 
 import java.io.IOException;
 
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import siedlervoncatan.Spielstart;
@@ -12,10 +14,12 @@ import siedlervoncatan.utility.Handel;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.AudioController;
+import siedlervoncatan.view.controller.AvatarController;
 import siedlervoncatan.view.controller.HauptmenueController;
 import siedlervoncatan.view.controller.KartenAbgebenMenueController;
 import siedlervoncatan.view.controller.RootLayoutController;
 import siedlervoncatan.view.controller.SpielerHandelAuswahlController;
+import siedlervoncatan.view.controller.SpielerInfosController;
 import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Menuefx
@@ -201,7 +205,7 @@ public class Menuefx
         try
         {
             Pane pane = this.viewController.initPane(Pfade.SPIEL_INFOS);
-            StackPane.setAlignment(pane, Pos.CENTER_LEFT);
+            StackPane.setAlignment(pane, Pos.TOP_LEFT);
             this.layoutController.addToCenter(pane);
         }
         catch (IOException e)
@@ -302,6 +306,46 @@ public class Menuefx
             e.printStackTrace();
         }
 
+    }
+
+    public Pane zeigeSpielerInfos(Spieler spieler)
+    {
+        try
+        {
+            Pane pane = this.viewController.initPane(Pfade.SPIELERINFOS);
+            FXMLLoader loader = this.viewController.getLoader();
+            SpielerInfosController controller = loader.getController();
+            controller.setSpieler(spieler);
+            this.layoutController.addToCenter(pane);
+            return pane;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Pane zeigeAvatar(Spieler spieler)
+    {
+        try
+        {
+            Pane pane = this.viewController.initPane(Pfade.AVATAR);
+            AvatarController controller = this.viewController.getLoader().getController();
+            controller.setSpieler(spieler);
+            return pane;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public void removeNodefromCenter(Node node)
+    {
+        this.layoutController.removeFromCenter(node);
     }
 
 }

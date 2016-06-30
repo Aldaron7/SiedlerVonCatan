@@ -13,184 +13,179 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 
-<StackPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.HandelMenueController">
+<AnchorPane maxHeight="350.0" maxWidth="550.0" prefHeight="350.0" prefWidth="550.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.HandelMenueController">
    <children>
-      <AnchorPane maxHeight="350.0" maxWidth="550.0" prefHeight="350.0" prefWidth="550.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css">
+      <GridPane hgap="5.0" vgap="5.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="70.0" prefWidth="70.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="70.0" prefWidth="70.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <GridPane hgap="5.0" vgap="5.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="70.0" prefWidth="70.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="70.0" prefWidth="70.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="Angebot" GridPane.columnSpan="2" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Nachfrage" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="angebotTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="5">
-                    <columns>
-                      <TableColumn fx:id="angebotColumn" maxWidth="156.0" prefWidth="150.0" />
-                    </columns>
-                  </TableView>
-                  <TableView fx:id="nachfrageTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="5">
-                    <columns>
-                      <TableColumn fx:id="nachfrageColumn" maxWidth="156.0" prefWidth="150.0" />
-                    </columns>
-                  </TableView>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleHolzA" prefHeight="40.0" prefWidth="40.0" text="Holz" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/holz.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleHolzN" prefHeight="35.0" prefWidth="35.0" text="Holz" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/holz.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleLehmA" prefHeight="35.0" prefWidth="35.0" text="Lehm" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/lehm.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleLehmN" prefHeight="35.0" prefWidth="35.0" text="Lehm" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/lehm.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleWolleA" prefHeight="35.0" prefWidth="35.0" text="Wolle" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/wolle.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleWolleN" prefHeight="35.0" prefWidth="35.0" text="Wolle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/wolle.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleKornA" prefHeight="35.0" prefWidth="35.0" text="Korn" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/korn.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleKornN" prefHeight="35.0" prefWidth="35.0" text="Korn" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/korn.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleErzA" prefHeight="35.0" prefWidth="35.0" text="Erz" GridPane.halignment="CENTER" GridPane.rowIndex="5">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/erz.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleErzN" prefHeight="35.0" prefWidth="35.0" text="Erz" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../bilder/erz.png" />
-                           </image>
-                           <effect>
-                              <InnerShadow height="10.0" radius="4.5" width="10.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <ButtonBar buttonMinWidth="50.0" prefHeight="50.0" prefWidth="195.0" GridPane.columnSpan="4" GridPane.rowIndex="6">
-                    <buttons>
-                      <Button maxWidth="50.0" mnemonicParsing="false" onAction="#handleOK" prefWidth="50.0" text="OK" />
-                        <Button maxWidth="90.0" mnemonicParsing="false" onAction="#handleEntfernen" text="Entfernen" />
-                        <Button maxWidth="100.0" mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
-                    </buttons>
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin>
-                  </ButtonBar>
-               </children>
-            </GridPane>
+            <Label text="Angebot" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="Nachfrage" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="angebotTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="5">
+              <columns>
+                <TableColumn fx:id="angebotColumn" maxWidth="156.0" prefWidth="150.0" />
+              </columns>
+            </TableView>
+            <TableView fx:id="nachfrageTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="5">
+              <columns>
+                <TableColumn fx:id="nachfrageColumn" maxWidth="156.0" prefWidth="150.0" />
+              </columns>
+            </TableView>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleHolzA" prefHeight="40.0" prefWidth="40.0" text="Holz" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/holz.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleHolzN" prefHeight="35.0" prefWidth="35.0" text="Holz" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/holz.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleLehmA" prefHeight="35.0" prefWidth="35.0" text="Lehm" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/lehm.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleLehmN" prefHeight="35.0" prefWidth="35.0" text="Lehm" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/lehm.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleWolleA" prefHeight="35.0" prefWidth="35.0" text="Wolle" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/wolle.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleWolleN" prefHeight="35.0" prefWidth="35.0" text="Wolle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/wolle.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleKornA" prefHeight="35.0" prefWidth="35.0" text="Korn" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/korn.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleKornN" prefHeight="35.0" prefWidth="35.0" text="Korn" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/korn.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleErzA" prefHeight="35.0" prefWidth="35.0" text="Erz" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/erz.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleErzN" prefHeight="35.0" prefWidth="35.0" text="Erz" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../bilder/erz.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ButtonBar buttonMinWidth="50.0" prefHeight="50.0" prefWidth="195.0" GridPane.columnSpan="4" GridPane.rowIndex="6">
+              <buttons>
+                <Button maxWidth="50.0" mnemonicParsing="false" onAction="#handleOK" prefWidth="50.0" text="OK" />
+                  <Button maxWidth="90.0" mnemonicParsing="false" onAction="#handleEntfernen" text="Entfernen" />
+                  <Button maxWidth="100.0" mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
+              </buttons>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </ButtonBar>
          </children>
-      </AnchorPane>
+      </GridPane>
    </children>
-</StackPane>
+</AnchorPane>

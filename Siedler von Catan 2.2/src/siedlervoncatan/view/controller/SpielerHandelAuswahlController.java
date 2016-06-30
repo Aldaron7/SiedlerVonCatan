@@ -91,6 +91,7 @@ public class SpielerHandelAuswahlController implements Controller
                 this.handel.handeln();
                 this.spiel.getSound().playMusik(Sound.MUSIK_MEER);
                 this.layoutController.removeFromCenter(this.self);
+                this.spiel.getMenue().zeigeZug();
             }
             else
             {
@@ -109,6 +110,7 @@ public class SpielerHandelAuswahlController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getSound().playMusik(Sound.MUSIK_MEER);
         this.layoutController.removeFromCenter(this.self);
+        this.spiel.getMenue().zeigeZug();
     }
 
     @Override

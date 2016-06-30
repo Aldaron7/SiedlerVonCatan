@@ -101,6 +101,7 @@ public class ZugMenueController implements Controller
     private void handleHandeln()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.layoutController.removeFromCenter(this.self);
         this.spiel.getMenue().zeigeHandel();
     }
 
