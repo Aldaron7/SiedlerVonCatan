@@ -27,7 +27,7 @@ public class SiegerController implements Controller
     private void handleNeu()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedH(this.self);
         this.spiel.getSpielstart().neuesSpiel();
     }
 
@@ -35,7 +35,6 @@ public class SiegerController implements Controller
     private void handleEnde()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.layoutController.removeFromCenter(this.self);
         System.exit(0);
     }
 

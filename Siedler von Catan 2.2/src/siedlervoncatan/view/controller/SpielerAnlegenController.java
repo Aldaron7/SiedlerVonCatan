@@ -40,7 +40,7 @@ public class SpielerAnlegenController implements Controller
         {
             Spieler spieler = new Spieler(name, farbe, this.spiel);
             this.spiel.addSpieler(spieler);
-            this.layoutController.removeFromCenter(this.self);
+            this.layoutController.removeFromCenterAnimatedH(this.self);
         }
         else
         {
@@ -53,7 +53,7 @@ public class SpielerAnlegenController implements Controller
     private void handleAbbrechen()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedH(this.self);
     }
 
     @Override

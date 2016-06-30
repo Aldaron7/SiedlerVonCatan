@@ -46,9 +46,7 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.HAUPT_MENUE);
 
-            this.layoutController.addToCenter(pane);
-            this.spielstart.getRootLayout().setRight(null);
-            this.spielstart.getRootLayout().setLeft(null);
+            this.layoutController.addToCenterAnimatedV(pane);
             HauptmenueController controller = this.viewController.getLoader().getController();
             controller.setSpielstart(this.spielstart);
             this.sound.playMusik(Sound.MUSIK_MENUE);
@@ -64,7 +62,7 @@ public class Menuefx
         try
         {
             Pane pane = this.viewController.initPane(Pfade.AUDIO_MENUE);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
             ((AudioController) this.viewController.getLoader().getController()).setSpielstart(this.spielstart);
         }
         catch (IOException e)
@@ -101,7 +99,7 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.NEUES_SPIEL_MENUE);
             StackPane.setAlignment(pane, Pos.CENTER_RIGHT);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedV(pane);
         }
         catch (IOException e)
         {
@@ -117,7 +115,7 @@ public class Menuefx
         try
         {
             Pane pane = this.viewController.initPane(Pfade.SPIELER_ANLEGEN);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)
         {
@@ -134,7 +132,7 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.WUERFEL_MENUE);
             StackPane.setAlignment(pane, Pos.CENTER_RIGHT);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedV(pane);
         }
         catch (IOException e)
         {
@@ -152,7 +150,7 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.ZUG_MENUE);
             StackPane.setAlignment(pane, Pos.CENTER_RIGHT);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedV(pane);
         }
         catch (IOException e)
         {
@@ -170,7 +168,7 @@ public class Menuefx
         try
         {
             Pane pane = this.viewController.initPane(Pfade.ENTWICKLUNGSKARTEN);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)
         {
@@ -188,7 +186,7 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.BAU_MENUE);
             StackPane.setAlignment(pane, Pos.CENTER_RIGHT);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedV(pane);
         }
         catch (IOException e)
         {
@@ -223,7 +221,7 @@ public class Menuefx
         try
         {
             Pane pane = this.viewController.initPane(Pfade.HANDEL_MENUE);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)
         {
@@ -243,7 +241,7 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.SPIELER_HANDEL_AUSWAHL);
             ((SpielerHandelAuswahlController) this.viewController.getLoader().getController()).setAngebotNachfrage(handel);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)
         {
@@ -267,7 +265,7 @@ public class Menuefx
             KartenAbgebenMenueController controller = this.viewController.getLoader().getController();
             controller.setAnzahl(anzahl);
             controller.setSpieler(spieler);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)
         {
@@ -285,7 +283,7 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.SIEGER);
             this.sound.playSoundeffekt(Sound.SIEGER_CLIP);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)
         {
@@ -293,20 +291,20 @@ public class Menuefx
         }
     }
 
-    public void zeigeLeeresMenue()
-    {
-        try
-        {
-            Pane pane = this.viewController.initPane(Pfade.LEERES_MENUE);
-            StackPane.setAlignment(pane, Pos.CENTER_RIGHT);
-            this.layoutController.addToCenter(pane);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
+    // public void zeigeLeeresMenue()
+    // {
+    // try
+    // {
+    // Pane pane = this.viewController.initPane(Pfade.LEERES_MENUE);
+    // StackPane.setAlignment(pane, Pos.CENTER_RIGHT);
+    // this.layoutController.addToCenter(pane);
+    // }
+    // catch (IOException e)
+    // {
+    // e.printStackTrace();
+    // }
+    //
+    // }
 
     public Pane zeigeSpielerInfos(Spieler spieler)
     {
@@ -316,7 +314,7 @@ public class Menuefx
             FXMLLoader loader = this.viewController.getLoader();
             SpielerInfosController controller = loader.getController();
             controller.setSpieler(spieler);
-            this.layoutController.addToCenter(pane);
+            this.layoutController.addToCenterAnimatedH(pane);
             return pane;
         }
         catch (IOException e)
@@ -343,9 +341,9 @@ public class Menuefx
 
     }
 
-    public void removeNodefromCenter(Node node)
+    public void removeFromCenterAnimatedH(Node node)
     {
-        this.layoutController.removeFromCenter(node);
+        this.layoutController.removeFromCenterAnimatedH(node);
     }
 
 }

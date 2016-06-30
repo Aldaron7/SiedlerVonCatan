@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -10,13 +11,16 @@
 
 <AnchorPane stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.AvatarController">
    <children>
-      <ImageView fx:id="avatarIV" fitHeight="134.0" fitWidth="150.0" onMouseClicked="#handleAvatarClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="avatarIV" fitHeight="134.0" fitWidth="150.0" onContextMenuRequested="#handleInfosRequested" onMouseClicked="#handleAvatarClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../../../bilder/avatar_blau.png" />
          </image>
          <effect>
             <InnerShadow height="20.0" radius="9.5" width="20.0" />
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <Label fx:id="spielerL" alignment="CENTER" maxHeight="15.0" maxWidth="72.0" prefHeight="15.0" prefWidth="72.0" scaleShape="false" text="Spieler blablablablablabla" textFill="BLACK" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>

@@ -82,7 +82,7 @@ public class WuerfelMenueController implements Controller
     private void handleEntwicklungskarte()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedV(this.self);
         this.spiel.getMenue().zeigeEntwicklungskarten();
     }
 
@@ -91,10 +91,10 @@ public class WuerfelMenueController implements Controller
     {
         Sound sound = this.spiel.getSound();
         sound.playSoundeffekt(Sound.WUERFEL_CLIP);
+        this.layoutController.removeFromCenterAnimatedV(this.self);
         Timer timer = new Timer(1000, e -> Platform.runLater(() -> this.spiel.wuerfeln()));
         timer.setRepeats(false);
         timer.start();
-        this.layoutController.removeFromCenter(this.self);
     }
 
     @Override

@@ -128,7 +128,7 @@ public class KartenAbgebenMenueController implements Controller
         else
         {
             this.spieler.removeKarten(this.abgabe);
-            this.layoutController.removeFromCenter(this.self);
+            this.layoutController.removeFromCenterAnimatedH(this.self);
         }
     }
 

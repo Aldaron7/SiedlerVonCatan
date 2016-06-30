@@ -14,30 +14,29 @@ import siedlervoncatan.view.Controller;
 public class SpielerInfosController implements Controller
 {
     @FXML
-    private Label   spielerL;
+    private Label                spielerL;
     @FXML
-    private Label   siegpunkteL;
+    private Label                siegpunkteL;
     @FXML
-    private Label   strasseL;
+    private Label                strasseL;
     @FXML
-    private Label   ritterL;
+    private Label                ritterL;
     @FXML
-    private Label   holzL;
+    private Label                holzL;
     @FXML
-    private Label   lehmL;
+    private Label                lehmL;
     @FXML
-    private Label   wolleL;
+    private Label                wolleL;
     @FXML
-    private Label   kornL;
+    private Label                kornL;
     @FXML
-    private Label   erzL;
+    private Label                erzL;
 
-    private Spieler spieler;
-    private Spiel   spiel;
+    private Node                 self;
+    private RootLayoutController layoutController;
 
     public void setSpieler(Spieler spieler)
     {
-        this.spieler = spieler;
         this.spielerL.setText(spieler.getName());
         this.siegpunkteL.setText(Integer.toString(spieler.getSiegpunkte().get()));
         this.ritterL.setText(Integer.toString(spieler.getRitter().get()));
@@ -51,19 +50,26 @@ public class SpielerInfosController implements Controller
         this.erzL.setText(Integer.toString(Collections.frequency(karten, Rohstoff.ERZ)));
     }
 
+    @FXML
+    private void handleClose()
+    {
+        this.layoutController.removeFromCenterAnimatedH(this.self);
+    }
+
     @Override
     public void setSpiel(Spiel spiel)
     {
-        this.spiel = spiel;
     }
 
     @Override
     public void setLayoutController(RootLayoutController layoutController)
     {
+        this.layoutController = layoutController;
     }
 
     @Override
     public void setNode(Node self)
     {
+        this.self = self;
     }
 }

@@ -1,5 +1,8 @@
 package siedlervoncatan.view.controller;
 
+import javax.swing.Timer;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
@@ -49,9 +52,10 @@ public class NeuesSpielMenueController implements Controller
         }
         else
         {
-            this.spiel.getSpielstart().getRootLayout().setRight(null);
-            this.spiel.spielen();
-            this.layoutController.removeFromCenter(this.self);
+            this.layoutController.removeFromCenterAnimatedV(this.self);
+            Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.spielen()));
+            timer.setRepeats(false);
+            timer.start();
         }
     }
 

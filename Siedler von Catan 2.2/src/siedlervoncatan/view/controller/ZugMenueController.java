@@ -2,6 +2,9 @@ package siedlervoncatan.view.controller;
 
 import java.util.Collections;
 
+import javax.swing.Timer;
+
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -86,8 +89,10 @@ public class ZugMenueController implements Controller
     private void handleBauen()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.layoutController.removeFromCenter(this.self);
-        this.spiel.getMenue().zeigeBau();
+        this.layoutController.removeFromCenterAnimatedV(this.self);
+        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getMenue().zeigeBau()));
+        timer.setRepeats(false);
+        timer.start();
     }
 
     @FXML
@@ -101,7 +106,7 @@ public class ZugMenueController implements Controller
     private void handleHandeln()
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedV(this.self);
         this.spiel.getMenue().zeigeHandel();
     }
 
@@ -111,8 +116,10 @@ public class ZugMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getAktiverSpieler().erhoeheGespielteRunden();
         this.spiel.getAktiverSpieler().setNichtAktiv();
-        this.layoutController.removeFromCenter(this.self);
-        this.spiel.naechsteRunde();
+        this.layoutController.removeFromCenterAnimatedV(this.self);
+        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.naechsteRunde()));
+        timer.setRepeats(false);
+        timer.start();
     }
 
     @Override

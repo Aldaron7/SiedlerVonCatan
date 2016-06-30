@@ -17,7 +17,6 @@ public class Pfade
     public static final String WUERFEL_MENUE          = "view/fxml/WuerfelMenue.fxml";
     public static final String ZUG_MENUE              = "view/fxml/ZugMenue.fxml";
     public static final String SPIELERINFOS           = "view/fxml/SpielerInfos.fxml";
-    public static final String SPIELER_KARTEN         = "view/fxml/SpielerKarten.fxml";
     public static final String AVATAR                 = "view/fxml/Avatar.fxml";
     public static final String STYLESHEET             = "siedlervoncatan/view/fxml/stylesheet.css";
     public static final String LEERES_MENUE           = "view/fxml/LeeresMenue.fxml";

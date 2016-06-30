@@ -43,14 +43,14 @@ public class AudioController implements Controller
     {
         this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
         this.handleApply();
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedH(this.self);
     }
 
     @FXML
     private void handleAbbrechen()
     {
         this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedH(this.self);
     }
 
     public void setSpielstart(Spielstart spielstart)

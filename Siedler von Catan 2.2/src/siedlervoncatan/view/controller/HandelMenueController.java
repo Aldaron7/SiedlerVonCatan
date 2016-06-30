@@ -108,8 +108,8 @@ public class HandelMenueController implements Controller
         {
             Handel handel = new Handel(this.angebot, this.nachfrage);
             handel.setAnbieter(this.spiel.getAktiverSpieler());
+            this.layoutController.removeFromCenterAnimatedH(this.self);
             this.spiel.getMenue().zeigeSpielerHandel(handel);
-            this.layoutController.removeFromCenter(this.self);
         }
     }
 
@@ -140,7 +140,7 @@ public class HandelMenueController implements Controller
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getSound().playMusik(Sound.MUSIK_MEER);
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedH(this.self);
         this.spiel.getMenue().zeigeZug();
     }
 

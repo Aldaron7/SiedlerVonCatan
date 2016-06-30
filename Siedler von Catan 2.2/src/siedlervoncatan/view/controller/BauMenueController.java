@@ -2,6 +2,9 @@ package siedlervoncatan.view.controller;
 
 import java.util.Collections;
 
+import javax.swing.Timer;
+
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -109,7 +112,7 @@ public class BauMenueController implements Controller
     {
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.entwicklungKaufen();
-        this.layoutController.removeFromCenter(this.self);
+        this.layoutController.removeFromCenterAnimatedV(this.self);
     }
 
     @FXML
@@ -118,8 +121,10 @@ public class BauMenueController implements Controller
         this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages("");
         this.spiel.setZustand(null);
-        this.layoutController.removeFromCenter(this.self);
-        this.spiel.getMenue().zeigeZug();
+        this.layoutController.removeFromCenterAnimatedV(this.self);
+        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getMenue().zeigeZug()));
+        timer.setRepeats(false);
+        timer.start();
     }
 
     @Override

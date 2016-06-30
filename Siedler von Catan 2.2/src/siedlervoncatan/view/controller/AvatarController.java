@@ -2,6 +2,9 @@ package siedlervoncatan.view.controller;
 
 import java.beans.PropertyChangeSupport;
 
+import javax.swing.Timer;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -45,6 +48,16 @@ public class AvatarController implements Controller
     }
 
     @FXML
+    private void handleInfosRequested()
+    {
+        this.mouseOverPane = this.spiel.getMenue().zeigeSpielerInfos(this.spieler);
+        Timer timer = new Timer(3000, e -> Platform.runLater(() -> this.spiel.getMenue().removeFromCenterAnimatedH(this.mouseOverPane)));
+        timer.setRepeats(false);
+        timer.start();
+
+    }
+
+    @FXML
     private void handleMouseEntered()
     {
         this.mouseOverPane = this.spiel.getMenue().zeigeSpielerInfos(this.spieler);
@@ -53,7 +66,7 @@ public class AvatarController implements Controller
     @FXML
     private void handleMouseExited()
     {
-        this.spiel.getMenue().removeNodefromCenter(this.mouseOverPane);
+        this.spiel.getMenue().removeFromCenterAnimatedH(this.mouseOverPane);
     }
 
     @Override
