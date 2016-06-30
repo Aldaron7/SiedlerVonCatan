@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
@@ -85,6 +86,21 @@ public class Spiel implements Serializable, PropertyChangeListener
     {
         this.spielstart.getSpielfeldController().addListener(this);
         this.menue.zeigeNeuesspielMenue();
+    }
+
+    private void autosave()
+    {
+        try
+        {
+            File file = new File("saves/autosave.svc");
+            file.createNewFile();
+            this.speichern(file);
+        }
+        catch (IOException e)
+        {
+            new Error("Autospeichern konnte nicht ausgeführt werden.");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -330,7 +346,7 @@ public class Spiel implements Serializable, PropertyChangeListener
 
     /**
      * Startet den Zug des Nächsten Spielers in der Zugreihenfolge. Ruft das Würfelmenü auf falls noch kein Sieger
-     * existiert, ansonsten die Siegernachricht.
+     * existiert, ansonsten die Siegernachricht. Speichert nach jeder Runde automatisch.
      */
     public void naechsteRunde()
     {
@@ -342,6 +358,8 @@ public class Spiel implements Serializable, PropertyChangeListener
             if (this.aktiverSpieler == null)
             {
                 this.anzahlRunden.set(this.anzahlRunden.get() + 1);
+                this.setSaveable();
+                this.autosave();
                 this.naechsteRunde();
             }
             else
@@ -385,7 +403,6 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void entwicklungKaufen()
     {
         this.aktiverSpieler.kaufeEntwicklungskarte();
-        this.zeigeZug();
     }
 
     /**
@@ -400,7 +417,6 @@ public class Spiel implements Serializable, PropertyChangeListener
         {
             this.zustand = null;
             this.spielstart.getSpielfeldController().setMessages("");
-            this.zeigeZug();
         }
     }
 
@@ -416,7 +432,6 @@ public class Spiel implements Serializable, PropertyChangeListener
         {
             this.zustand = null;
             this.spielstart.getSpielfeldController().setMessages("");
-            this.zeigeZug();
         }
     }
 
@@ -432,7 +447,6 @@ public class Spiel implements Serializable, PropertyChangeListener
         {
             this.zustand = null;
             this.spielstart.getSpielfeldController().setMessages("");
-            this.zeigeZug();
         }
     }
 

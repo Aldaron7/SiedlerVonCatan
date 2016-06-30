@@ -6,6 +6,7 @@ import javax.swing.Timer;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,6 +22,8 @@ public class AvatarController implements Controller
     private Label                 spielerL;
     @FXML
     private ImageView             avatarIV;
+    @FXML
+    private Group                 avatarG;
 
     private PropertyChangeSupport support;
     private Spieler               spieler;
@@ -42,6 +45,12 @@ public class AvatarController implements Controller
     }
 
     @FXML
+    private void initialize()
+    {
+        this.spielerL.setMaxWidth(this.avatarIV.getFitWidth());
+    }
+
+    @FXML
     private void handleAvatarClicked()
     {
         this.support.firePropertyChange("Spieler", null, this.spieler);
@@ -54,7 +63,6 @@ public class AvatarController implements Controller
         Timer timer = new Timer(3000, e -> Platform.runLater(() -> this.spiel.getMenue().removeFromCenterAnimatedH(this.mouseOverPane)));
         timer.setRepeats(false);
         timer.start();
-
     }
 
     @FXML

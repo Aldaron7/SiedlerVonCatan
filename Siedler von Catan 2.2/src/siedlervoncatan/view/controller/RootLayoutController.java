@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import siedlervoncatan.Spielstart;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.view.Controller;
@@ -25,6 +26,7 @@ public class RootLayoutController implements Controller
     private ScaleTransition disappearH;
     private ScaleTransition appearV;
     private ScaleTransition disappearV;
+    private Sound           sound;
 
     public void setSpielstart(Spielstart spielstart)
     {
@@ -41,7 +43,7 @@ public class RootLayoutController implements Controller
         this.disappearV = new ScaleTransition(Duration.millis(500));
         this.disappearV.setFromY(1);
         this.disappearV.setToY(0);
-
+        this.sound = Sound.getInstanz();
     }
 
     public void addToCenter(Node node)
@@ -57,6 +59,7 @@ public class RootLayoutController implements Controller
         this.addToCenter(node);
         this.appearH.setNode(node);
         this.appearH.play();
+        this.sound.playSoundeffekt(Sound.PAPER);
     }
 
     public void addToCenterAnimatedV(Node node)
@@ -64,6 +67,7 @@ public class RootLayoutController implements Controller
         this.addToCenter(node);
         this.appearV.setNode(node);
         this.appearV.play();
+        this.sound.playSoundeffekt(Sound.PAPER);
     }
 
     public void removeFromCenter(Node node)
@@ -75,6 +79,7 @@ public class RootLayoutController implements Controller
     {
         this.disappearH.setNode(node);
         this.disappearH.play();
+        this.sound.playSoundeffekt(Sound.PAPER);
         this.disappearH.setOnFinished(e -> this.removeFromCenter(node));
     }
 
@@ -82,6 +87,7 @@ public class RootLayoutController implements Controller
     {
         this.disappearV.setNode(node);
         this.disappearV.play();
+        this.sound.playSoundeffekt(Sound.PAPER);
         this.disappearV.setOnFinished(e -> this.removeFromCenter(node));
     }
 
@@ -122,6 +128,7 @@ public class RootLayoutController implements Controller
                     file = new File(file.getPath() + ".svc");
                 }
                 this.spielstart.spielSpeichern(file);
+                System.out.println(file);
             }
         }
         else

@@ -18,6 +18,7 @@ public class Sound
     public static final AudioClip   ERROR_CLIP         = new AudioClip(new File("sounds/error.wav").toURI().toString());
     public static final AudioClip   SIEGER_CLIP        = new AudioClip(new File("sounds/sieger.wav").toURI().toString());
     public static final AudioClip   EVIL_LAUGH_CLIP    = new AudioClip(new File("sounds/evilLaugh.wav").toURI().toString());
+    public static final AudioClip   PAPER              = new AudioClip(new File("sounds/paper.wav").toURI().toString());
 
     private static Sound            SOUND;
 
