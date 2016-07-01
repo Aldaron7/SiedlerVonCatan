@@ -2,6 +2,9 @@ package siedlervoncatan.view.controller;
 
 import java.beans.PropertyChangeSupport;
 
+import javax.swing.Timer;
+
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -109,7 +112,9 @@ public class HandelMenueController implements Controller
             Handel handel = new Handel(this.angebot, this.nachfrage);
             handel.setAnbieter(this.spiel.getAktiverSpieler());
             this.layoutController.removeFromCenterAnimatedH(this.self);
-            this.spiel.getMenue().zeigeSpielerHandel(handel);
+            Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getMenue().zeigeSpielerHandel(handel)));
+            timer.setRepeats(false);
+            timer.start();
         }
     }
 
