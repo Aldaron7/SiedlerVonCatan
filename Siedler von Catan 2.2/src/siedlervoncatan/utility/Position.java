@@ -7,7 +7,6 @@ import java.util.Set;
 public class Position implements Serializable
 {
     private static final long   serialVersionUID = 1L;
-    private static final double X_SKALIERUNG     = Math.sqrt(3.0) / 2.0;
     private int                 xAchse;
     private int                 yAchse;
     private Set<Position>       nachbarn;
@@ -69,11 +68,6 @@ public class Position implements Serializable
     public int getxAchse()
     {
         return this.xAchse;
-    }
-
-    public double getXAchseSkaliert()
-    {
-        return this.xAchse * Position.X_SKALIERUNG;
     }
 
     public int getyAchse()
