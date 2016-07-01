@@ -3,12 +3,14 @@ package siedlervoncatan.test;
 import java.util.Set;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 import siedlervoncatan.utility.Position;
 
 public class PositionTest {
 	
-	public static void main(String[] args) {
+	@Test
+	public void positionsTest() {
 		Position p1 = new Position(3, 2);
 		Position p2 = new Position(3, 0);
 		Position p3 = new Position(4, 1);
