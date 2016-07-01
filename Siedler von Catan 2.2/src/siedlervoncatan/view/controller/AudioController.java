@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
-import siedlervoncatan.Spielstart;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.Controller;
@@ -23,26 +22,37 @@ public class AudioController implements Controller
     private Sound                sound;
     private RootLayoutController layoutController;
     private Node                 self;
+    private boolean              musikAn;
+    private boolean              soundeffekteAn;
+    private double               musikVolume;
+    private double               soundeffekteVolume;
+
+    public AudioController()
+    {
+        this.sound = Sound.getInstanz();
+    }
 
     @FXML
-    private void handleApply()
+    private void initialize()
     {
-        this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
-        boolean musikAn = this.musikAnCB.isSelected();
-        this.sound.setMusikAn(musikAn);
-        boolean soundeffekteAn = this.soundeffekteAnCB.isSelected();
-        this.sound.setSoundeffekteAn(soundeffekteAn);
-        double musikVolume = this.musikS.getValue();
-        this.sound.changeMusikVolume(musikVolume);
-        double soundeffekteVolume = this.soundeffekteS.getValue();
-        this.sound.changeSoundeffekteVolume(soundeffekteVolume);
+        this.musikAn = this.sound.getMusikAn();
+        this.musikAnCB.setSelected(this.musikAn);
+        this.soundeffekteAn = this.sound.getSoundeffekteAn();
+        this.soundeffekteAnCB.setSelected(this.soundeffekteAn);
+        this.musikVolume = this.sound.getMusikVolume();
+        this.musikS.setValue(this.musikVolume);
+        this.soundeffekteVolume = this.sound.getSoundeffekteVolume();
+        this.soundeffekteS.setValue(this.soundeffekteVolume);
+        this.musikAnCB.selectedProperty().addListener((obs, o, n) -> this.sound.setMusikAn(n));
+        this.soundeffekteAnCB.selectedProperty().addListener((obs, o, n) -> this.sound.setSoundeffekteAn(n));
+        this.musikS.valueProperty().addListener((obs, o, n) -> this.sound.changeMusikVolume(n.doubleValue()));
+        this.soundeffekteS.valueProperty().addListener((obs, o, n) -> this.sound.changeSoundeffekteVolume(n.doubleValue()));
     }
 
     @FXML
     private void handleOK()
     {
         this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
-        this.handleApply();
         this.layoutController.removeFromCenterAnimatedH(this.self);
     }
 
@@ -50,16 +60,11 @@ public class AudioController implements Controller
     private void handleAbbrechen()
     {
         this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
+        this.sound.setMusikAn(this.musikAn);
+        this.sound.setSoundeffekteAn(this.soundeffekteAn);
+        this.sound.changeMusikVolume(this.musikVolume);
+        this.sound.changeSoundeffekteVolume(this.soundeffekteVolume);
         this.layoutController.removeFromCenterAnimatedH(this.self);
-    }
-
-    public void setSpielstart(Spielstart spielstart)
-    {
-        this.sound = spielstart.getSound();
-        this.musikAnCB.setSelected(this.sound.getMusikAn());
-        this.soundeffekteAnCB.setSelected(this.sound.getSoundeffekteAn());
-        this.musikS.setValue(this.sound.getMusikVolume());
-        this.soundeffekteS.setValue(this.sound.getSoundeffekteVolume());
     }
 
     @Override

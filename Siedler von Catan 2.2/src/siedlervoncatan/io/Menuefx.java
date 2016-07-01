@@ -13,7 +13,6 @@ import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
-import siedlervoncatan.view.controller.AudioController;
 import siedlervoncatan.view.controller.AvatarController;
 import siedlervoncatan.view.controller.HauptmenueController;
 import siedlervoncatan.view.controller.KartenAbgebenMenueController;
@@ -27,14 +26,12 @@ public class Menuefx
     private Spielstart           spielstart;
     private ViewController       viewController;
     private RootLayoutController layoutController;
-    private Sound                sound;
 
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
         this.viewController = new ViewController(spielstart.getSpiel(), spielstart.getLayoutController());
         this.layoutController = spielstart.getLayoutController();
-        this.sound = spielstart.getSound();
     }
 
     /**
@@ -49,7 +46,7 @@ public class Menuefx
             this.layoutController.addToCenterAnimatedV(pane);
             HauptmenueController controller = this.viewController.getLoader().getController();
             controller.setSpielstart(this.spielstart);
-            this.sound.playMusik(Sound.MUSIK_MENUE);
+            Sound.getInstanz().playMusik(Sound.MUSIK_MENUE);
         }
         catch (IOException e)
         {
@@ -63,7 +60,6 @@ public class Menuefx
         {
             Pane pane = this.viewController.initPane(Pfade.AUDIO_MENUE);
             this.layoutController.addToCenterAnimatedH(pane);
-            ((AudioController) this.viewController.getLoader().getController()).setSpielstart(this.spielstart);
         }
         catch (IOException e)
         {
@@ -82,7 +78,7 @@ public class Menuefx
             this.layoutController.addToCenter(pane);
             SpielfeldController controller = this.viewController.getLoader().getController();
             this.spielstart.setSpielfeldController(controller);
-            this.sound.playMusik(Sound.MUSIK_MEER);
+            Sound.getInstanz().playMusik(Sound.MUSIK_MEER);
         }
         catch (IOException e)
         {
@@ -282,7 +278,7 @@ public class Menuefx
         try
         {
             Pane pane = this.viewController.initPane(Pfade.SIEGER);
-            this.sound.playSoundeffekt(Sound.SIEGER_CLIP);
+            Sound.getInstanz().playSoundeffekt(Sound.SIEGER_CLIP);
             this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)

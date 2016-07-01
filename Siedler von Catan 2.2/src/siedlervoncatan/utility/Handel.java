@@ -2,10 +2,6 @@ package siedlervoncatan.utility;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
-import javafx.stage.StageStyle;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spieler;
@@ -16,6 +12,7 @@ public class Handel
     private ObservableList<Rohstoff> nachfrage;
     private Spieler                  nachfrager;
     private Spieler                  anbieter;
+    private Confirmation             confirmation;
 
     public Handel()
     {
@@ -26,6 +23,7 @@ public class Handel
     {
         this.angebot = angebot;
         this.nachfrage = nachfrage;
+        this.confirmation = new ConfirmationImpl();
     }
 
     /**
@@ -33,21 +31,17 @@ public class Handel
      */
     public void handeln()
     {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
-        alert.initStyle(StageStyle.UNDECORATED);
-        alert.setContentText(String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK)
-            {
-                this.anbieter.removeKarten(this.angebot);
-                this.anbieter.addKarten(this.nachfrage);
-                this.nachfrager.removeKarten(this.nachfrage);
-                this.nachfrager.addKarten(this.angebot);
-            }
-        });
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.confirmation.setText(String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
+        boolean response = this.confirmation.showAndWait();
 
+        if (response)
+        {
+            this.anbieter.removeKarten(this.angebot);
+            this.anbieter.addKarten(this.nachfrage);
+            this.nachfrager.removeKarten(this.nachfrage);
+            this.nachfrager.addKarten(this.angebot);
+        }
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
     }
 
     public void addAngebot(Rohstoff rohstoff)
@@ -108,6 +102,11 @@ public class Handel
     public void setAnbieter(Spieler anbieter)
     {
         this.anbieter = anbieter;
+    }
+
+    public void setConfirmation(Confirmation confirmation)
+    {
+        this.confirmation = confirmation;
     }
 
 }

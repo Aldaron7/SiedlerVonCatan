@@ -7,21 +7,18 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import siedlervoncatan.io.Menuefx;
-import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
+import siedlervoncatan.utility.Confirmation;
+import siedlervoncatan.utility.ConfirmationImpl;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.controller.RootLayoutController;
@@ -35,7 +32,6 @@ public class Spielstart extends Application
     private Spiel                spiel;
     private SpielfeldController  spielfeldController;
     private Menuefx              menue;
-    private transient Sound      sound;
 
     @Override
     public void start(Stage primaryStage)
@@ -47,7 +43,6 @@ public class Spielstart extends Application
         this.primaryStage.setMinHeight(730);
         this.primaryStage.setMinWidth(920);
 
-        this.sound = Sound.getInstanz();
         this.initRootLayout();
         this.menue = new Menuefx();
         this.menue.setSpielstart(this);
@@ -127,15 +122,11 @@ public class Spielstart extends Application
 
     public void beenden()
     {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
-        alert.setTitle("Spiel beenden?");
-        alert.setContentText("Möchten Sie das Spiel ohne zu speichern beenden?");
-        alert.initStyle(StageStyle.UNDECORATED);
+        Confirmation confirmation = new ConfirmationImpl();
+        confirmation.setText("Möchten Sie das Spiel wirklich beenden?");
+        boolean response = confirmation.showAndWait();
 
-        Optional<ButtonType> result = alert.showAndWait();
-        this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
-        if (result.get() == ButtonType.OK)
+        if (response)
         {
             System.exit(0);
         }
@@ -164,11 +155,6 @@ public class Spielstart extends Application
     public Spiel getSpiel()
     {
         return this.spiel;
-    }
-
-    public Sound getSound()
-    {
-        return this.sound;
     }
 
     public Menuefx getMenue()

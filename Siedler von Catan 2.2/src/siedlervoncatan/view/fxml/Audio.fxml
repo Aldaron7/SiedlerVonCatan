@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.AudioController">
    <children>
       <AnchorPane maxHeight="400.0" maxWidth="450.0" prefHeight="400.0" prefWidth="450.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css">
@@ -62,7 +61,6 @@
                   <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="8">
                     <buttons>
                       <Button maxWidth="50.0" mnemonicParsing="false" onAction="#handleOK" text="OK" />
-                        <Button maxWidth="120.0" mnemonicParsing="false" onAction="#handleApply" text="Übernehmen" />
                         <Button maxWidth="100.0" mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
                     </buttons>
                   </ButtonBar>

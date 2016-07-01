@@ -16,10 +16,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
-import javafx.stage.StageStyle;
 import siedlervoncatan.enums.Entwicklung;
 import siedlervoncatan.enums.Farbe;
 import siedlervoncatan.enums.Hafen;
@@ -33,9 +29,10 @@ import siedlervoncatan.spielfeld.Siedlung;
 import siedlervoncatan.spielfeld.Spielfeld;
 import siedlervoncatan.spielfeld.Stadt;
 import siedlervoncatan.spielfeld.Strasse;
+import siedlervoncatan.utility.Confirmation;
+import siedlervoncatan.utility.ConfirmationImpl;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Info;
-import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Rohstoffauswahl;
 import siedlervoncatan.utility.Wuerfel;
@@ -446,23 +443,21 @@ public class Spieler implements PropertyChangeListener, Serializable
         }
         if (umtauschkurs <= vorhandenerRohstoff)
         {
+            Confirmation confirmation = new ConfirmationImpl();
+            confirmation.setText(String.format("Wolen Sie %s gegen %s im Verhältnis %d:1 tauschen?", abzugeben, erhalten, umtauschkurs));
+            boolean response = confirmation.showAndWait();
             final int tauschkurs = umtauschkurs;
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.initStyle(StageStyle.UNDECORATED);
-            alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
-            alert.setContentText(String.format("Wolen Sie %s gegen %s im Verhältnis %d:1 tauschen?", abzugeben, erhalten, tauschkurs));
-            alert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK)
+            if (response)
+            {
+                for (int i = 0; i < tauschkurs; i++)
                 {
-                    for (int i = 0; i < tauschkurs; i++)
-                    {
-                        this.removeKarte(abzugeben);
-                    }
-                    this.addKarte(erhalten);
+                    this.removeKarte(abzugeben);
                 }
-            });
+                this.addKarte(erhalten);
+            }
         }
         else
+
         {
             new Error("Nicht genügend Rohstoffe vorhanden.");
         }

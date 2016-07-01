@@ -13,25 +13,23 @@ import siedlervoncatan.view.Controller;
 public class HauptmenueController implements Controller
 {
     private Spielstart spielstart;
-    private Sound      sound;
 
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
-        this.sound = spielstart.getSound();
     }
 
     @FXML
     private void handleNeu()
     {
-        this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spielstart.neuesSpiel();
     }
 
     @FXML
     private void handleLaden()
     {
-        this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("SVC files", "*svc");
         fileChooser.getExtensionFilters().add(extensionFilter);
@@ -46,7 +44,7 @@ public class HauptmenueController implements Controller
     @FXML
     private void handleBeenden()
     {
-        this.sound.playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         System.exit(0);
     }
 
