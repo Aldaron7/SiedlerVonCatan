@@ -119,7 +119,7 @@ public class KartenAbgebenMenueController implements Controller
     @FXML
     private void handleOK()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         // neue Liste damit beim remove nicht auf verschiedenen Threads sich die Liste ändert.
         if (this.abgabe.size() != this.anzahl)
         {
@@ -135,7 +135,7 @@ public class KartenAbgebenMenueController implements Controller
     @FXML
     private void handleKarteClicked(Event event)
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         Button button = (Button) event.getSource();
         String rohstoffString = button.getText();
         Rohstoff rohstoff = Rohstoff.getRohstoff(rohstoffString);
@@ -149,7 +149,7 @@ public class KartenAbgebenMenueController implements Controller
     @FXML
     private void handleAbgabeClicked(Event event)
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         Button button = (Button) event.getSource();
         String rohstoffString = button.getText();
         Rohstoff rohstoff = Rohstoff.getRohstoff(rohstoffString);

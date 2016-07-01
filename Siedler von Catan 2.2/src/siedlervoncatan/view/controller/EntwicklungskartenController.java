@@ -51,7 +51,7 @@ public class EntwicklungskartenController implements Controller
     @FXML
     private void handleSpielen()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         Entwicklungskarte selectedItem = this.entwicklungskarten.getSelectionModel().getSelectedItem();
         if (selectedItem != null && selectedItem.getDarfGespieltWerden())
         {
@@ -67,7 +67,7 @@ public class EntwicklungskartenController implements Controller
     @FXML
     private void handleAbbrechen()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedH(this.self);
         if (this.spiel.hatGewuerfelt())
         {

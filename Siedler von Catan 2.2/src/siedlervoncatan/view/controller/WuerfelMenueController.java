@@ -81,7 +81,7 @@ public class WuerfelMenueController implements Controller
     @FXML
     private void handleEntwicklungskarte()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedV(this.self);
         this.spiel.getMenue().zeigeEntwicklungskarten();
     }
@@ -89,7 +89,7 @@ public class WuerfelMenueController implements Controller
     @FXML
     private void handleWuerfeln()
     {
-        Sound sound = this.spiel.getSound();
+        Sound sound = Sound.getInstanz();
         sound.playSoundeffekt(Sound.WUERFEL_CLIP);
         this.layoutController.removeFromCenterAnimatedV(this.self);
         Timer timer = new Timer(1000, e -> Platform.runLater(() -> this.spiel.wuerfeln()));

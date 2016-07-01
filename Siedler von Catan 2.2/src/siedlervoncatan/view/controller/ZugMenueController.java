@@ -80,7 +80,7 @@ public class ZugMenueController implements Controller
     @FXML
     private void handleEntwicklungskarte()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenter(this.self);
         this.spiel.getMenue().zeigeEntwicklungskarten();
     }
@@ -88,7 +88,7 @@ public class ZugMenueController implements Controller
     @FXML
     private void handleBauen()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedV(this.self);
         Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getMenue().zeigeBau()));
         timer.setRepeats(false);
@@ -98,14 +98,14 @@ public class ZugMenueController implements Controller
     @FXML
     private void handleSeehandel()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getAktiverSpieler().seehandel();
     }
 
     @FXML
     private void handleHandeln()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedV(this.self);
         this.spiel.getMenue().zeigeHandel();
     }
@@ -113,7 +113,7 @@ public class ZugMenueController implements Controller
     @FXML
     private void handleEnde()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.getAktiverSpieler().erhoeheGespielteRunden();
         this.spiel.getAktiverSpieler().setNichtAktiv();
         this.layoutController.removeFromCenterAnimatedV(this.self);

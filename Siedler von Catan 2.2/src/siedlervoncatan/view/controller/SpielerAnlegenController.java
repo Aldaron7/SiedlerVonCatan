@@ -32,7 +32,7 @@ public class SpielerAnlegenController implements Controller
     @FXML
     private void handleOK()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         Farbe farbe = this.farbe.getValue();
         Spiel.farben.remove(farbe);
         String name = this.name.getText().toString();
@@ -52,7 +52,7 @@ public class SpielerAnlegenController implements Controller
     @FXML
     private void handleAbbrechen()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedH(this.self);
     }
 

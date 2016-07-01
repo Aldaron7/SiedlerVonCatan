@@ -80,7 +80,7 @@ public class SpielerHandelAuswahlController implements Controller
     @FXML
     private void handleOK()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         Spieler andererSpieler = this.spielerCB.getSelectionModel().getSelectedItem();
 
         if (andererSpieler != null)
@@ -89,7 +89,7 @@ public class SpielerHandelAuswahlController implements Controller
             {
                 this.handel.setNachfrager(andererSpieler);
                 this.handel.handeln();
-                this.spiel.getSound().playMusik(Sound.MUSIK_MEER);
+                Sound.getInstanz().playMusik(Sound.MUSIK_MEER);
                 this.layoutController.removeFromCenterAnimatedH(this.self);
                 this.spiel.getMenue().zeigeZug();
             }
@@ -107,8 +107,8 @@ public class SpielerHandelAuswahlController implements Controller
     @FXML
     private void handleAbbrechen()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.spiel.getSound().playMusik(Sound.MUSIK_MEER);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playMusik(Sound.MUSIK_MEER);
         this.layoutController.removeFromCenterAnimatedH(this.self);
         this.spiel.getMenue().zeigeZug();
     }

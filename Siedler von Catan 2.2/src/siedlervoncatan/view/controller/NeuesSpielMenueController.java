@@ -31,7 +31,7 @@ public class NeuesSpielMenueController implements Controller
     @FXML
     private void handleSpielerHinzufuegen()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         if (this.spiel.getAlleSpieler().size() >= 4)
         {
             new Error("Die maximale Spieleranzahl ist bereits erreicht.");
@@ -45,7 +45,7 @@ public class NeuesSpielMenueController implements Controller
     @FXML
     private void handleSpielStarten()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         if (this.spiel.getAlleSpieler().size() <= 1)
         {
             new Error("Zu wenige Spieler.");

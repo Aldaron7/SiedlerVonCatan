@@ -882,14 +882,14 @@ public class SpielfeldController implements MapChangeListener, Controller
         {
             Image image = this.spiel.getSpielfeld().getBauplaetze().get(key).getImage();
             this.Ecken.get(key).setImage(image);
-            this.spiel.getSound().playSoundeffekt(Sound.BAU_CLIP);
+            Sound.getInstanz().playSoundeffekt(Sound.BAU_CLIP);
         }
         // change der Map strassen
         if (key instanceof Set<?>)
         {
             Image image = this.spiel.getSpielfeld().getStrassen().get(key).getImage();
             this.kanten.get(key).setImage(image);
-            this.spiel.getSound().playSoundeffekt(Sound.BAU_CLIP);
+            Sound.getInstanz().playSoundeffekt(Sound.BAU_CLIP);
         }
     }
 

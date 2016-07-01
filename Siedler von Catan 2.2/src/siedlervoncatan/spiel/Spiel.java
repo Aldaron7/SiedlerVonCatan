@@ -55,7 +55,6 @@ public class Spiel implements Serializable, PropertyChangeListener
     private Zustand                           zustand;
     private boolean                           hatGewuerfelt;
     private boolean                           saveable;
-    private transient Sound                   sound;
 
     public Spiel()
     {
@@ -76,7 +75,6 @@ public class Spiel implements Serializable, PropertyChangeListener
         this.spielstart = spielstart;
         this.menue = new Menuefx();
         this.menue.setSpielstart(spielstart);
-        this.sound = spielstart.getSound();
     }
 
     /**
@@ -486,7 +484,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     {
         if (this.raeuber.getAngrenzendeSpieler().contains(spieler) && !this.aktiverSpieler.equals(spieler))
         {
-            this.sound.playSoundeffekt(Sound.EVIL_LAUGH_CLIP);
+            Sound.getInstanz().playSoundeffekt(Sound.EVIL_LAUGH_CLIP);
             this.aktiverSpieler.zieheKarte(spieler);
             this.zustand = null;
             this.spielstart.getSpielfeldController().setMessages("");
@@ -588,11 +586,6 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void setNotSaveable()
     {
         this.saveable = false;
-    }
-
-    public Sound getSound()
-    {
-        return this.sound;
     }
 
     public boolean hatGewuerfelt()

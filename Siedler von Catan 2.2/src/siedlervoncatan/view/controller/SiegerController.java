@@ -26,7 +26,7 @@ public class SiegerController implements Controller
     @FXML
     private void handleNeu()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedH(this.self);
         this.spiel.getSpielstart().neuesSpiel();
     }
@@ -34,7 +34,7 @@ public class SiegerController implements Controller
     @FXML
     private void handleEnde()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         System.exit(0);
     }
 

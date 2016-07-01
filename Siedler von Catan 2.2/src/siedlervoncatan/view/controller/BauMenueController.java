@@ -86,7 +86,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleStrasse()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
         this.spiel.setZustand(Zustand.STARSSE_BAUEN);
     }
@@ -94,7 +94,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleSiedlung()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
         this.spiel.setZustand(Zustand.SIEDLUNG_BAUEN);
     }
@@ -102,7 +102,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleStadt()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
         this.spiel.setZustand(Zustand.STADT_BAUEN);
     }
@@ -110,7 +110,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleEntwicklung()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.entwicklungKaufen();
         this.layoutController.removeFromCenterAnimatedV(this.self);
     }
@@ -118,7 +118,7 @@ public class BauMenueController implements Controller
     @FXML
     private void handleAbbrechen()
     {
-        this.spiel.getSound().playSoundeffekt(Sound.BUTTON_CLIP);
+        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessages("");
         this.spiel.setZustand(null);
         this.layoutController.removeFromCenterAnimatedV(this.self);
