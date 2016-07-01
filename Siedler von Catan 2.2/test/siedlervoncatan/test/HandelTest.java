@@ -26,6 +26,7 @@ public class HandelTest {
 		
 		Spieler spieler1 = new Spieler("Marcel", Farbe.BRAUN, spiel);
 		spieler1.addKarten(angebot);
+		//daskldmlaks
 		
 		Spieler spieler2 = new Spieler("Artem", Farbe.BLAU, spiel);
 		spieler2.addKarten(nachfrage);
