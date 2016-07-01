@@ -71,11 +71,11 @@ public class EntwicklungskartenController implements Controller
         this.layoutController.removeFromCenterAnimatedH(this.self);
         if (this.spiel.hatGewuerfelt())
         {
-            this.spiel.getMenue().zeigeZug();
+            this.spiel.getUserInterface().zeigeZug();
         }
         else
         {
-            this.spiel.getMenue().zeigeWuerfel();
+            this.spiel.getUserInterface().zeigeWuerfel();
         }
     }
 

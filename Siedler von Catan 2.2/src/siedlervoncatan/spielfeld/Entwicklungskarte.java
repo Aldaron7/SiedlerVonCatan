@@ -88,7 +88,6 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                     this.strasse1 = true;
                     new Info(this.besitzer + " spielt die Karte Strassenbau.");
                     this.besitzer.getSpiel().setNotSaveable();
-                    this.besitzer.getSpiel().getSpielstart().getRootLayout().getRight().setVisible(false);
                     spielfeldController.setMessages(this.besitzer + " wählen Sie einen Bauplatz für Ihre erste Strasse.");
                     spielfeldController.addListener(this);
                     Entwicklung.addEntwicklung(this.entwicklung);
@@ -148,11 +147,11 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
         this.besitzer.getSpiel().setSaveable();
         if (this.besitzer.getSpiel().hatGewuerfelt())
         {
-            this.besitzer.getSpiel().getMenue().zeigeZug();
+            this.besitzer.getSpiel().getUserInterface().zeigeZug();
         }
         else
         {
-            this.besitzer.getSpiel().getMenue().zeigeWuerfel();
+            this.besitzer.getSpiel().getUserInterface().zeigeWuerfel();
         }
     }
 

@@ -83,7 +83,7 @@ public class WuerfelMenueController implements Controller
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedV(this.self);
-        this.spiel.getMenue().zeigeEntwicklungskarten();
+        this.spiel.getUserInterface().zeigeEntwicklungskarten();
     }
 
     @FXML

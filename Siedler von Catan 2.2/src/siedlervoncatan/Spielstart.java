@@ -16,9 +16,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import siedlervoncatan.io.Menuefx;
+import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.spiel.Spiel;
-import siedlervoncatan.utility.Confirmation;
-import siedlervoncatan.utility.ConfirmationImpl;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.controller.RootLayoutController;
@@ -31,7 +30,7 @@ public class Spielstart extends Application
     private RootLayoutController layoutController;
     private Spiel                spiel;
     private SpielfeldController  spielfeldController;
-    private Menuefx              menue;
+    private UserInterface        menue;
 
     @Override
     public void start(Stage primaryStage)
@@ -93,8 +92,8 @@ public class Spielstart extends Application
             is.close();
             this.spiel.postLoad();
             this.spiel.setSpielstart(this);
-            this.spiel.getMenue().zeigeSpielfeld();
-            this.spiel.getMenue().zeigeSpielInfos();
+            this.menue.zeigeSpielfeld();
+            this.menue.zeigeSpielInfos();
             this.spiel.weiterspielen();
         }
         catch (Exception e)
@@ -116,17 +115,14 @@ public class Spielstart extends Application
     {
         this.spiel = new Spiel();
         this.spiel.setSpielstart(this);
-        this.spiel.getMenue().zeigeSpielfeld();
+        this.menue.zeigeSpielfeld();
         this.spiel.starten();
     }
 
     public void beenden()
     {
-        Confirmation confirmation = new ConfirmationImpl();
-        confirmation.setText("Möchten Sie das Spiel wirklich beenden?");
-        boolean response = confirmation.showAndWait();
-
-        if (response)
+        boolean antwort = this.menue.zeigeConfirmation("Möchten Sie das Spiel wirklich beenden?");
+        if (antwort)
         {
             System.exit(0);
         }
@@ -157,7 +153,7 @@ public class Spielstart extends Application
         return this.spiel;
     }
 
-    public Menuefx getMenue()
+    public UserInterface getUserInterface()
     {
         return this.menue;
     }

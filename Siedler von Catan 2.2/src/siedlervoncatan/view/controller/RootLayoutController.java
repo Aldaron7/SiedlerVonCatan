@@ -146,7 +146,7 @@ public class RootLayoutController implements Controller
     @FXML
     private void handleAudio()
     {
-        this.spielstart.getMenue().zeigeAudiomenue();
+        this.spielstart.getUserInterface().zeigeAudiomenue();
     }
 
     @FXML

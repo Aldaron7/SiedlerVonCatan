@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spieler;
+import siedlervoncatan.utility.ConfirmationImpl;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
@@ -21,12 +22,13 @@ import siedlervoncatan.view.controller.SpielerHandelAuswahlController;
 import siedlervoncatan.view.controller.SpielerInfosController;
 import siedlervoncatan.view.controller.SpielfeldController;
 
-public class Menuefx
+public class Menuefx implements UserInterface
 {
     private Spielstart           spielstart;
     private ViewController       viewController;
     private RootLayoutController layoutController;
 
+    @Override
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
@@ -37,6 +39,7 @@ public class Menuefx
     /**
      * Erzeugt das Hauptmenue im Zentrum des Rootlayouts Menue: Neu, Laden, Beenden.
      */
+    @Override
     public void zeigeHauptmenue()
     {
         try
@@ -54,6 +57,7 @@ public class Menuefx
         }
     }
 
+    @Override
     public void zeigeAudiomenue()
     {
         try
@@ -70,6 +74,7 @@ public class Menuefx
     /**
      * Erzeugt das Spielfeld im Zentrum des RootLayouts. Übergibt den SpielfeldController an Spielstart.
      */
+    @Override
     public void zeigeSpielfeld()
     {
         try
@@ -89,6 +94,7 @@ public class Menuefx
     /**
      * Erzeugt das NeueSpielMenue rechts im RootLayout Menü: Neuer Spieler, Spielen.
      */
+    @Override
     public void zeigeNeuesspielMenue()
     {
         try
@@ -106,6 +112,7 @@ public class Menuefx
     /**
      * Erzeugt das SpielerAnlegenMenü in einem Popup Fenster. Menü: Name, Farbe, Ok, Abbrechen.
      */
+    @Override
     public void spielerAnlegen()
     {
         try
@@ -122,6 +129,7 @@ public class Menuefx
     /**
      * Erzeugt das WürfelMenü rechts im RootLayout. Menü: Entwicklungen, List<Karten>, Würfeln.
      */
+    @Override
     public void zeigeWuerfel()
     {
         try
@@ -140,6 +148,7 @@ public class Menuefx
      * Erzeugt das ZugMenue rechts im RootLayout. Menü: Entwicklungen, Bauen/Kaufen, Seehandel, Handel Spieler, List
      * <Karten>, Ende.
      */
+    @Override
     public void zeigeZug()
     {
         try
@@ -159,6 +168,7 @@ public class Menuefx
      * Erzeugt das EntwicklungskartenMenü in einem Popup Fenster. Zeigt die Entwicklungskarten mit Text und lässt sie
      * ausspielen.
      */
+    @Override
     public void zeigeEntwicklungskarten()
     {
         try
@@ -176,6 +186,7 @@ public class Menuefx
      * Erzeugt das Baumenü rechts im RootLayout. Menü: Strasse, Siedlung, Stadt, Entwicklung, Abbrechen. Wird disabled
      * wenn gebaut wird.
      */
+    @Override
     public void zeigeBau()
     {
         try
@@ -194,6 +205,7 @@ public class Menuefx
      * Erzeugt die SpielInfo Anzeige links im RootLayout. Zeigt Spieler, Siegpunkte, Anzahl Karten, Anzahl ausgespielter
      * Ritter.
      */
+    @Override
     public void zeigeSpielInfos()
     {
         try
@@ -212,6 +224,7 @@ public class Menuefx
      * Erzeugt das HandelMenü in einem Popup Fenster. Auswahl des Angebots und der Nachfrage, die in einem HandelObjekt
      * gespeichert werden.
      */
+    @Override
     public void zeigeHandel()
     {
         try
@@ -231,6 +244,7 @@ public class Menuefx
      * 
      * @param handel
      */
+    @Override
     public void zeigeSpielerHandel(Handel handel)
     {
         try
@@ -252,6 +266,7 @@ public class Menuefx
      * 
      * @param spieler
      */
+    @Override
     public void zeigeKartenAbgeben(Spieler spieler, int anzahl)
     {
 
@@ -273,6 +288,7 @@ public class Menuefx
     /**
      * Erzeugt eine Glückwünsch Nachricht mit dem Sieger in einem Popup Fenster.
      */
+    @Override
     public void zeigeSieger()
     {
         try
@@ -287,21 +303,16 @@ public class Menuefx
         }
     }
 
-    // public void zeigeLeeresMenue()
-    // {
-    // try
-    // {
-    // Pane pane = this.viewController.initPane(Pfade.LEERES_MENUE);
-    // StackPane.setAlignment(pane, Pos.CENTER_RIGHT);
-    // this.layoutController.addToCenter(pane);
-    // }
-    // catch (IOException e)
-    // {
-    // e.printStackTrace();
-    // }
-    //
-    // }
+    @Override
+    public boolean zeigeConfirmation(String text)
+    {
+        ConfirmationImpl confirmation = new ConfirmationImpl();
+        confirmation.setText(text);
+        boolean response = confirmation.showAndWait();
+        return response;
+    }
 
+    @Override
     public Pane zeigeSpielerInfos(Spieler spieler)
     {
         try
@@ -320,6 +331,7 @@ public class Menuefx
         }
     }
 
+    @Override
     public Pane zeigeAvatar(Spieler spieler)
     {
         try
@@ -337,6 +349,7 @@ public class Menuefx
 
     }
 
+    @Override
     public void removeFromCenterAnimatedH(Node node)
     {
         this.layoutController.removeFromCenterAnimatedH(node);

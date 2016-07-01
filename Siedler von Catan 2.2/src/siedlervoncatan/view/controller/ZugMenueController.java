@@ -82,7 +82,7 @@ public class ZugMenueController implements Controller
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenter(this.self);
-        this.spiel.getMenue().zeigeEntwicklungskarten();
+        this.spiel.getUserInterface().zeigeEntwicklungskarten();
     }
 
     @FXML
@@ -90,7 +90,7 @@ public class ZugMenueController implements Controller
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedV(this.self);
-        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getMenue().zeigeBau()));
+        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getUserInterface().zeigeBau()));
         timer.setRepeats(false);
         timer.start();
     }
@@ -107,7 +107,7 @@ public class ZugMenueController implements Controller
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.layoutController.removeFromCenterAnimatedV(this.self);
-        this.spiel.getMenue().zeigeHandel();
+        this.spiel.getUserInterface().zeigeHandel();
     }
 
     @FXML

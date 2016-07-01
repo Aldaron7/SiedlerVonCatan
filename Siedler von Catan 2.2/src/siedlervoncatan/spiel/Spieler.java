@@ -29,8 +29,6 @@ import siedlervoncatan.spielfeld.Siedlung;
 import siedlervoncatan.spielfeld.Spielfeld;
 import siedlervoncatan.spielfeld.Stadt;
 import siedlervoncatan.spielfeld.Strasse;
-import siedlervoncatan.utility.Confirmation;
-import siedlervoncatan.utility.ConfirmationImpl;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Position;
@@ -105,7 +103,7 @@ public class Spieler implements PropertyChangeListener, Serializable
                 // die Hälfte der Karten (abgerundet) wird abgegeben
                 int anzahlAbzugebendeKarten = this.karten.size() / 2;
 
-                this.spiel.getMenue().zeigeKartenAbgeben(this, anzahlAbzugebendeKarten);
+                this.spiel.getUserInterface().zeigeKartenAbgeben(this, anzahlAbzugebendeKarten);
 
             }
             if (this.isAktiv())
@@ -443,11 +441,10 @@ public class Spieler implements PropertyChangeListener, Serializable
         }
         if (umtauschkurs <= vorhandenerRohstoff)
         {
-            Confirmation confirmation = new ConfirmationImpl();
-            confirmation.setText(String.format("Wolen Sie %s gegen %s im Verhältnis %d:1 tauschen?", abzugeben, erhalten, umtauschkurs));
-            boolean response = confirmation.showAndWait();
+            boolean antwort = this.spiel.getUserInterface()
+                            .zeigeConfirmation(String.format("Wolen Sie %s gegen %s im Verhältnis %d:1 tauschen?", abzugeben, erhalten, umtauschkurs));
             final int tauschkurs = umtauschkurs;
-            if (response)
+            if (antwort)
             {
                 for (int i = 0; i < tauschkurs; i++)
                 {

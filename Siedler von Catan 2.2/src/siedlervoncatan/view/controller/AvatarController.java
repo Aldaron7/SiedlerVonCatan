@@ -59,8 +59,8 @@ public class AvatarController implements Controller
     @FXML
     private void handleInfosRequested()
     {
-        this.mouseOverPane = this.spiel.getMenue().zeigeSpielerInfos(this.spieler);
-        Timer timer = new Timer(3000, e -> Platform.runLater(() -> this.spiel.getMenue().removeFromCenterAnimatedH(this.mouseOverPane)));
+        this.mouseOverPane = this.spiel.getUserInterface().zeigeSpielerInfos(this.spieler);
+        Timer timer = new Timer(3000, e -> Platform.runLater(() -> this.spiel.getUserInterface().removeFromCenterAnimatedH(this.mouseOverPane)));
         timer.setRepeats(false);
         timer.start();
     }
@@ -68,13 +68,13 @@ public class AvatarController implements Controller
     @FXML
     private void handleMouseEntered()
     {
-        this.mouseOverPane = this.spiel.getMenue().zeigeSpielerInfos(this.spieler);
+        this.mouseOverPane = this.spiel.getUserInterface().zeigeSpielerInfos(this.spieler);
     }
 
     @FXML
     private void handleMouseExited()
     {
-        this.spiel.getMenue().removeFromCenterAnimatedH(this.mouseOverPane);
+        this.spiel.getUserInterface().removeFromCenterAnimatedH(this.mouseOverPane);
     }
 
     @Override

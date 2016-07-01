@@ -122,7 +122,7 @@ public class BauMenueController implements Controller
         this.controller.setMessages("");
         this.spiel.setZustand(null);
         this.layoutController.removeFromCenterAnimatedV(this.self);
-        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getMenue().zeigeZug()));
+        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getUserInterface().zeigeZug()));
         timer.setRepeats(false);
         timer.start();
     }

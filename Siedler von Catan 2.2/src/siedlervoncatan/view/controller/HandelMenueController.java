@@ -112,7 +112,7 @@ public class HandelMenueController implements Controller
             Handel handel = new Handel(this.angebot, this.nachfrage);
             handel.setAnbieter(this.spiel.getAktiverSpieler());
             this.layoutController.removeFromCenterAnimatedH(this.self);
-            Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getMenue().zeigeSpielerHandel(handel)));
+            Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getUserInterface().zeigeSpielerHandel(handel)));
             timer.setRepeats(false);
             timer.start();
         }
@@ -146,7 +146,7 @@ public class HandelMenueController implements Controller
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         Sound.getInstanz().playMusik(Sound.MUSIK_MEER);
         this.layoutController.removeFromCenterAnimatedH(this.self);
-        this.spiel.getMenue().zeigeZug();
+        this.spiel.getUserInterface().zeigeZug();
     }
 
     @FXML

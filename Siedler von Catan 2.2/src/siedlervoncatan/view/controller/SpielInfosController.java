@@ -26,7 +26,7 @@ public class SpielInfosController implements Controller
         ObservableList<Spieler> alleSpieler = spiel.getAlleSpieler();
         for (Spieler spieler : alleSpieler)
         {
-            Pane pane = spiel.getMenue().zeigeAvatar(spieler);
+            Pane pane = spiel.getUserInterface().zeigeAvatar(spieler);
             this.spielerVB.getChildren().add(pane);
         }
     }

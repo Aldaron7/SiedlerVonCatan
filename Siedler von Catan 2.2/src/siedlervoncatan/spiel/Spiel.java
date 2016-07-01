@@ -24,7 +24,7 @@ import siedlervoncatan.Spielstart;
 import siedlervoncatan.enums.Farbe;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.enums.Zustand;
-import siedlervoncatan.io.Menuefx;
+import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spielfeld.Entwicklungskarte;
 import siedlervoncatan.spielfeld.Landschaftsfeld;
@@ -51,7 +51,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     private Spieler                           sieger;
     private Spieler                           aktiverSpieler;
     private transient Spielstart              spielstart;
-    private transient Menuefx                 menue;
+    private transient UserInterface           menue;
     private Zustand                           zustand;
     private boolean                           hatGewuerfelt;
     private boolean                           saveable;
@@ -73,7 +73,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
-        this.menue = new Menuefx();
+        this.menue = spielstart.getUserInterface();
         this.menue.setSpielstart(spielstart);
     }
 
@@ -543,7 +543,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         return this.spielfeld;
     }
 
-    public Menuefx getMenue()
+    public UserInterface getUserInterface()
     {
         return this.menue;
     }
