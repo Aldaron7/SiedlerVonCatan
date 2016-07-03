@@ -1,67 +1,51 @@
 package siedlervoncatan.utility;
 
-import java.util.Optional;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
-import javafx.stage.StageStyle;
+import javafx.stage.Stage;
+import siedlervoncatan.Spielstart;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
+import siedlervoncatan.view.ViewController;
+import siedlervoncatan.view.controller.RohstoffauswahlController;
 
-public class Rohstoffauswahl
+public class Rohstoffauswahl implements PropertyChangeListener
 {
-    public static Rohstoff getRohstoff()
+    private Rohstoff rohstoff;
+    private Stage    stage;
+
+    public Rohstoffauswahl()
     {
-        return Rohstoffauswahl.getRohstoff("Wähle einen Rohstoff.");
+        this("Wähle einen Rohstoff.");
     }
 
-    /**
-     * Erzeugt einen Alert vom Typ CONFIRMATION mit den Buttons aller Rohstoffe.
-     * 
-     * @param text
-     * @return den geklickten Rohstoff.
-     */
-    public static Rohstoff getRohstoff(String text)
+    public Rohstoffauswahl(String text)
     {
-        Alert alert = new Alert(AlertType.NONE);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
-        alert.setTitle("Rohstoffauswahl");
-        alert.setHeaderText(text);
-        alert.initStyle(StageStyle.UNDECORATED);
+        try
+        {
+            ViewController viewController = new ViewController(null);
+            this.stage = viewController.createStage(Pfade.ROHSTOFFAUSWAHL, text, Spielstart.getPrimaryStage());
+            RohstoffauswahlController controller = viewController.getLoader().getController();
+            controller.setRohstoffauswahl(this);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
-        ButtonType holz = new ButtonType("Holz");
-        ButtonType lehm = new ButtonType("Lehm");
-        ButtonType wolle = new ButtonType("Wolle");
-        ButtonType korn = new ButtonType("Korn");
-        ButtonType erz = new ButtonType("Erz");
-
-        alert.getButtonTypes().setAll(holz, lehm, wolle, korn, erz);
-
-        Optional<ButtonType> result = alert.showAndWait();
+    public Rohstoff showAndWait()
+    {
+        this.stage.showAndWait();
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+        return this.rohstoff;
+    }
 
-        if (result.get() == holz)
-        {
-            return Rohstoff.HOLZ;
-        }
-        if (result.get() == lehm)
-        {
-            return Rohstoff.LEHM;
-        }
-        if (result.get() == wolle)
-        {
-            return Rohstoff.WOLLE;
-        }
-        if (result.get() == korn)
-        {
-            return Rohstoff.KORN;
-        }
-        if (result.get() == erz)
-        {
-            return Rohstoff.ERZ;
-        }
-        return null;
-
+    @Override
+    public void propertyChange(PropertyChangeEvent evt)
+    {
+        this.rohstoff = (Rohstoff) evt.getNewValue();
     }
 }

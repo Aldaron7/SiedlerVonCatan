@@ -13,9 +13,9 @@ public class ConfirmationImpl implements Confirmation
 
     public ConfirmationImpl()
     {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
-        alert.initStyle(StageStyle.UNDECORATED);
+        this.alert = new Alert(AlertType.CONFIRMATION);
+        this.alert.getDialogPane().getScene().getStylesheets().add(Pfade.STYLESHEET);
+        this.alert.initStyle(StageStyle.UNDECORATED);
         this.result = false;
     }
 

@@ -396,11 +396,15 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Der aktive Spieler kauft eine Entwicklung. Ruft zeigeZug auf.
+     * Der aktive Spieler kauft eine Entwicklung.
      */
     public void entwicklungKaufen()
     {
-        this.aktiverSpieler.kaufeEntwicklungskarte();
+        boolean gekauft = this.aktiverSpieler.kaufeEntwicklungskarte();
+        if (gekauft)
+        {
+            new Info(String.format("%s hat eine Entwicklungskarte gekauft.", this.aktiverSpieler));
+        }
     }
 
     /**

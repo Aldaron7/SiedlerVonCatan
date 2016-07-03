@@ -3,6 +3,7 @@ package siedlervoncatan.io;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import siedlervoncatan.Spielstart;
+import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
 
@@ -88,6 +89,8 @@ public interface UserInterface
      * Erzeugt eine Glückwünsch Nachricht mit dem Sieger in einem Popup Fenster.
      */
     void zeigeSieger();
+
+    Rohstoff zeigeRohstoffauswahl(String text);
 
     boolean zeigeConfirmation(String text);
 

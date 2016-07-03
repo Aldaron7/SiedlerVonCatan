@@ -112,7 +112,6 @@ public class BauMenueController implements Controller
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.spiel.entwicklungKaufen();
-        this.layoutController.removeFromCenterAnimatedV(this.self);
     }
 
     @FXML

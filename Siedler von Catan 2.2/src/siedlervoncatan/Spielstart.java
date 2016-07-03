@@ -25,7 +25,7 @@ import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Spielstart extends Application
 {
-    private Stage                primaryStage;
+    private static Stage         PRIMARYSTAGE;
     private BorderPane           rootLayout;
     private RootLayoutController layoutController;
     private Spiel                spiel;
@@ -35,12 +35,12 @@ public class Spielstart extends Application
     @Override
     public void start(Stage primaryStage)
     {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Siedler von Catan");
-        this.primaryStage.getIcons().add(new Image("file:bilder/logo.png"));
-        this.primaryStage.initStyle(StageStyle.UNIFIED);
-        this.primaryStage.setMinHeight(730);
-        this.primaryStage.setMinWidth(920);
+        Spielstart.PRIMARYSTAGE = primaryStage;
+        primaryStage.setTitle("Siedler von Catan");
+        primaryStage.getIcons().add(new Image("file:bilder/logo.png"));
+        primaryStage.initStyle(StageStyle.UNIFIED);
+        primaryStage.setMinHeight(730);
+        primaryStage.setMinWidth(920);
 
         this.initRootLayout();
         this.menue = new Menuefx();
@@ -61,12 +61,12 @@ public class Spielstart extends Application
             loader.setLocation(Spielstart.class.getResource(Pfade.ROOTLAYOUT));
             this.rootLayout = loader.load();
             Scene scene = new Scene(this.rootLayout);
-            this.primaryStage.setScene(scene);
+            Spielstart.PRIMARYSTAGE.setScene(scene);
 
             this.layoutController = loader.getController();
             this.layoutController.setSpielstart(this);
 
-            this.primaryStage.show();
+            Spielstart.PRIMARYSTAGE.show();
         }
         catch (IOException e)
         {
@@ -128,9 +128,9 @@ public class Spielstart extends Application
         }
     }
 
-    public Stage getPrimaryStage()
+    public static Stage getPrimaryStage()
     {
-        return this.primaryStage;
+        return Spielstart.PRIMARYSTAGE;
     }
 
     public BorderPane getRootLayout()

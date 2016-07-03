@@ -8,11 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import siedlervoncatan.Spielstart;
+import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.ConfirmationImpl;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.utility.Pfade;
+import siedlervoncatan.utility.Rohstoffauswahl;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.AvatarController;
 import siedlervoncatan.view.controller.HauptmenueController;
@@ -353,6 +355,14 @@ public class Menuefx implements UserInterface
     public void removeFromCenterAnimatedH(Node node)
     {
         this.layoutController.removeFromCenterAnimatedH(node);
+    }
+
+    @Override
+    public Rohstoff zeigeRohstoffauswahl(String text)
+    {
+        Rohstoffauswahl rohstoffauswahl = new Rohstoffauswahl(text);
+        Rohstoff rohstoff = rohstoffauswahl.showAndWait();
+        return rohstoff;
     }
 
 }

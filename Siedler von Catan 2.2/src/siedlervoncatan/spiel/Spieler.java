@@ -32,7 +32,6 @@ import siedlervoncatan.spielfeld.Strasse;
 import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Position;
-import siedlervoncatan.utility.Rohstoffauswahl;
 import siedlervoncatan.utility.Wuerfel;
 import siedlervoncatan.utility.Zusatzpunkte;
 
@@ -409,8 +408,8 @@ public class Spieler implements PropertyChangeListener, Serializable
      */
     public void seehandel()
     {
-        Rohstoff abzugeben = Rohstoffauswahl.getRohstoff(this + " wählen Sie den Rohstoff, den Sie abgeben möchten.");
-        Rohstoff erhalten = Rohstoffauswahl.getRohstoff(this + " wählen Sie den Rohstoff, gegen den Sie tauschen möchten.");
+        Rohstoff abzugeben = this.spiel.getUserInterface().zeigeRohstoffauswahl(this + "\n wählen Sie den Rohstoff, den Sie abgeben möchten.");
+        Rohstoff erhalten = this.spiel.getUserInterface().zeigeRohstoffauswahl(this + "\n wählen Sie den Rohstoff, gegen den Sie tauschen möchten.");
 
         this.tauscheRohstoffe(abzugeben, erhalten);
     }

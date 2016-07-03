@@ -30,6 +30,7 @@
 	-fx-background-size: stretch ;
 	-fx-background-position: center ;
 	-fx-background-repeat: no-repeat ;
+	-fx-background-color: transparent ;
 }
 
 .pergamentrolle2{
@@ -37,6 +38,7 @@
 	-fx-background-size: stretch ;
 	-fx-background-position: center ;
 	-fx-background-repeat: no-repeat ;
+	-fx-background-color: transparent ;
 	
 }
 

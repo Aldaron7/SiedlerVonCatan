@@ -3,7 +3,12 @@ package siedlervoncatan.view;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.controller.RootLayoutController;
@@ -13,6 +18,11 @@ public class ViewController
     private Spiel                spiel;
     private RootLayoutController layoutController;
     private FXMLLoader           loader;
+
+    public ViewController(Spiel spiel)
+    {
+        this(spiel, null);
+    }
 
     public ViewController(Spiel spiel, RootLayoutController layoutController)
     {
@@ -35,23 +45,26 @@ public class ViewController
         return pane;
     }
 
-    // public Stage createStage(String view, String titel) throws IOException
-    // {
-    // Pane pane = this.initPane(view);
-    // Scene scene = new Scene(pane);
-    // Stage stage = new Stage();
-    // stage.setTitle(titel);
-    // stage.initModality(Modality.WINDOW_MODAL);
-    // stage.initOwner(this.primaryStage);
-    // stage.initStyle(StageStyle.UNDECORATED);
-    // stage.setScene(scene);
-    // Controller controller = this.loader.getController();
-    // if (controller != null)
-    // {
-    // controller.setStage(stage);
-    // }
-    // return stage;
-    // }
+    public Stage createStage(String view, String text, Stage primaryStage) throws IOException
+    {
+        this.loader = new FXMLLoader();
+        this.loader.setLocation(Spielstart.class.getResource(view));
+        Pane pane = this.loader.load();
+        Scene scene = new Scene(pane);
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(primaryStage);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+        PopupController controller = this.loader.getController();
+        if (controller != null)
+        {
+            controller.setStage(stage);
+            controller.setText(text);
+        }
+        return stage;
+    }
 
     public FXMLLoader getLoader()
     {
