@@ -1,4 +1,4 @@
-package siedlervoncatan.utility;
+package siedlervoncatan.utility.popup;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javafx.stage.Stage;
 import siedlervoncatan.enums.Rohstoff;
-import siedlervoncatan.sound.Sound;
+import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.RohstoffauswahlController;
 
@@ -38,7 +38,6 @@ public class Rohstoffauswahl implements PropertyChangeListener
     public Rohstoff showAndWait()
     {
         this.stage.showAndWait();
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         return this.rohstoff;
     }
 

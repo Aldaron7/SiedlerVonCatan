@@ -29,7 +29,7 @@ public class Spielstart extends Application
     private RootLayoutController layoutController;
     private Spiel                spiel;
     private SpielfeldController  spielfeldController;
-    private UserInterface        menue;
+    private UserInterface        ui;
 
     @Override
     public void start(Stage primaryStage)
@@ -42,9 +42,9 @@ public class Spielstart extends Application
         primaryStage.setMinWidth(920);
 
         this.initRootLayout();
-        this.menue = new Menuefx();
-        this.menue.setSpielstart(this);
-        this.menue.zeigeHauptmenue();
+        this.ui = new Menuefx();
+        this.ui.setSpielstart(this);
+        this.ui.zeigeHauptmenue();
     }
 
     public static void main(String[] args)
@@ -91,13 +91,13 @@ public class Spielstart extends Application
             is.close();
             this.spiel.postLoad();
             this.spiel.setSpielstart(this);
-            this.menue.zeigeSpielfeld();
-            this.menue.zeigeSpielInfos();
+            this.ui.zeigeSpielfeld();
+            this.ui.zeigeSpielInfos();
             this.spiel.weiterspielen();
         }
         catch (Exception e)
         {
-            this.menue.zeigeError("Spielstand konnte nicht geladen werden aus der Datei:\n" + file.getPath());
+            this.ui.zeigeError("Spielstand konnte nicht geladen werden aus der Datei:\n" + file.getPath());
             e.printStackTrace();
         }
     }
@@ -114,13 +114,13 @@ public class Spielstart extends Application
     {
         this.spiel = new Spiel();
         this.spiel.setSpielstart(this);
-        this.menue.zeigeSpielfeld();
+        this.ui.zeigeSpielfeld();
         this.spiel.starten();
     }
 
     public void beenden()
     {
-        boolean antwort = this.menue.zeigeConfirmation("Möchten Sie das Spiel wirklich beenden?");
+        boolean antwort = this.ui.zeigeConfirmation("Möchten Sie das Spiel wirklich beenden?");
         if (antwort)
         {
             System.exit(0);
@@ -154,7 +154,7 @@ public class Spielstart extends Application
 
     public UserInterface getUserInterface()
     {
-        return this.menue;
+        return this.ui;
     }
 
     public RootLayoutController getLayoutController()

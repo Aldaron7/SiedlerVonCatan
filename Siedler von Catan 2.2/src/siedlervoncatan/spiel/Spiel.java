@@ -49,7 +49,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     private Spieler                           sieger;
     private Spieler                           aktiverSpieler;
     private transient Spielstart              spielstart;
-    private transient UserInterface           menue;
+    private transient UserInterface           ui;
     private Zustand                           zustand;
     private boolean                           hatGewuerfelt;
     private boolean                           saveable;
@@ -71,8 +71,8 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
-        this.menue = spielstart.getUserInterface();
-        this.menue.setSpielstart(spielstart);
+        this.ui = spielstart.getUserInterface();
+        this.ui.setSpielstart(spielstart);
     }
 
     /**
@@ -81,7 +81,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void starten()
     {
         this.spielstart.getSpielfeldController().addListener(this);
-        this.menue.zeigeNeuesspielMenue();
+        this.ui.zeigeNeuesspielMenue();
     }
 
     private void autosave()
@@ -94,7 +94,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         }
         catch (IOException e)
         {
-            this.menue.zeigeError("Autospeichern konnte nicht ausgeführt werden.");
+            this.ui.zeigeError("Autospeichern konnte nicht ausgeführt werden.");
             e.printStackTrace();
         }
     }
@@ -122,13 +122,13 @@ public class Spiel implements Serializable, PropertyChangeListener
             }
             catch (Exception e)
             {
-                this.menue.zeigeError("Spielstand konnte nicht gespeichert werden in der Datei:\n" + file.getPath());
+                this.ui.zeigeError("Spielstand konnte nicht gespeichert werden in der Datei:\n" + file.getPath());
                 e.printStackTrace();
             }
         }
         else
         {
-            this.menue.zeigeError("Spielstand kann jetzt nicht gespeichert werden.");
+            this.ui.zeigeError("Spielstand kann jetzt nicht gespeichert werden.");
         }
     }
 
@@ -137,7 +137,7 @@ public class Spiel implements Serializable, PropertyChangeListener
      */
     public void spielerAnlegen()
     {
-        this.menue.spielerAnlegen();
+        this.ui.spielerAnlegen();
     }
 
     @Override
@@ -188,7 +188,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         {
             String ergebnis = evt.getNewValue().toString();
             this.spielstart.getSpielfeldController().setMessages(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
-            this.menue.zeigeInfo(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
+            this.ui.zeigeInfo(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
         }
     }
 
@@ -198,7 +198,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void spielen()
     {
         Collections.shuffle(this.alleSpieler);
-        this.menue.zeigeSpielInfos();
+        this.ui.zeigeSpielInfos();
         this.ersteRunde();
     }
 
@@ -318,7 +318,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         }
         else
         {
-            this.menue.zeigeError("Strasse muss an die zuletzt gebaute Siedlung angrenzen.");
+            this.ui.zeigeError("Strasse muss an die zuletzt gebaute Siedlung angrenzen.");
         }
     }
 
@@ -368,12 +368,12 @@ public class Spiel implements Serializable, PropertyChangeListener
                     entwicklungskarte.darfGespieltWerden();
                 }
                 this.setSaveable();
-                this.menue.zeigeWuerfel();
+                this.ui.zeigeWuerfel();
             }
         }
         else
         {
-            this.menue.zeigeSieger();
+            this.ui.zeigeSieger();
         }
     }
 
@@ -401,7 +401,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         boolean gekauft = this.aktiverSpieler.kaufeEntwicklungskarte();
         if (gekauft)
         {
-            this.menue.zeigeInfo(String.format("%s hat eine Entwicklungskarte gekauft.", this.aktiverSpieler));
+            this.ui.zeigeInfo(String.format("%s hat eine Entwicklungskarte gekauft.", this.aktiverSpieler));
         }
     }
 
@@ -494,7 +494,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         }
         else
         {
-            this.menue.zeigeError("Sie können nicht bei " + spieler + " ziehen.");
+            this.ui.zeigeError("Sie können nicht bei " + spieler + " ziehen.");
         }
     }
 
@@ -506,7 +506,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         this.zustand = null;
         this.hatGewuerfelt = true;
         this.saveable = true;
-        this.menue.zeigeZug();
+        this.ui.zeigeZug();
     }
 
     public void setSieger(Spieler spieler)
@@ -547,7 +547,7 @@ public class Spiel implements Serializable, PropertyChangeListener
 
     public UserInterface getUserInterface()
     {
-        return this.menue;
+        return this.ui;
     }
 
     public IntegerProperty getAnzahlRunden()
