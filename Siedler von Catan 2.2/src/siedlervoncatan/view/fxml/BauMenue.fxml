@@ -88,7 +88,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../bilder/holz.png" />
+                              <Image url="file:bilder/holz.png" />
                            </image>
                            <effect>
                               <InnerShadow height="10.0" radius="4.5" width="10.0" />
@@ -96,7 +96,7 @@
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../../../bilder/lehm.png" />
+                              <Image url="file:bilder/lehm.png" />
                            </image>
                            <effect>
                               <InnerShadow height="10.0" radius="4.5" width="10.0" />
@@ -104,7 +104,7 @@
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../../../../bilder/wolle.png" />
+                              <Image url="file:bilder/wolle.png" />
                            </image>
                            <effect>
                               <InnerShadow height="10.0" radius="4.5" width="10.0" />
@@ -112,7 +112,7 @@
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../../../bilder/korn.png" />
+                              <Image url="file:bilder/korn.png" />
                            </image>
                            <effect>
                               <InnerShadow height="10.0" radius="4.5" width="10.0" />
@@ -120,7 +120,7 @@
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                            <image>
-                              <Image url="@../../../../bilder/erz.png" />
+                              <Image url="file:bilder/erz.png" />
                            </image>
                            <effect>
                               <InnerShadow height="10.0" radius="4.5" width="10.0" />

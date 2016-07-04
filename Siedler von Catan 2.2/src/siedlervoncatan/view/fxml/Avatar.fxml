@@ -13,7 +13,7 @@
    <children>
       <ImageView fx:id="avatarIV" fitHeight="134.0" fitWidth="150.0" onContextMenuRequested="#handleInfosRequested" onMouseClicked="#handleAvatarClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../bilder/avatar_blau.png" />
+            <Image url="file:bilder/avatar_blau.png" />
          </image>
          <effect>
             <InnerShadow height="20.0" radius="9.5" width="20.0" />
