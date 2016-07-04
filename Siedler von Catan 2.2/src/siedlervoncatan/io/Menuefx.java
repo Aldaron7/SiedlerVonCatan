@@ -31,6 +31,7 @@ public class Menuefx implements UserInterface
     private Spielstart           spielstart;
     private ViewController       viewController;
     private RootLayoutController layoutController;
+    private SpielfeldController  spielfeldController;
 
     @Override
     public void setSpielstart(Spielstart spielstart)
@@ -86,7 +87,8 @@ public class Menuefx implements UserInterface
             Pane pane = this.viewController.initPane(Pfade.SPIELFELD);
             this.layoutController.addToCenter(pane);
             SpielfeldController controller = this.viewController.getLoader().getController();
-            this.spielstart.setSpielfeldController(controller);
+            this.spielfeldController = controller;
+            // this.spielstart.setSpielfeldController(controller);
             Sound.getInstanz().playMusik(Sound.MUSIK_MEER);
         }
         catch (IOException e)
@@ -376,6 +378,18 @@ public class Menuefx implements UserInterface
     public void zeigeError(String text)
     {
         new Error(text).showAndWait();
+    }
+
+    @Override
+    public SpielfeldController getSpielfeldController()
+    {
+        return this.spielfeldController;
+    }
+
+    @Override
+    public void zeigeMessage(String message)
+    {
+        this.spielfeldController.setMessage(message);
     }
 
 }

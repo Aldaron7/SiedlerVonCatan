@@ -25,14 +25,12 @@ import siedlervoncatan.enums.Farbe;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.enums.Zustand;
 import siedlervoncatan.io.UserInterface;
-import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spielfeld.Entwicklungskarte;
 import siedlervoncatan.spielfeld.Landschaftsfeld;
 import siedlervoncatan.spielfeld.Raeuber;
 import siedlervoncatan.spielfeld.Spielfeld;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Wuerfel;
-import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Spiel implements Serializable, PropertyChangeListener
 {
@@ -80,7 +78,7 @@ public class Spiel implements Serializable, PropertyChangeListener
      */
     public void starten()
     {
-        this.spielstart.getSpielfeldController().addListener(this);
+        this.ui.getSpielfeldController().addListener(this);
         this.ui.zeigeNeuesspielMenue();
     }
 
@@ -187,8 +185,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         if (evt.getPropertyName().equals("wuerfeln"))
         {
             String ergebnis = evt.getNewValue().toString();
-            this.spielstart.getSpielfeldController().setMessages(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
-            this.ui.zeigeInfo(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
+            this.ui.zeigeMessage(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
         }
     }
 
@@ -207,7 +204,7 @@ public class Spiel implements Serializable, PropertyChangeListener
      */
     public void weiterspielen()
     {
-        this.spielstart.getSpielfeldController().addListener(this);
+        this.ui.getSpielfeldController().addListener(this);
         if (this.hatGewuerfelt)
         {
             this.zeigeZug();
@@ -256,18 +253,17 @@ public class Spiel implements Serializable, PropertyChangeListener
      */
     private void setzeErsteRunde(boolean siedlungGebaut)
     {
-        SpielfeldController spielfeldController = this.spielstart.getSpielfeldController();
         if (!siedlungGebaut)
         {
             // this.aktiverSpieler = this.naechsterSpieler();
             this.zustand = Zustand.ERSTE_SIEDLUNG;
-            spielfeldController.setMessages(this.aktiverSpieler + " wählen Sie einen Bauplatz für Ihre Siedlung.");
+            this.ui.zeigeMessage(this.aktiverSpieler + " wählen Sie einen Bauplatz für Ihre Siedlung.");
 
         }
         else
         {
             this.zustand = Zustand.ERSTE_STRASSE;
-            spielfeldController.setMessages(this.aktiverSpieler + " wählen Sie einen Bauplatz für Ihre Strasse.");
+            this.ui.zeigeMessage(this.aktiverSpieler + " wählen Sie einen Bauplatz für Ihre Strasse.");
         }
     }
 
@@ -347,7 +343,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void naechsteRunde()
     {
         this.hatGewuerfelt = false;
-        this.spielstart.getSpielfeldController().setMessages("");
+        this.ui.zeigeMessage("");
         if (this.sieger == null)
         {
             this.aktiverSpieler = this.naechsterSpieler();
@@ -360,7 +356,7 @@ public class Spiel implements Serializable, PropertyChangeListener
             }
             else
             {
-                this.spielstart.getSpielfeldController().setMessages(this.aktiverSpieler + " ist am Zug.");
+                this.ui.zeigeMessage(this.aktiverSpieler + " ist am Zug.");
                 this.aktiverSpieler.setAktiv();
                 this.aktiverSpieler.setEntwicklungskarteNichtGespielt();
                 for (Entwicklungskarte entwicklungskarte : this.aktiverSpieler.getEntwickulungskarten())
@@ -416,7 +412,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         if (gebaut)
         {
             this.zustand = null;
-            this.spielstart.getSpielfeldController().setMessages("");
+            this.ui.zeigeMessage("");
         }
     }
 
@@ -431,7 +427,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         if (gebaut)
         {
             this.zustand = null;
-            this.spielstart.getSpielfeldController().setMessages("");
+            this.ui.zeigeMessage("");
         }
     }
 
@@ -446,7 +442,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         if (gebaut)
         {
             this.zustand = null;
-            this.spielstart.getSpielfeldController().setMessages("");
+            this.ui.zeigeMessage("");
         }
     }
 
@@ -465,13 +461,13 @@ public class Spiel implements Serializable, PropertyChangeListener
             if (this.raeuber.getAngrenzendeSpieler().isEmpty())
             {
                 this.zustand = null;
-                this.spielstart.getSpielfeldController().setMessages("");
+                this.ui.zeigeMessage("");
                 this.zeigeZug();
             }
             else
             {
                 this.zustand = Zustand.SPIELER;
-                this.spielstart.getSpielfeldController().setMessages(this.aktiverSpieler + " wählen Sie den Spieler bei dem Sie ziehen möchten.");
+                this.ui.zeigeMessage(this.aktiverSpieler + " wählen Sie den Spieler bei dem Sie ziehen möchten.");
             }
         }
     }
@@ -486,10 +482,9 @@ public class Spiel implements Serializable, PropertyChangeListener
     {
         if (this.raeuber.getAngrenzendeSpieler().contains(spieler) && !this.aktiverSpieler.equals(spieler))
         {
-            Sound.getInstanz().playSoundeffekt(Sound.EVIL_LAUGH_CLIP);
             this.aktiverSpieler.zieheKarte(spieler);
             this.zustand = null;
-            this.spielstart.getSpielfeldController().setMessages("");
+            this.ui.zeigeMessage("");
             this.zeigeZug();
         }
         else
@@ -593,6 +588,11 @@ public class Spiel implements Serializable, PropertyChangeListener
     public boolean hatGewuerfelt()
     {
         return this.hatGewuerfelt;
+    }
+
+    public Wuerfel getWuerfel()
+    {
+        return this.wuerfel;
     }
 
     /**

@@ -1,5 +1,6 @@
 package siedlervoncatan.view.controller;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import siedlervoncatan.spielfeld.Strasse;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.view.Controller;
 
-public class SpielfeldController implements MapChangeListener, Controller
+public class SpielfeldController implements MapChangeListener, PropertyChangeListener, Controller
 {
 
     private Spiel                         spiel;
@@ -43,6 +44,10 @@ public class SpielfeldController implements MapChangeListener, Controller
     private Group                         groupInsel;
     @FXML
     private StackPane                     stackPaneInsel;
+    @FXML
+    private ImageView                     wuerfel1IV;
+    @FXML
+    private ImageView                     wuerfel2IV;
 
     @FXML
     private ImageView                     landschaft_3_2;
@@ -840,7 +845,7 @@ public class SpielfeldController implements MapChangeListener, Controller
         this.support.removePropertyChangeListener(listener);
     }
 
-    public void setMessages(String message)
+    public void setMessage(String message)
     {
         this.messages.setText(message);
     }
@@ -851,6 +856,7 @@ public class SpielfeldController implements MapChangeListener, Controller
         this.spiel = spiel;
         spiel.getSpielfeld().addOrtschaftenListener(this);
         spiel.getSpielfeld().addStrassenListener(this);
+        spiel.getWuerfel().addListener(this);
 
         // passt die Spielfeldgröße dem Fenster an
         this.spiel.getSpielstart().getRootLayout().boundsInParentProperty().addListener(new ChangeListener<Bounds>()
@@ -891,6 +897,27 @@ public class SpielfeldController implements MapChangeListener, Controller
             this.kanten.get(key).setImage(image);
             Sound.getInstanz().playSoundeffekt(Sound.BAU_CLIP);
         }
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt)
+    {
+        if (evt.getPropertyName().equals("wuerfel1"))
+        {
+            int zahl = (int) evt.getNewValue();
+            this.wuerfel1IV.setImage(this.getWuerfelImage(zahl));
+        }
+        if (evt.getPropertyName().equals("wuerfel2"))
+        {
+            int zahl = (int) evt.getNewValue();
+            this.wuerfel2IV.setImage(this.getWuerfelImage(zahl));
+        }
+    }
+
+    private Image getWuerfelImage(int zahl)
+    {
+        Image image = new Image("file:bilder/dice" + zahl + ".png");
+        return image;
     }
 
     @Override

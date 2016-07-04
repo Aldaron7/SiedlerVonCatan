@@ -5,6 +5,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.ImageView?>
@@ -1001,6 +1002,16 @@
                         </Lighting>
                      </effect>
                   </Label>
+                  <ImageView fx:id="wuerfel2IV" fitHeight="50.0" fitWidth="50.0" layoutX="491.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fx:id="wuerfel1IV" fitHeight="50.0" fitWidth="50.0" layoutX="458.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </ImageView>
             </children>
             </Group>
          </children>

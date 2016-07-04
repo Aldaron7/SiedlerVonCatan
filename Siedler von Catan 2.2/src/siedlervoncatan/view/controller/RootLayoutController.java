@@ -97,7 +97,7 @@ public class RootLayoutController implements Controller
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("SVC files", "*svc");
         fileChooser.getExtensionFilters().add(extensionFilter);
         fileChooser.setInitialDirectory(new File("saves"));
-        File file = fileChooser.showOpenDialog(this.spielstart.getPrimaryStage());
+        File file = fileChooser.showOpenDialog(Spielstart.getPrimaryStage());
         if (file != null)
         {
             this.spielstart.spielLaden(file);
@@ -119,7 +119,7 @@ public class RootLayoutController implements Controller
             FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("SVC files (*.svc)", "*.svc");
             fileChooser.getExtensionFilters().add(extensionFilter);
             fileChooser.setInitialDirectory(new File("saves"));
-            File file = fileChooser.showSaveDialog(this.spielstart.getPrimaryStage());
+            File file = fileChooser.showSaveDialog(Spielstart.getPrimaryStage());
             if (file != null)
             {
                 if (!file.getPath().endsWith(".svc"))
@@ -127,7 +127,6 @@ public class RootLayoutController implements Controller
                     file = new File(file.getPath() + ".svc");
                 }
                 this.spielstart.spielSpeichern(file);
-                System.out.println(file);
             }
         }
         else

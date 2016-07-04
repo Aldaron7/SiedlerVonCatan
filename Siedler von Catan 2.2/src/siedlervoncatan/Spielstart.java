@@ -20,7 +20,6 @@ import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.controller.RootLayoutController;
-import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Spielstart extends Application
 {
@@ -28,7 +27,6 @@ public class Spielstart extends Application
     private BorderPane           rootLayout;
     private RootLayoutController layoutController;
     private Spiel                spiel;
-    private SpielfeldController  spielfeldController;
     private UserInterface        ui;
 
     @Override
@@ -135,16 +133,6 @@ public class Spielstart extends Application
     public BorderPane getRootLayout()
     {
         return this.rootLayout;
-    }
-
-    public SpielfeldController getSpielfeldController()
-    {
-        return this.spielfeldController;
-    }
-
-    public void setSpielfeldController(SpielfeldController spielfeldController)
-    {
-        this.spielfeldController = spielfeldController;
     }
 
     public Spiel getSpiel()

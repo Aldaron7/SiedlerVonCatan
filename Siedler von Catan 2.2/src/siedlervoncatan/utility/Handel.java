@@ -3,7 +3,6 @@ package siedlervoncatan.utility;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import siedlervoncatan.enums.Rohstoff;
-import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spieler;
 
 public class Handel
@@ -38,7 +37,6 @@ public class Handel
             this.nachfrager.removeKarten(this.nachfrage);
             this.nachfrager.addKarten(this.angebot);
         }
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
     }
 
     public void addAngebot(Rohstoff rohstoff)

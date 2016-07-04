@@ -24,7 +24,7 @@ public class Raeuber implements Serializable
         this.position = new SimpleObjectProperty<Position>(zentrum);
         this.angrenzendeSpieler = new HashSet<>();
         this.spiel = spiel;
-        this.position.addListener(e -> spiel.getSpielstart().getSpielfeldController().erzeugeSpielfeld());
+        this.position.addListener(e -> spiel.getUserInterface().getSpielfeldController().erzeugeSpielfeld());
     }
 
     public Set<Spieler> getAngrenzendeSpieler()
@@ -95,7 +95,7 @@ public class Raeuber implements Serializable
     public void postLoad()
     {
         this.position = new SimpleObjectProperty<Position>(this.positionSave);
-        this.position.addListener(e -> this.spiel.getSpielstart().getSpielfeldController().erzeugeSpielfeld());
+        this.position.addListener(e -> this.spiel.getUserInterface().getSpielfeldController().erzeugeSpielfeld());
     }
 
 }

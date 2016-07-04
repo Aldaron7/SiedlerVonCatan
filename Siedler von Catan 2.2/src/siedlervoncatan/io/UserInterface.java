@@ -6,6 +6,7 @@ import siedlervoncatan.Spielstart;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
+import siedlervoncatan.view.controller.SpielfeldController;
 
 public interface UserInterface
 {
@@ -103,5 +104,9 @@ public interface UserInterface
     Pane zeigeAvatar(Spieler spieler);
 
     void removeFromCenterAnimatedH(Node node);
+
+    SpielfeldController getSpielfeldController();
+
+    void zeigeMessage(String message);
 
 }

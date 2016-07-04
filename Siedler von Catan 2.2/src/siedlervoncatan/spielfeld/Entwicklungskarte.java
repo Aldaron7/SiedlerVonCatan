@@ -12,7 +12,6 @@ import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Position;
-import siedlervoncatan.view.controller.SpielfeldController;
 
 public class Entwicklungskarte implements Serializable, PropertyChangeListener
 {
@@ -53,7 +52,6 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
         }
         if (!this.besitzer.entwicklungskarteGespielt())
         {
-            SpielfeldController spielfeldController = this.besitzer.getSpiel().getSpielstart().getSpielfeldController();
             UserInterface userInterface = this.besitzer.getSpiel().getUserInterface();
             switch (this.entwicklung)
             {
@@ -88,8 +86,8 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                     this.strasse1 = true;
                     this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spielt die Karte Strassenbau.");
                     this.besitzer.getSpiel().setNotSaveable();
-                    spielfeldController.setMessages(this.besitzer + " wählen Sie einen Bauplatz für Ihre erste Strasse.");
-                    spielfeldController.addListener(this);
+                    userInterface.zeigeMessage(this.besitzer + " wählen Sie einen Bauplatz für Ihre erste Strasse.");
+                    userInterface.getSpielfeldController().addListener(this);
                     Entwicklung.addEntwicklung(this.entwicklung);
                     break;
                 case ERFINDUNG:
@@ -127,16 +125,16 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
         Boolean gebaut = this.besitzer.baueStrasse(positionen, false, true);
         if (gebaut)
         {
-            SpielfeldController spielfeldController = this.besitzer.getSpiel().getSpielstart().getSpielfeldController();
+            UserInterface userInterface = this.besitzer.getSpiel().getUserInterface();
             if (this.strasse1)
             {
                 this.strasse1 = false;
-                spielfeldController.setMessages(this.besitzer + " wählen Sie einen Bauplatz für Ihre zweite Strasse.");
+                userInterface.zeigeMessage(this.besitzer + " wählen Sie einen Bauplatz für Ihre zweite Strasse.");
             }
             else
             {
-                spielfeldController.removeListener(this);
-                spielfeldController.setMessages("");
+                userInterface.getSpielfeldController().removeListener(this);
+                userInterface.zeigeMessage("");
                 this.zeigeMenue();
             }
         }

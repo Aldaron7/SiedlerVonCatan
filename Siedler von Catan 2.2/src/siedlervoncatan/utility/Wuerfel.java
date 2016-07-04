@@ -47,6 +47,7 @@ public class Wuerfel implements Serializable
         int w2 = Wuerfel.generiereZufallsZahl(6);
         int ergebnis = w1 + w2;
         this.support.firePropertyChange("wuerfeln", 0, ergebnis);
-
+        this.support.firePropertyChange("wuerfel1", 0, w1);
+        this.support.firePropertyChange("wuerfel2", 0, w2);
     }
 }

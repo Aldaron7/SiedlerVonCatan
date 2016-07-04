@@ -50,7 +50,7 @@ public class BauMenueController implements Controller
         Spieler aktiverSpieler = spiel.getAktiverSpieler();
         this.spieler.setText(aktiverSpieler.toString());
         this.tooltipSpieler.setText(aktiverSpieler.getFarbe().toString());
-        this.controller = spiel.getSpielstart().getSpielfeldController();
+        this.controller = spiel.getUserInterface().getSpielfeldController();
         this.bauButtons.setVisible(true);
         this.setAnzahlRohstoffe(aktiverSpieler);
     }
@@ -87,7 +87,7 @@ public class BauMenueController implements Controller
     private void handleStrasse()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
+        this.controller.setMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
         this.spiel.setZustand(Zustand.STARSSE_BAUEN);
     }
 
@@ -95,7 +95,7 @@ public class BauMenueController implements Controller
     private void handleSiedlung()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
+        this.controller.setMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
         this.spiel.setZustand(Zustand.SIEDLUNG_BAUEN);
     }
 
@@ -103,7 +103,7 @@ public class BauMenueController implements Controller
     private void handleStadt()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessages(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
+        this.controller.setMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
         this.spiel.setZustand(Zustand.STADT_BAUEN);
     }
 
@@ -118,7 +118,7 @@ public class BauMenueController implements Controller
     private void handleAbbrechen()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessages("");
+        this.controller.setMessage("");
         this.spiel.setZustand(null);
         this.layoutController.removeFromCenterAnimatedV(this.self);
         Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getUserInterface().zeigeZug()));

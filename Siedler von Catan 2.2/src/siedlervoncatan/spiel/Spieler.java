@@ -21,6 +21,7 @@ import siedlervoncatan.enums.Farbe;
 import siedlervoncatan.enums.Hafen;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.enums.Zustand;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spielfeld.Baukosten;
 import siedlervoncatan.spielfeld.Entwicklungskarte;
 import siedlervoncatan.spielfeld.Landschaftsfeld;
@@ -101,7 +102,6 @@ public class Spieler implements PropertyChangeListener, Serializable
                 int anzahlAbzugebendeKarten = this.karten.size() / 2;
 
                 this.spiel.getUserInterface().zeigeKartenAbgeben(this, anzahlAbzugebendeKarten);
-
             }
             if (this.isAktiv())
             {
@@ -376,9 +376,7 @@ public class Spieler implements PropertyChangeListener, Serializable
     public void versetzeRauber()
     {
         this.spiel.setNotSaveable();
-        // TODO
-        // this.spiel.getMenue().zeigeLeeresMenue();
-        this.spiel.getSpielstart().getSpielfeldController().setMessages(this + " bitte versetzen Sie den Räuber.");
+        this.spiel.getUserInterface().zeigeMessage(this + " bitte versetzen Sie den Räuber.");
         this.spiel.setZustand(Zustand.LANDSCHAFTSFELD);
     }
 
@@ -391,6 +389,7 @@ public class Spieler implements PropertyChangeListener, Serializable
     {
         if (spieler.getAnzahlKarten().get() > 0)
         {
+            Sound.getInstanz().playSoundeffekt(Sound.EVIL_LAUGH_CLIP);
             this.spiel.getUserInterface().zeigeInfo(this + " zieht eine Karte von " + spieler);
             Rohstoff karte = spieler.removeZufaelligeKarte();
             this.addKarte(karte);
