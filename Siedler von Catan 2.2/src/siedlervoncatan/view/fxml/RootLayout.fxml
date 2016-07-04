@@ -21,6 +21,7 @@
             <Menu mnemonicParsing="false" text="Optionen">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#handleAudio" text="Audio" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleVollbild" text="Vollbild" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Hilfe">

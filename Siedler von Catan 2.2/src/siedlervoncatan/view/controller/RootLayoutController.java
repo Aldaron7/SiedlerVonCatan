@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.sound.Sound;
@@ -145,6 +146,13 @@ public class RootLayoutController implements Controller
     private void handleAudio()
     {
         this.spielstart.getUserInterface().zeigeAudiomenue();
+    }
+
+    @FXML
+    private void handleVollbild()
+    {
+        Stage primaryStage = Spielstart.getPrimaryStage();
+        primaryStage.setFullScreen(!primaryStage.isFullScreen());
     }
 
     @FXML

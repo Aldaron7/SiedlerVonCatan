@@ -9,8 +9,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="250.0" maxWidth="410.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.RohstoffauswahlController">
    <children>
@@ -87,11 +85,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="textL" maxWidth="280.0" minWidth="280.0" prefWidth="280.0" text="text&#10;" wrapText="true" GridPane.columnSpan="5" GridPane.halignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
+            <Label fx:id="textL" maxWidth="280.0" minWidth="280.0" prefWidth="280.0" text="text&#10;" wrapText="true" GridPane.columnSpan="5" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
    </children>

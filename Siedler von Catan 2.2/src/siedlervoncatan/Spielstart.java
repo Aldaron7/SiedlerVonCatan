@@ -36,6 +36,7 @@ public class Spielstart extends Application
         primaryStage.setTitle("Siedler von Catan");
         primaryStage.getIcons().add(new Image("file:bilder/logo.png"));
         primaryStage.initStyle(StageStyle.UNIFIED);
+        primaryStage.setFullScreen(true);
         primaryStage.setMinHeight(730);
         primaryStage.setMinWidth(920);
 
