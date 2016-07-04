@@ -8,7 +8,6 @@ import siedlervoncatan.enums.Farbe;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.view.Controller;
 
 public class SpielerAnlegenController implements Controller
@@ -44,7 +43,7 @@ public class SpielerAnlegenController implements Controller
         }
         else
         {
-            new Error("Ungültige Eingaben!");
+            this.spiel.getUserInterface().zeigeError("Ungültige Eingaben!");
         }
 
     }

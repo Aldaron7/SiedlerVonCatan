@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.view.Controller;
 
 public class NeuesSpielMenueController implements Controller
@@ -34,7 +33,7 @@ public class NeuesSpielMenueController implements Controller
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         if (this.spiel.getAlleSpieler().size() >= 4)
         {
-            new Error("Die maximale Spieleranzahl ist bereits erreicht.");
+            this.spiel.getUserInterface().zeigeError("Die maximale Spieleranzahl ist bereits erreicht.");
         }
         else
         {
@@ -48,7 +47,7 @@ public class NeuesSpielMenueController implements Controller
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         if (this.spiel.getAlleSpieler().size() <= 1)
         {
-            new Error("Zu wenige Spieler.");
+            this.spiel.getUserInterface().zeigeError("Zu wenige Spieler.");
         }
         else
         {

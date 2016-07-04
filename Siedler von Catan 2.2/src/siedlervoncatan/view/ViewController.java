@@ -18,6 +18,7 @@ public class ViewController
     private Spiel                spiel;
     private RootLayoutController layoutController;
     private FXMLLoader           loader;
+    private Stage                primaryStage;
 
     public ViewController(Spiel spiel)
     {
@@ -28,6 +29,7 @@ public class ViewController
     {
         this.layoutController = layoutController;
         this.spiel = spiel;
+        this.primaryStage = Spielstart.getPrimaryStage();
     }
 
     public Pane initPane(String view) throws IOException
@@ -45,7 +47,7 @@ public class ViewController
         return pane;
     }
 
-    public Stage createStage(String view, String text, Stage primaryStage) throws IOException
+    public Stage createStage(String view, String text) throws IOException
     {
         this.loader = new FXMLLoader();
         this.loader.setLocation(Spielstart.class.getResource(view));
@@ -53,7 +55,7 @@ public class ViewController
         Scene scene = new Scene(pane);
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(primaryStage);
+        stage.initOwner(this.primaryStage);
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);

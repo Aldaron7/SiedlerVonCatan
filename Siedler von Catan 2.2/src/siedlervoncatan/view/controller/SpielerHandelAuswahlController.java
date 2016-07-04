@@ -16,7 +16,6 @@ import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.view.Controller;
 
@@ -95,12 +94,12 @@ public class SpielerHandelAuswahlController implements Controller
             }
             else
             {
-                new Error(andererSpieler + " hat nicht genügend Rohstoffe in seinem Besitz.");
+                this.spiel.getUserInterface().zeigeError(andererSpieler + " hat nicht genügend Rohstoffe in seinem Besitz.");
             }
         }
         else
         {
-            new Error("Ungültige Auswahl.");
+            this.spiel.getUserInterface().zeigeError("Ungültige Auswahl.");
         }
     }
 

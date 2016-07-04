@@ -5,7 +5,6 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 import javafx.stage.Stage;
-import siedlervoncatan.Spielstart;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.view.ViewController;
@@ -26,7 +25,7 @@ public class Rohstoffauswahl implements PropertyChangeListener
         try
         {
             ViewController viewController = new ViewController(null);
-            this.stage = viewController.createStage(Pfade.ROHSTOFFAUSWAHL, text, Spielstart.getPrimaryStage());
+            this.stage = viewController.createStage(Pfade.ROHSTOFFAUSWAHL, text);
             RohstoffauswahlController controller = viewController.getLoader().getController();
             controller.setRohstoffauswahl(this);
         }

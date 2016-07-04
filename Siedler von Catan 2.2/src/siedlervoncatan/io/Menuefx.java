@@ -11,8 +11,10 @@ import siedlervoncatan.Spielstart;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.ConfirmationImpl;
+import siedlervoncatan.utility.Confirmation;
+import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Handel;
+import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.utility.Rohstoffauswahl;
 import siedlervoncatan.view.ViewController;
@@ -308,7 +310,7 @@ public class Menuefx implements UserInterface
     @Override
     public boolean zeigeConfirmation(String text)
     {
-        ConfirmationImpl confirmation = new ConfirmationImpl();
+        Confirmation confirmation = new Confirmation();
         confirmation.setText(text);
         boolean response = confirmation.showAndWait();
         return response;
@@ -363,6 +365,18 @@ public class Menuefx implements UserInterface
         Rohstoffauswahl rohstoffauswahl = new Rohstoffauswahl(text);
         Rohstoff rohstoff = rohstoffauswahl.showAndWait();
         return rohstoff;
+    }
+
+    @Override
+    public void zeigeInfo(String text)
+    {
+        new Info(text).showAndWait();
+    }
+
+    @Override
+    public void zeigeError(String text)
+    {
+        new Error(text).showAndWait();
     }
 
 }

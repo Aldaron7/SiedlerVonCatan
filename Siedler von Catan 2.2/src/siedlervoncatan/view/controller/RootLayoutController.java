@@ -13,7 +13,6 @@ import javafx.util.Duration;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.view.Controller;
 
 public class RootLayoutController implements Controller
@@ -133,7 +132,7 @@ public class RootLayoutController implements Controller
         }
         else
         {
-            new Error("Spielstand kann jetzt nicht gespeichert werden.");
+            this.spielstart.getUserInterface().zeigeError("Spielstand kann jetzt nicht gespeichert werden.");
         }
     }
 
@@ -159,7 +158,7 @@ public class RootLayoutController implements Controller
         }
         catch (IOException e)
         {
-            new Error("Die Anleitung konnte nicht geöffnet werden.");
+            this.spielstart.getUserInterface().zeigeError("Die Anleitung konnte nicht geöffnet werden.");
             e.printStackTrace();
         }
     }

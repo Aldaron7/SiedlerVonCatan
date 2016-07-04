@@ -29,8 +29,6 @@ import siedlervoncatan.spielfeld.Siedlung;
 import siedlervoncatan.spielfeld.Spielfeld;
 import siedlervoncatan.spielfeld.Stadt;
 import siedlervoncatan.spielfeld.Strasse;
-import siedlervoncatan.utility.Error;
-import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Wuerfel;
 import siedlervoncatan.utility.Zusatzpunkte;
@@ -168,12 +166,12 @@ public class Spieler implements PropertyChangeListener, Serializable
             }
             catch (IllegalArgumentException e)
             {
-                new Error("Strasse konnte nicht gebaut werden.");
+                this.spiel.getUserInterface().zeigeError("Strasse konnte nicht gebaut werden.");
             }
         }
         else
         {
-            new Error("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
         }
         return false;
     }
@@ -210,12 +208,12 @@ public class Spieler implements PropertyChangeListener, Serializable
             }
             catch (IllegalArgumentException e)
             {
-                new Error("Siedlung konnte nicht gebaut werden.");
+                this.spiel.getUserInterface().zeigeError("Siedlung konnte nicht gebaut werden.");
             }
         }
         else
         {
-            new Error("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
         }
         return false;
     }
@@ -242,12 +240,12 @@ public class Spieler implements PropertyChangeListener, Serializable
             }
             catch (IllegalArgumentException e)
             {
-                new Error("Stadt konnte nicht gebaut werden.");
+                this.spiel.getUserInterface().zeigeError("Stadt konnte nicht gebaut werden.");
             }
         }
         else
         {
-            new Error("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
         }
         return false;
     }
@@ -336,7 +334,7 @@ public class Spieler implements PropertyChangeListener, Serializable
         }
         else
         {
-            new Error("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
         }
         return false;
     }
@@ -393,13 +391,13 @@ public class Spieler implements PropertyChangeListener, Serializable
     {
         if (spieler.getAnzahlKarten().get() > 0)
         {
-            new Info(this + " zieht eine Karte von " + spieler);
+            this.spiel.getUserInterface().zeigeInfo(this + " zieht eine Karte von " + spieler);
             Rohstoff karte = spieler.removeZufaelligeKarte();
             this.addKarte(karte);
         }
         else
         {
-            new Info(spieler + " hat keine Karten.");
+            this.spiel.getUserInterface().zeigeInfo(spieler + " hat keine Karten.");
         }
     }
 
@@ -455,7 +453,7 @@ public class Spieler implements PropertyChangeListener, Serializable
         else
 
         {
-            new Error("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
         }
     }
 

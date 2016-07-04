@@ -11,8 +11,6 @@ import siedlervoncatan.enums.Entwicklung;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.Error;
-import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.view.controller.SpielfeldController;
 
@@ -47,7 +45,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
     {
         if (this.entwicklung == Entwicklung.SIEGPUNKT)
         {
-            new Info(this.besitzer + " spilet die karte Siegpunkt.");
+            this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spilet die karte Siegpunkt.");
             this.besitzer.erhoeheSiegpunkte();
             this.besitzer.getEntwickulungskarten().remove(this);
             this.zeigeMenue();
@@ -60,13 +58,14 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
             switch (this.entwicklung)
             {
                 case RITTER:
-                    new Info(this.besitzer + " spielt die Karte Ritter.");
+                    this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spielt die Karte Ritter.");
                     this.besitzer.versetzeRauber();
                     this.besitzer.addRitter();
                     break;
                 case ROHSTOFFMONOPOL:
                     Rohstoff rohstoff = userInterface.zeigeRohstoffauswahl("Wählen Sie einen Rohstoff.");
-                    new Info(this.besitzer + " spielt die Karte Rohstoffmonopol und bekommt alles " + rohstoff + ".");
+                    this.besitzer.getSpiel().getUserInterface()
+                                    .zeigeInfo(this.besitzer + " spielt die Karte Rohstoffmonopol und bekommt alles " + rohstoff + ".");
                     for (Spieler spieler : this.besitzer.getSpiel().getAlleSpieler())
                     {
                         if (!this.besitzer.equals(spieler))
@@ -87,7 +86,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                     break;
                 case STRASSENBAU:
                     this.strasse1 = true;
-                    new Info(this.besitzer + " spielt die Karte Strassenbau.");
+                    this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spielt die Karte Strassenbau.");
                     this.besitzer.getSpiel().setNotSaveable();
                     spielfeldController.setMessages(this.besitzer + " wählen Sie einen Bauplatz für Ihre erste Strasse.");
                     spielfeldController.addListener(this);
@@ -95,7 +94,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                     break;
                 case ERFINDUNG:
                     this.besitzer.getSpiel().setNotSaveable();
-                    new Info(this.besitzer + " spielt die Karte Erfindung.");
+                    this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spielt die Karte Erfindung.");
                     rohstoff = userInterface.zeigeRohstoffauswahl("Wählen Sie einen Rohstoff.");
                     this.besitzer.addKarte(rohstoff);
                     rohstoff = userInterface.zeigeRohstoffauswahl("Wählen Sie einen Rohstoff.");
@@ -112,7 +111,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
         }
         else
         {
-            new Error("Sie können keine weitere Entwicklung mehr spielen.");
+            this.besitzer.getSpiel().getUserInterface().zeigeError("Sie können keine weitere Entwicklung mehr spielen.");
             return false;
         }
     }

@@ -8,7 +8,6 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Position;
 
 public class Raeuber implements Serializable
@@ -43,7 +42,7 @@ public class Raeuber implements Serializable
     {
         if (this.position.equals(neuePosition))
         {
-            new Error("Der Räuber muss auf eine neue Position gesetzt werden.");
+            this.spiel.getUserInterface().zeigeError("Der Räuber muss auf eine neue Position gesetzt werden.");
             return false;
         }
         else

@@ -12,7 +12,6 @@ public class Handel
     private ObservableList<Rohstoff> nachfrage;
     private Spieler                  nachfrager;
     private Spieler                  anbieter;
-    private Confirmation             confirmation;
 
     public Handel()
     {
@@ -23,7 +22,6 @@ public class Handel
     {
         this.angebot = angebot;
         this.nachfrage = nachfrage;
-        this.confirmation = new ConfirmationImpl();
     }
 
     /**
@@ -31,10 +29,9 @@ public class Handel
      */
     public void handeln()
     {
-        this.confirmation.setText(String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
-        boolean response = this.confirmation.showAndWait();
-
-        if (response)
+        boolean antwort = this.anbieter.getSpiel().getUserInterface().zeigeConfirmation(
+                        String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
+        if (antwort)
         {
             this.anbieter.removeKarten(this.angebot);
             this.anbieter.addKarten(this.nachfrage);
@@ -103,10 +100,4 @@ public class Handel
     {
         this.anbieter = anbieter;
     }
-
-    public void setConfirmation(Confirmation confirmation)
-    {
-        this.confirmation = confirmation;
-    }
-
 }

@@ -90,6 +90,10 @@ public interface UserInterface
      */
     void zeigeSieger();
 
+    void zeigeInfo(String text);
+
+    void zeigeError(String text);
+
     Rohstoff zeigeRohstoffauswahl(String text);
 
     boolean zeigeConfirmation(String text);

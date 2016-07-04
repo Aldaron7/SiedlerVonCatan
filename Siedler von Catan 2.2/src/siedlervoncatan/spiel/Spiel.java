@@ -30,8 +30,6 @@ import siedlervoncatan.spielfeld.Entwicklungskarte;
 import siedlervoncatan.spielfeld.Landschaftsfeld;
 import siedlervoncatan.spielfeld.Raeuber;
 import siedlervoncatan.spielfeld.Spielfeld;
-import siedlervoncatan.utility.Error;
-import siedlervoncatan.utility.Info;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Wuerfel;
 import siedlervoncatan.view.controller.SpielfeldController;
@@ -96,7 +94,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         }
         catch (IOException e)
         {
-            new Error("Autospeichern konnte nicht ausgeführt werden.");
+            this.menue.zeigeError("Autospeichern konnte nicht ausgeführt werden.");
             e.printStackTrace();
         }
     }
@@ -124,13 +122,13 @@ public class Spiel implements Serializable, PropertyChangeListener
             }
             catch (Exception e)
             {
-                new Error("Spielstand konnte nicht gespeichert werden in der Datei:\n" + file.getPath());
+                this.menue.zeigeError("Spielstand konnte nicht gespeichert werden in der Datei:\n" + file.getPath());
                 e.printStackTrace();
             }
         }
         else
         {
-            new Error("Spielstand kann jetzt nicht gespeichert werden.");
+            this.menue.zeigeError("Spielstand kann jetzt nicht gespeichert werden.");
         }
     }
 
@@ -190,7 +188,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         {
             String ergebnis = evt.getNewValue().toString();
             this.spielstart.getSpielfeldController().setMessages(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
-            new Info(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
+            this.menue.zeigeInfo(this.aktiverSpieler + " hat eine " + ergebnis + " gewürfelt.");
         }
     }
 
@@ -320,7 +318,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         }
         else
         {
-            new Error("Strasse muss an die zuletzt gebaute Siedlung angrenzen.");
+            this.menue.zeigeError("Strasse muss an die zuletzt gebaute Siedlung angrenzen.");
         }
     }
 
@@ -403,7 +401,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         boolean gekauft = this.aktiverSpieler.kaufeEntwicklungskarte();
         if (gekauft)
         {
-            new Info(String.format("%s hat eine Entwicklungskarte gekauft.", this.aktiverSpieler));
+            this.menue.zeigeInfo(String.format("%s hat eine Entwicklungskarte gekauft.", this.aktiverSpieler));
         }
     }
 
@@ -496,7 +494,7 @@ public class Spiel implements Serializable, PropertyChangeListener
         }
         else
         {
-            new Error("Sie können nicht bei " + spieler + " ziehen.");
+            this.menue.zeigeError("Sie können nicht bei " + spieler + " ziehen.");
         }
     }
 

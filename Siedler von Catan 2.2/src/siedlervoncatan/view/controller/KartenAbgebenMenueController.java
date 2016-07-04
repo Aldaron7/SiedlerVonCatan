@@ -15,7 +15,6 @@ import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.view.Controller;
 
 public class KartenAbgebenMenueController implements Controller
@@ -123,7 +122,7 @@ public class KartenAbgebenMenueController implements Controller
         // neue Liste damit beim remove nicht auf verschiedenen Threads sich die Liste ändert.
         if (this.abgabe.size() != this.anzahl)
         {
-            new Error("Bitte wählen Sie " + this.anzahl + " Karten aus.");
+            this.spiel.getUserInterface().zeigeError("Bitte wählen Sie " + this.anzahl + " Karten aus.");
         }
         else
         {

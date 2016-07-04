@@ -18,7 +18,6 @@ import javafx.stage.StageStyle;
 import siedlervoncatan.io.Menuefx;
 import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.spiel.Spiel;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.controller.RootLayoutController;
 import siedlervoncatan.view.controller.SpielfeldController;
@@ -98,7 +97,7 @@ public class Spielstart extends Application
         }
         catch (Exception e)
         {
-            new Error("Spielstand konnte nicht geladen werden aus der Datei:\n" + file.getPath());
+            this.menue.zeigeError("Spielstand konnte nicht geladen werden aus der Datei:\n" + file.getPath());
             e.printStackTrace();
         }
     }

@@ -20,7 +20,6 @@ import javafx.scene.layout.HBox;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.view.Controller;
 
@@ -105,7 +104,7 @@ public class HandelMenueController implements Controller
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         if (this.angebot.isEmpty() || this.nachfrage.isEmpty() || !this.spiel.getAktiverSpieler().getKarten().containsAll(this.angebot))
         {
-            new Error("Ungültige Eingaben.");
+            this.spiel.getUserInterface().zeigeError("Ungültige Eingaben.");
         }
         else
         {
@@ -134,7 +133,7 @@ public class HandelMenueController implements Controller
         }
         if (selectedIndexAngebot < 0 && selectedIndexNachfrage < 0)
         {
-            new Error("Kein Rohstoff ausgewählt.");
+            this.spiel.getUserInterface().zeigeError("Kein Rohstoff ausgewählt.");
         }
         this.angebotTable.getSelectionModel().clearSelection();
         this.nachfrageTable.getSelectionModel().clearSelection();

@@ -8,7 +8,6 @@ import javafx.scene.text.Text;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spielfeld.Entwicklungskarte;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.view.Controller;
 
 public class EntwicklungskartenController implements Controller
@@ -60,7 +59,7 @@ public class EntwicklungskartenController implements Controller
         }
         else
         {
-            new Error("Ungültige Auswahl.");
+            this.spiel.getUserInterface().zeigeError("Ungültige Auswahl.");
         }
     }
 
