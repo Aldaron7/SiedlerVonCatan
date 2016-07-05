@@ -21,6 +21,7 @@ public class Pfade
     public static final String STYLESHEET             = "siedlervoncatan/view/fxml/stylesheet.css";
     public static final String LEERES_MENUE           = "view/fxml/LeeresMenue.fxml";
     public static final String AUDIO_MENUE            = "view/fxml/Audio.fxml";
+    public static final String BAUKOSTEN              = "view/fxml/Baukosten.fxml";
     public static final String ROHSTOFFAUSWAHL        = "view/fxml/Rohstoffauswahl.fxml";
     public static final String INFO                   = "view/fxml/Info.fxml";
     public static final String ERROR                  = "view/fxml/Error.fxml";

@@ -37,7 +37,7 @@ public class HauptmenueController implements Controller
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("SVC files", "*svc");
         fileChooser.getExtensionFilters().add(extensionFilter);
         fileChooser.setInitialDirectory(new File("saves"));
-        File file = fileChooser.showOpenDialog(this.spielstart.getPrimaryStage());
+        File file = fileChooser.showOpenDialog(Spielstart.getPrimaryStage());
         if (file != null)
         {
             this.layoutController.removeFromCenter(this.self);

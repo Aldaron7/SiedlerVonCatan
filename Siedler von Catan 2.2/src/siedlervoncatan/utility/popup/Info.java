@@ -14,7 +14,7 @@ public class Info extends Popup
     {
         try
         {
-            ViewController viewController = new ViewController(null);
+            ViewController viewController = new ViewController(null, null);
             this.stage = viewController.createStage(Pfade.INFO, text);
         }
         catch (IOException e)

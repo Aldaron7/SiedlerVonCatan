@@ -20,11 +20,6 @@ public class ViewController
     private FXMLLoader           loader;
     private Stage                primaryStage;
 
-    public ViewController(Spiel spiel)
-    {
-        this(spiel, null);
-    }
-
     public ViewController(Spiel spiel, RootLayoutController layoutController)
     {
         this.layoutController = layoutController;

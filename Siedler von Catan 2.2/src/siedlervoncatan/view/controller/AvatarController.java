@@ -2,9 +2,6 @@ package siedlervoncatan.view.controller;
 
 import java.beans.PropertyChangeSupport;
 
-import javax.swing.Timer;
-
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -60,9 +57,10 @@ public class AvatarController implements Controller
     private void handleInfosRequested()
     {
         this.mouseOverPane = this.spiel.getUserInterface().zeigeSpielerInfos(this.spieler);
-        Timer timer = new Timer(3000, e -> Platform.runLater(() -> this.spiel.getUserInterface().removeFromCenterAnimatedH(this.mouseOverPane)));
-        timer.setRepeats(false);
-        timer.start();
+        // Timer timer = new Timer(3000, e -> Platform.runLater(() ->
+        // this.spiel.getUserInterface().removeFromCenterAnimatedH(this.mouseOverPane)));
+        // timer.setRepeats(false);
+        // timer.start();
     }
 
     @FXML

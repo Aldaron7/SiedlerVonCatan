@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.view.controller.SpielfeldController;
@@ -12,6 +13,8 @@ public interface UserInterface
 {
 
     void setSpielstart(Spielstart spielstart);
+
+    void setSpiel(Spiel spiel);
 
     /**
      * Erzeugt das Hauptmenue im Zentrum des Rootlayouts Menue: Neu, Laden, Beenden.
@@ -108,5 +111,7 @@ public interface UserInterface
     SpielfeldController getSpielfeldController();
 
     void zeigeMessage(String message);
+
+    void zeigeBaukosten();
 
 }

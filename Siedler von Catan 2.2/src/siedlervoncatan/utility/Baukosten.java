@@ -1,11 +1,12 @@
-package siedlervoncatan.spielfeld;
+package siedlervoncatan.utility;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import siedlervoncatan.enums.Rohstoff;
+import siedlervoncatan.utility.popup.Popup;
 
-public class Baukosten
+public class Baukosten extends Popup
 {
     public static final Collection<Rohstoff> SIEDLUNG;
     public static final Collection<Rohstoff> STADT;

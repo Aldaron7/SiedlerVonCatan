@@ -24,7 +24,7 @@ public class Rohstoffauswahl extends Popup implements PropertyChangeListener
     {
         try
         {
-            ViewController viewController = new ViewController(null);
+            ViewController viewController = new ViewController(null, null);
             this.stage = viewController.createStage(Pfade.ROHSTOFFAUSWAHL, text);
             RohstoffauswahlController controller = viewController.getLoader().getController();
             controller.setRohstoffauswahl(this);

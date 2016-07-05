@@ -175,6 +175,12 @@ public class RootLayoutController implements Controller
         }
     }
 
+    @FXML
+    private void handleBaukosten()
+    {
+        this.spielstart.getUserInterface().zeigeBaukosten();
+    }
+
     @Override
     public void setSpiel(Spiel spiel)
     {

@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import siedlervoncatan.Spielstart;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
+import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.utility.Pfade;
@@ -37,8 +38,15 @@ public class Menuefx implements UserInterface
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
-        this.viewController = new ViewController(spielstart.getSpiel(), spielstart.getLayoutController());
         this.layoutController = spielstart.getLayoutController();
+        this.viewController = new ViewController(null, spielstart.getLayoutController());
+    }
+
+    @Override
+    public void setSpiel(Spiel spiel)
+    {
+        this.viewController = new ViewController(spiel, this.layoutController);
+
     }
 
     /**
@@ -68,6 +76,20 @@ public class Menuefx implements UserInterface
         try
         {
             Pane pane = this.viewController.initPane(Pfade.AUDIO_MENUE);
+            this.layoutController.addToCenterAnimatedH(pane);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void zeigeBaukosten()
+    {
+        try
+        {
+            Pane pane = this.viewController.initPane(Pfade.BAUKOSTEN);
             this.layoutController.addToCenterAnimatedH(pane);
         }
         catch (IOException e)

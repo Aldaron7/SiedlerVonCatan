@@ -18,7 +18,7 @@ public class Confirmation extends Popup implements PropertyChangeListener
     {
         try
         {
-            ViewController viewController = new ViewController(null);
+            ViewController viewController = new ViewController(null, null);
             this.stage = viewController.createStage(Pfade.CONFIRMATION, text);
             ConfirmationController controller = viewController.getLoader().getController();
             controller.setConfirmation(this);
