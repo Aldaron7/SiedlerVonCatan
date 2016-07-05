@@ -46,6 +46,11 @@ public class RootLayoutController implements Controller
         this.sound = Sound.getInstanz();
     }
 
+    public void clearCenter()
+    {
+        this.centerSP.getChildren().clear();
+    }
+
     public void addToCenter(Node node)
     {
         if (!this.centerSP.getChildren().contains(node))

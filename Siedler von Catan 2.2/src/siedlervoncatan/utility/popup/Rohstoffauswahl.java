@@ -10,7 +10,7 @@ import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.RohstoffauswahlController;
 
-public class Rohstoffauswahl implements PropertyChangeListener
+public class Rohstoffauswahl extends Popup implements PropertyChangeListener
 {
     private Rohstoff rohstoff;
     private Stage    stage;
@@ -37,7 +37,7 @@ public class Rohstoffauswahl implements PropertyChangeListener
 
     public Rohstoff showAndWait()
     {
-        this.stage.showAndWait();
+        super.animatedShowAndWait(this.stage);
         return this.rohstoff;
     }
 

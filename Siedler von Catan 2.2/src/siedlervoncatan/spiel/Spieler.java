@@ -405,8 +405,8 @@ public class Spieler implements PropertyChangeListener, Serializable
      */
     public void seehandel()
     {
-        Rohstoff abzugeben = this.spiel.getUserInterface().zeigeRohstoffauswahl(this + "\n wählen Sie den Rohstoff, den Sie abgeben möchten.");
-        Rohstoff erhalten = this.spiel.getUserInterface().zeigeRohstoffauswahl(this + "\n wählen Sie den Rohstoff, gegen den Sie tauschen möchten.");
+        Rohstoff abzugeben = this.spiel.getUserInterface().zeigeRohstoffauswahl(this + "\nwählen Sie den Rohstoff, den Sie abgeben möchten.");
+        Rohstoff erhalten = this.spiel.getUserInterface().zeigeRohstoffauswahl(this + "\nwählen Sie den Rohstoff, gegen den Sie tauschen möchten.");
 
         this.tauscheRohstoffe(abzugeben, erhalten);
     }

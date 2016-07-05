@@ -82,6 +82,7 @@ public class Menuefx implements UserInterface
     @Override
     public void zeigeSpielfeld()
     {
+        this.layoutController.clearCenter();
         try
         {
             Pane pane = this.viewController.initPane(Pfade.SPIELFELD);

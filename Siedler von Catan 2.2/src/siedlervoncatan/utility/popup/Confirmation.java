@@ -9,7 +9,7 @@ import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.ConfirmationController;
 
-public class Confirmation implements PropertyChangeListener
+public class Confirmation extends Popup implements PropertyChangeListener
 {
     private Stage   stage;
     private boolean antwort;
@@ -31,7 +31,7 @@ public class Confirmation implements PropertyChangeListener
 
     public boolean showAndWait()
     {
-        this.stage.showAndWait();
+        super.animatedShowAndWait(this.stage);
         return this.antwort;
     }
 

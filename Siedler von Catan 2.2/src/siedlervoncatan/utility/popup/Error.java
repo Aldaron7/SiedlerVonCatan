@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 
-public class Error
+public class Error extends Popup
 {
     private Stage stage;
 
@@ -25,7 +25,7 @@ public class Error
 
     public void showAndWait()
     {
-        this.stage.showAndWait();
+        super.animatedShowAndWait(this.stage);
     }
 
 }
