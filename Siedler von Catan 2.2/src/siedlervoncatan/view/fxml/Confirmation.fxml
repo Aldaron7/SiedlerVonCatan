@@ -6,13 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="250.0" maxWidth="400.0" prefHeight="250.0" prefWidth="400.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="siedlervoncatan.view.controller.ConfirmationController">
+<AnchorPane maxHeight="250.0" maxWidth="400.0" prefHeight="250.0" prefWidth="400.0" styleClass="holztafel" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.ConfirmationController">
    <children>
       <ButtonBar layoutX="158.0" layoutY="176.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0">
         <buttons>
           <Button maxWidth="50.0" mnemonicParsing="false" onAction="#handleOK" text="OK" />
-            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
+            <Button maxWidth="120.0" mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
         </buttons>
       </ButtonBar>
       <Label layoutX="218.0" layoutY="44.0" onMouseClicked="#handleAbbrechen" text="X" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
