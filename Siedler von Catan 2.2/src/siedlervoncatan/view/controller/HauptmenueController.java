@@ -12,7 +12,9 @@ import siedlervoncatan.view.Controller;
 
 public class HauptmenueController implements Controller
 {
-    private Spielstart spielstart;
+    private Spielstart           spielstart;
+    private Node                 self;
+    private RootLayoutController layoutController;
 
     public void setSpielstart(Spielstart spielstart)
     {
@@ -23,6 +25,7 @@ public class HauptmenueController implements Controller
     private void handleNeu()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+        this.layoutController.removeFromCenter(this.self);
         this.spielstart.neuesSpiel();
     }
 
@@ -37,6 +40,7 @@ public class HauptmenueController implements Controller
         File file = fileChooser.showOpenDialog(this.spielstart.getPrimaryStage());
         if (file != null)
         {
+            this.layoutController.removeFromCenter(this.self);
             this.spielstart.spielLaden(file);
         }
     }
@@ -56,11 +60,13 @@ public class HauptmenueController implements Controller
     @Override
     public void setLayoutController(RootLayoutController layoutController)
     {
+        this.layoutController = layoutController;
     }
 
     @Override
     public void setNode(Node self)
     {
+        this.self = self;
     }
 
 }

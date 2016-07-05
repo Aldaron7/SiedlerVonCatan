@@ -10,7 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
@@ -22,8 +23,6 @@ public class ZugMenueController implements Controller
     @FXML
     private Label                spieler;
     @FXML
-    private Tooltip              tooltipSpieler;
-    @FXML
     private Label                anzahlHolzL;
     @FXML
     private Label                anzahlLehmL;
@@ -33,6 +32,8 @@ public class ZugMenueController implements Controller
     private Label                anzahlKornL;
     @FXML
     private Label                anzahlErzL;
+    @FXML
+    private ImageView            avatarIV;
 
     private Spiel                spiel;
     private Node                 self;
@@ -44,7 +45,9 @@ public class ZugMenueController implements Controller
         this.spiel = spiel;
         Spieler aktiverSpieler = this.spiel.getAktiverSpieler();
         this.spieler.setText(aktiverSpieler.toString());
-        this.tooltipSpieler.setText(aktiverSpieler.getFarbe().toString());
+        String farbe = aktiverSpieler.getFarbe().toString().toLowerCase();
+        Image image = new Image("file:bilder/avatar_" + farbe + ".png");
+        this.avatarIV.setImage(image);
 
         this.setAnzahlRohstoffe(aktiverSpieler);
     }

@@ -47,25 +47,17 @@
 	-fx-background-position: center ;
 	-fx-background-repeat: no-repeat ;
 	-fx-background-color: transparent ;
-	-fx-dark-text-color: black;
 	-fx-font-weight: bold;
 	-fx-font-size: 18px;
 }
 
 .blau{
-	-fx-background-color: #4daaf2;
+	-fx-background-color: #3e8dc9;
 	}
 
 .button{
-	-fx-effect: dropshadow(one-pass-box, black, 10,0,2,2) 
+	-fx-effect: dropshadow(one-pass-box, black, 10,0,2,2);
 }
-
-.button Text {
-	-fx-fill: white;
-	-fx-effect: dropshadow(gaussian, blue, 10,0,1,1) ; 
-}
-
-  
 
 .wolle{
 	-fx-text-fill: chartreuse ;
