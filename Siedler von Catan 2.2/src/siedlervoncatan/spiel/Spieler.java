@@ -155,7 +155,7 @@ public class Spieler implements PropertyChangeListener, Serializable
                 if (this.laengsteHandelsstrasse < laengsteHandelsstrasse && laengsteHandelsstrasse >= 5)
                 {
                     this.laengsteHandelsstrasse = laengsteHandelsstrasse;
-                    Zusatzpunkte.prüfeLaengsteHandelsstrasse(this);
+                    Zusatzpunkte.pruefeLaengsteHandelsstrasse(this);
                 }
                 if (!kostenlos)
                 {

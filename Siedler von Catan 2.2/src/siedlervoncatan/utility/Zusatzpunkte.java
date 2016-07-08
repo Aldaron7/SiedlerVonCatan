@@ -135,7 +135,7 @@ public class Zusatzpunkte implements Serializable
      * 
      * @param spieler
      */
-    public static void prüfeLaengsteHandelsstrasse(Spieler spieler)
+    public static void pruefeLaengsteHandelsstrasse(Spieler spieler)
     {
         if (!spieler.hatLaengsteHandelsstrasse())
         {
