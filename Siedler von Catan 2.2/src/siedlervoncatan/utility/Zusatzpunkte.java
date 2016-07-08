@@ -52,7 +52,7 @@ public class Zusatzpunkte implements Serializable
         spieler.bekommtGroessteRittermacht();
         spieler.erhoeheSiegpunkte();
         spieler.erhoeheSiegpunkte();
-        spieler.getSpiel().getUserInterface().zeigeMessage(spieler + " hat nun die größte Rittermacht.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat nun die größte Rittermacht.");
     }
 
     /**
@@ -69,7 +69,7 @@ public class Zusatzpunkte implements Serializable
         andererSpieler.verliertGroessteRittermacht();
         andererSpieler.erniedrigeSiegpunkte();
         andererSpieler.erniedrigeSiegpunkte();
-        spieler.getSpiel().getUserInterface().zeigeMessage(spieler + " hat nun die größte Rittermacht.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat nun die größte Rittermacht.");
     }
 
     /**
@@ -168,7 +168,7 @@ public class Zusatzpunkte implements Serializable
         spieler.bekommtLaengsteHandelsstrasse();
         spieler.erhoeheSiegpunkte();
         spieler.erhoeheSiegpunkte();
-        spieler.getSpiel().getUserInterface().zeigeMessage(spieler + " hat nun die längste Handelsstraße.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat die längste Handelsstraße.");
     }
 
     /**
@@ -186,6 +186,6 @@ public class Zusatzpunkte implements Serializable
         andererSpieler.verliertLaengsteHandelsstrasse();
         andererSpieler.erniedrigeSiegpunkte();
         andererSpieler.erniedrigeSiegpunkte();
-        spieler.getSpiel().getUserInterface().zeigeMessage(spieler + " hat nun die längste Handelsstraße.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat nun die längste Handelsstraße.");
     }
 }

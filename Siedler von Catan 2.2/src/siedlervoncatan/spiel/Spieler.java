@@ -94,36 +94,39 @@ public class Spieler implements PropertyChangeListener, Serializable
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
-        if (evt.getNewValue().equals(7))
+        if (evt.getPropertyName().equals("wuerfeln"))
         {
-            if (this.karten.size() > 7)
+            if (evt.getNewValue().equals(7))
             {
-                // die Hälfte der Karten (abgerundet) wird abgegeben
-                int anzahlAbzugebendeKarten = this.karten.size() / 2;
-
-                this.spiel.getUserInterface().zeigeKartenAbgeben(this, anzahlAbzugebendeKarten);
-            }
-            if (this.isAktiv())
-            {
-                this.raeuberVersetzen = true;
-            }
-        }
-        else
-        {
-            // ziehe Karten
-            for (Ortschaft ortschaft : this.ortschaften.values())
-            {
-                for (Landschaftsfeld landschaftsfeld : this.spiel.getSpielfeld().getLandschaftsfelder().values())
+                if (this.karten.size() > 7)
                 {
-                    if (landschaftsfeld.getLandschaft().getRohstoff() != null && evt.getNewValue().equals(landschaftsfeld.getZahl())
-                        && !landschaftsfeld.getZentrum().equals(this.spiel.getRaeuber().getPosition().get())
-                        && landschaftsfeld.getZentrum().isNachbar(ortschaft.getPosition()))
+                    // die Hälfte der Karten (abgerundet) wird abgegeben
+                    int anzahlAbzugebendeKarten = this.karten.size() / 2;
+
+                    this.spiel.getUserInterface().zeigeKartenAbgeben(this, anzahlAbzugebendeKarten);
+                }
+                if (this.isAktiv())
+                {
+                    this.raeuberVersetzen = true;
+                }
+            }
+            else
+            {
+                // ziehe Karten
+                for (Ortschaft ortschaft : this.ortschaften.values())
+                {
+                    for (Landschaftsfeld landschaftsfeld : this.spiel.getSpielfeld().getLandschaftsfelder().values())
                     {
-                        int ertrag = ortschaft.getErtrag();
-                        Rohstoff rohstoff = landschaftsfeld.getLandschaft().getRohstoff();
-                        for (int i = 0; i < ertrag; i++)
+                        if (landschaftsfeld.getLandschaft().getRohstoff() != null && evt.getNewValue().equals(landschaftsfeld.getZahl())
+                            && !landschaftsfeld.getZentrum().equals(this.spiel.getRaeuber().getPosition().get())
+                            && landschaftsfeld.getZentrum().isNachbar(ortschaft.getPosition()))
                         {
-                            this.addKarte(rohstoff);
+                            int ertrag = ortschaft.getErtrag();
+                            Rohstoff rohstoff = landschaftsfeld.getLandschaft().getRohstoff();
+                            for (int i = 0; i < ertrag; i++)
+                            {
+                                this.addKarte(rohstoff);
+                            }
                         }
                     }
                 }
@@ -505,7 +508,7 @@ public class Spieler implements PropertyChangeListener, Serializable
 
     public void erniedrigeSiegpunkte()
     {
-        this.siegpunkte.subtract(1);
+        this.siegpunkte.set(this.siegpunkte.get() - 1);
     }
 
     public Farbe getFarbe()

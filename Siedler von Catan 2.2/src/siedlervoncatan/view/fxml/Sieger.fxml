@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.SiegerController">
    <children>
-      <AnchorPane prefHeight="350.0" prefWidth="550.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css">
+      <AnchorPane maxHeight="350.0" maxWidth="550.0" prefHeight="350.0" prefWidth="550.0" styleClass="pergamentrolle" stylesheets="@stylesheet.css">
          <children>
             <Label alignment="CENTER" layoutX="133.0" layoutY="14.0" text="Herzlichen Glückwunsch" textFill="#d09b14" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0">
                <font>

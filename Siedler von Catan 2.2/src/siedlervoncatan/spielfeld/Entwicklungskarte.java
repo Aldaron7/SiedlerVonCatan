@@ -44,7 +44,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
     {
         if (this.entwicklung == Entwicklung.SIEGPUNKT)
         {
-            this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spilet die karte Siegpunkt.");
+            this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spielt die karte Siegpunkt.");
             this.besitzer.erhoeheSiegpunkte();
             this.besitzer.getEntwickulungskarten().remove(this);
             this.zeigeMenue();
@@ -61,7 +61,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                     this.besitzer.addRitter();
                     break;
                 case ROHSTOFFMONOPOL:
-                    Rohstoff rohstoff = userInterface.zeigeRohstoffauswahl("Wählen Sie einen Rohstoff.");
+                    Rohstoff rohstoff = userInterface.zeigeRohstoffauswahl(this.besitzer + " wählen Sie einen Rohstoff.");
                     this.besitzer.getSpiel().getUserInterface()
                                     .zeigeInfo(this.besitzer + " spielt die Karte Rohstoffmonopol und bekommt alles " + rohstoff + ".");
                     for (Spieler spieler : this.besitzer.getSpiel().getAlleSpieler())
@@ -93,9 +93,9 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
                 case ERFINDUNG:
                     this.besitzer.getSpiel().setNotSaveable();
                     this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spielt die Karte Erfindung.");
-                    rohstoff = userInterface.zeigeRohstoffauswahl("Wählen Sie einen Rohstoff.");
+                    rohstoff = userInterface.zeigeRohstoffauswahl(this.besitzer + " wählen Sie einen Rohstoff.");
                     this.besitzer.addKarte(rohstoff);
-                    rohstoff = userInterface.zeigeRohstoffauswahl("Wählen Sie einen Rohstoff.");
+                    rohstoff = userInterface.zeigeRohstoffauswahl(this.besitzer + " wählen Sie einen Rohstoff.");
                     this.besitzer.addKarte(rohstoff);
                     Entwicklung.addEntwicklung(this.entwicklung);
                     this.zeigeMenue();
