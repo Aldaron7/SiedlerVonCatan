@@ -57,7 +57,6 @@ public class HandelTest {
 		
 		Assert.assertTrue(karten1.containsAll(kartenSpieler1));
 		Assert.assertTrue(karten2.containsAll(kartenSpieler2));
-		Assert.assertTrue(false);
 	
 	}
 }
