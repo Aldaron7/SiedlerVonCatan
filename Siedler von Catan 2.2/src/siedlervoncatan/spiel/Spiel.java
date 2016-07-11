@@ -69,8 +69,13 @@ public class Spiel implements Serializable, PropertyChangeListener
     public void setSpielstart(Spielstart spielstart)
     {
         this.spielstart = spielstart;
-        this.ui = spielstart.getUserInterface();
-        this.ui.setSpiel(this);
+        this.setUserInterface(spielstart.getUserInterface());
+    }
+
+    public void setUserInterface(UserInterface ui)
+    {
+        this.ui = ui;
+        ui.setSpiel(this);
     }
 
     /**

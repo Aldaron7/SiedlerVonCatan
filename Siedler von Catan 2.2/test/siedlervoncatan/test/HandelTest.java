@@ -17,14 +17,15 @@ public class HandelTest
     @Test
     public void test()
     {
-
         ObservableList<Rohstoff> kartenSpieler1 = FXCollections.observableArrayList(Rohstoff.ERZ, Rohstoff.ERZ, Rohstoff.KORN, Rohstoff.KORN, Rohstoff.KORN);
         ObservableList<Rohstoff> kartenSpieler2 = FXCollections.observableArrayList(Rohstoff.HOLZ, Rohstoff.HOLZ, Rohstoff.HOLZ, Rohstoff.HOLZ);
 
-        Spieler spieler1 = new Spieler("Marcel", Farbe.BRAUN, new Spiel());
+        Spiel spiel = new Spiel();
+        spiel.setUserInterface(new MenueTest());
+        Spieler spieler1 = new Spieler("Marcel", Farbe.BRAUN, spiel);
         spieler1.addKarten(kartenSpieler1);
 
-        Spieler spieler2 = new Spieler("Artem", Farbe.BLAU, null);
+        Spieler spieler2 = new Spieler("Artem", Farbe.BLAU, spiel);
         spieler2.addKarten(kartenSpieler2);
 
         Handel handel = new Handel();
