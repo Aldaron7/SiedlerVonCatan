@@ -80,7 +80,7 @@ public class Spielstart extends Application
         }
     }
 
-    public void saveProperties()
+    private void saveProperties()
     {
         try
         {
