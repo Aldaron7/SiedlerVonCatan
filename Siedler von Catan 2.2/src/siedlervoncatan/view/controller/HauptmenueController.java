@@ -49,7 +49,7 @@ public class HauptmenueController implements Controller
     private void handleBeenden()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        System.exit(0);
+        this.spielstart.beenden();
     }
 
     @Override

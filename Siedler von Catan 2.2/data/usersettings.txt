@@ -1,0 +1,7 @@
+#
+#Mon Jul 18 20:07:49 CEST 2016
+maximized=false
+musikAn=true
+soundeffekteAn=true
+musikVolume=0.5
+soundeffekteVolume=1.0

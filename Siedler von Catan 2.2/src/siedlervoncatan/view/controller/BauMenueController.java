@@ -10,38 +10,39 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.enums.Zustand;
+import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
+import siedlervoncatan.utility.Baukosten;
 import siedlervoncatan.view.Controller;
 
 public class BauMenueController implements Controller
 {
     @FXML
-    private VBox                 bauButtons;
+    private Label                    spieler;
     @FXML
-    private Label                spieler;
+    private Label                    anzahlHolzL;
     @FXML
-    private Tooltip              tooltipSpieler;
+    private Label                    anzahlLehmL;
     @FXML
-    private Label                anzahlHolzL;
+    private Label                    anzahlWolleL;
     @FXML
-    private Label                anzahlLehmL;
+    private Label                    anzahlKornL;
     @FXML
-    private Label                anzahlWolleL;
+    private Label                    anzahlErzL;
     @FXML
-    private Label                anzahlKornL;
-    @FXML
-    private Label                anzahlErzL;
+    private ImageView                avatarIV;
 
-    private Spiel                spiel;
-    private SpielfeldController  controller;
-    private Node                 self;
-    private RootLayoutController layoutController;
+    private Spiel                    spiel;
+    private ObservableList<Rohstoff> karten;
+    private UserInterface            ui;
+    private Node                     self;
+    private RootLayoutController     layoutController;
 
     @Override
     public void setSpiel(Spiel spiel)
@@ -49,9 +50,13 @@ public class BauMenueController implements Controller
         this.spiel = spiel;
         Spieler aktiverSpieler = spiel.getAktiverSpieler();
         this.spieler.setText(aktiverSpieler.toString());
-        this.tooltipSpieler.setText(aktiverSpieler.getFarbe().toString());
-        this.controller = spiel.getUserInterface().getSpielfeldController();
-        this.bauButtons.setVisible(true);
+        this.karten = aktiverSpieler.getKarten();
+        this.ui = spiel.getUserInterface();
+
+        String farbe = aktiverSpieler.getFarbe().toString().toLowerCase();
+        Image image = new Image("file:bilder/avatar_" + farbe + ".png");
+        this.avatarIV.setImage(image);
+
         this.setAnzahlRohstoffe(aktiverSpieler);
     }
 
@@ -83,45 +88,82 @@ public class BauMenueController implements Controller
         return Integer.toString(Collections.frequency(observableList, rohstoff));
     }
 
+    private void resetZustand()
+    {
+        this.spiel.setZustand(null);
+        this.ui.zeigeMessage("");
+    }
+
     @FXML
     private void handleStrasse()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
-        this.spiel.setZustand(Zustand.STARSSE_BAUEN);
+        if (this.karten.containsAll(Baukosten.STRASSE))
+        {
+            this.ui.zeigeMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
+            this.spiel.setZustand(Zustand.STARSSE_BAUEN);
+        }
+        else
+        {
+            this.ui.zeigeError("Sie haben nicht genug Rohstoffe um eine Strasse zu bauen.");
+            this.resetZustand();
+        }
     }
 
     @FXML
     private void handleSiedlung()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
-        this.spiel.setZustand(Zustand.SIEDLUNG_BAUEN);
+        if (this.karten.containsAll(Baukosten.SIEDLUNG))
+        {
+            this.ui.zeigeMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Siedlung.");
+            this.spiel.setZustand(Zustand.SIEDLUNG_BAUEN);
+        }
+        else
+        {
+            this.ui.zeigeError("Sie haben nicht genug Rohstoffe um eine Siedlung zu bauen.");
+            this.resetZustand();
+        }
     }
 
     @FXML
     private void handleStadt()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
-        this.spiel.setZustand(Zustand.STADT_BAUEN);
+        if (this.karten.containsAll(Baukosten.STADT))
+        {
+            this.ui.zeigeMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Stadt.");
+            this.spiel.setZustand(Zustand.STADT_BAUEN);
+        }
+        else
+        {
+            this.ui.zeigeError("Sie haben nicht genug Rohstoffe um eine Stadt zu bauen.");
+            this.resetZustand();
+        }
     }
 
     @FXML
     private void handleEntwicklung()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.spiel.entwicklungKaufen();
+        if (this.karten.containsAll(Baukosten.ENTWICKLUNGSKARTE))
+        {
+            this.spiel.entwicklungKaufen();
+        }
+        else
+        {
+            this.ui.zeigeError("Sie haben nicht genug Rohstoffe um eine Entwicklungskarte zu kaufen.");
+            this.resetZustand();
+        }
     }
 
     @FXML
     private void handleAbbrechen()
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.controller.setMessage("");
-        this.spiel.setZustand(null);
+        this.resetZustand();
         this.layoutController.removeFromCenterAnimatedV(this.self);
-        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.spiel.getUserInterface().zeigeZug()));
+        Timer timer = new Timer(500, e -> Platform.runLater(() -> this.ui.zeigeZug()));
         timer.setRepeats(false);
         timer.start();
     }

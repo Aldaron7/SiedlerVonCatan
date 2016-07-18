@@ -9,8 +9,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,6 +42,7 @@ public class HandelMenueController implements Controller
     private Node                        self;
     private RootLayoutController        layoutController;
     private PropertyChangeSupport       support;
+    private ObservableList<Rohstoff>    kartenKopie;
 
     public HandelMenueController()
     {
@@ -95,6 +98,7 @@ public class HandelMenueController implements Controller
     {
         this.spiel = spiel;
         this.support.addPropertyChangeListener(spiel);
+        this.kartenKopie = FXCollections.observableArrayList(spiel.getAktiverSpieler().getKarten());
         Sound.getInstanz().playMusik(Sound.MUSIK_HANDEL);
     }
 
@@ -125,7 +129,8 @@ public class HandelMenueController implements Controller
         int selectedIndexNachfrage = this.nachfrageTable.getSelectionModel().getSelectedIndex();
         if (selectedIndexAngebot >= 0)
         {
-            this.angebotTable.getItems().remove(selectedIndexAngebot);
+            Rohstoff rohstoff = this.angebotTable.getItems().remove(selectedIndexAngebot);
+            this.kartenKopie.add(rohstoff);
         }
         if (selectedIndexNachfrage >= 0)
         {
@@ -149,74 +154,101 @@ public class HandelMenueController implements Controller
     }
 
     @FXML
-    private void handleHolzA()
+    private void handleAngebotClicked(Event event)
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.angebot.add(Rohstoff.HOLZ);
+        Button button = (Button) event.getSource();
+        Rohstoff rohstoff = Rohstoff.getRohstoff(button.getText());
+        if (this.kartenKopie.contains(rohstoff))
+        {
+            this.kartenKopie.remove(rohstoff);
+            this.angebot.add(rohstoff);
+        }
+        else
+        {
+            this.spiel.getUserInterface().zeigeError("Sie besitzen nicht genug " + rohstoff + ".");
+        }
     }
 
     @FXML
-    private void handleLehmA()
+    private void handleNachfrageClicked(Event event)
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.angebot.add(Rohstoff.LEHM);
+        Button button = (Button) event.getSource();
+        Rohstoff rohstoff = Rohstoff.getRohstoff(button.getText());
+        this.nachfrage.add(rohstoff);
+
     }
 
-    @FXML
-    private void handleWolleA()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.angebot.add(Rohstoff.WOLLE);
-    }
-
-    @FXML
-    private void handleKornA()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.angebot.add(Rohstoff.KORN);
-    }
-
-    @FXML
-    private void handleErzA()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.angebot.add(Rohstoff.ERZ);
-    }
-
-    @FXML
-    private void handleHolzN()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.nachfrage.add(Rohstoff.HOLZ);
-    }
-
-    @FXML
-    private void handleLehmN()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.nachfrage.add(Rohstoff.LEHM);
-    }
-
-    @FXML
-    private void handleWolleN()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.nachfrage.add(Rohstoff.WOLLE);
-    }
-
-    @FXML
-    private void handleKornN()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.nachfrage.add(Rohstoff.KORN);
-    }
-
-    @FXML
-    private void handleErzN()
-    {
-        Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
-        this.nachfrage.add(Rohstoff.ERZ);
-    }
+    // @FXML
+    // private void handleHolzA()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.angebot.add(Rohstoff.HOLZ);
+    // }
+    //
+    // @FXML
+    // private void handleLehmA()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.angebot.add(Rohstoff.LEHM);
+    // }
+    //
+    // @FXML
+    // private void handleWolleA()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.angebot.add(Rohstoff.WOLLE);
+    // }
+    //
+    // @FXML
+    // private void handleKornA()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.angebot.add(Rohstoff.KORN);
+    // }
+    //
+    // @FXML
+    // private void handleErzA()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.angebot.add(Rohstoff.ERZ);
+    // }
+    //
+    // @FXML
+    // private void handleHolzN()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.nachfrage.add(Rohstoff.HOLZ);
+    // }
+    //
+    // @FXML
+    // private void handleLehmN()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.nachfrage.add(Rohstoff.LEHM);
+    // }
+    //
+    // @FXML
+    // private void handleWolleN()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.nachfrage.add(Rohstoff.WOLLE);
+    // }
+    //
+    // @FXML
+    // private void handleKornN()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.nachfrage.add(Rohstoff.KORN);
+    // }
+    //
+    // @FXML
+    // private void handleErzN()
+    // {
+    // Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
+    // this.nachfrage.add(Rohstoff.ERZ);
+    // }
 
     @Override
     public void setLayoutController(RootLayoutController layoutController)

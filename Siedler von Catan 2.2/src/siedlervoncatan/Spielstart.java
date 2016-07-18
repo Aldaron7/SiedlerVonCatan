@@ -5,8 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Properties;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import siedlervoncatan.io.Menuefx;
 import siedlervoncatan.io.UserInterface;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.controller.RootLayoutController;
@@ -39,10 +42,71 @@ public class Spielstart extends Application
         primaryStage.setMinHeight(730);
         primaryStage.setMinWidth(920);
 
+        this.loadProperties();
         this.initRootLayout();
         this.ui = new Menuefx();
         this.ui.setSpielstart(this);
         this.ui.zeigeHauptmenue();
+    }
+
+    private void loadProperties()
+    {
+        Properties properties = new Properties();
+        try
+        {
+            File file = new File(Pfade.PROPERTIES);
+            Path path = file.toPath();
+            if (file.exists())
+            {
+                InputStream is = Files.newInputStream(path);
+                properties.load(is);
+
+                Sound sound = Sound.getInstanz();
+                Boolean musikAn = new Boolean(properties.getProperty("musikAn"));
+                sound.setMusikAn(musikAn);
+                Double musikVolume = new Double(properties.getProperty("musikVolume"));
+                sound.changeMusikVolume(musikVolume);
+                Boolean soundeffekteAn = new Boolean(properties.getProperty("soundeffekteAn"));
+                sound.setSoundeffekteAn(soundeffekteAn);
+                Double soundeffekteVolume = new Double(properties.getProperty("soundeffekteVolume"));
+                sound.changeSoundeffekteVolume(soundeffekteVolume);
+                Spielstart.PRIMARYSTAGE.setMaximized(new Boolean(properties.getProperty("maximized")));
+                is.close();
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveProperties()
+    {
+        try
+        {
+            Sound sound = Sound.getInstanz();
+            Properties properties = new Properties();
+            File file = new File(Pfade.PROPERTIES);
+            Path path = file.toPath();
+            if (!file.exists())
+            {
+                path = Files.createFile(path);
+            }
+            OutputStream os = Files.newOutputStream(path);
+            properties.setProperty("musikAn", String.valueOf(sound.getMusikAn()));
+            properties.setProperty("musikVolume", String.valueOf(sound.getMusikVolume()));
+            properties.setProperty("soundeffekteAn", String.valueOf(sound.getSoundeffekteAn()));
+            properties.setProperty("soundeffekteVolume", String.valueOf(sound.getSoundeffekteVolume()));
+            properties.setProperty("maximized", String.valueOf(Spielstart.PRIMARYSTAGE.isMaximized()));
+
+            properties.store(os, "");
+            os.flush();
+            os.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args)
@@ -121,6 +185,7 @@ public class Spielstart extends Application
         boolean antwort = this.ui.zeigeConfirmation("Möchten Sie das Spiel wirklich beenden?");
         if (antwort)
         {
+            this.saveProperties();
             System.exit(0);
         }
     }

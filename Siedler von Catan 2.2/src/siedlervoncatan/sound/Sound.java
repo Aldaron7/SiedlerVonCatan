@@ -55,10 +55,10 @@ public class Sound
 
     public void changeMusikVolume(double newVolume)
     {
+        this.musikVolume = newVolume;
         if (this.musik != null)
         {
             this.musik.setVolume(newVolume);
-            this.musikVolume = newVolume;
         }
     }
 
@@ -74,10 +74,10 @@ public class Sound
 
     public void changeSoundeffekteVolume(double newVolume)
     {
+        this.soundeffekteVolume = newVolume;
         if (this.soundeffekt != null)
         {
             this.soundeffekt.setVolume(newVolume);
-            this.soundeffekteVolume = newVolume;
         }
     }
 

@@ -31,5 +31,6 @@ public class Pfade
     public static final String WOLLE                  = "file:bilder/wolle.png";
     public static final String KORN                   = "file:bilder/korn.png";
     public static final String ERZ                    = "file:bilder/erz.png";
+    public static final String PROPERTIES             = "data/usersettings.txt";
 
 }
