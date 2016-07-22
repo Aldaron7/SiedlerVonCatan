@@ -34,6 +34,12 @@ import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Wuerfel;
 import siedlervoncatan.utility.Zusatzpunkte;
 
+/**
+ * Hier werden alle Spieleraktionen durchgeführt.
+ * 
+ * @author mvr
+ *
+ */
 public class Spieler implements PropertyChangeListener, Serializable
 {
     private static final long                           serialVersionUID = 1L;
@@ -91,6 +97,10 @@ public class Spieler implements PropertyChangeListener, Serializable
         this.hatGesetzt = false;
     }
 
+    /**
+     * Verarbeitet das eingehende Event würfeln und fügt dem Spieler die erhaltenen Rohstoffe hiunzu und handelt die
+     * Kartenabgabe bei einer 7.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
@@ -139,7 +149,9 @@ public class Spieler implements PropertyChangeListener, Serializable
      * kann kostenlos sein.
      * 
      * @param positionen
+     *            zwischen denen die Strasse gebaut werden soll
      * @param nurOrtsanbindung
+     *            falls nicht an Strassen gebaut werden darf
      * @param kostenlos
      * @return
      */
@@ -184,6 +196,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Baut eine Siedlung an der angegebenen Position. Die Siedlung kann kostenlos sein.
      * 
      * @param position
+     *            an der gebaut werden soll
      * @param kostenlos
      * @return
      */
@@ -225,7 +238,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Baut eine Stadt an der angegebenen Position.
      * 
      * @param position
-     * @return
+     *            an der gebaut werden soll
      */
     public boolean baueStadt(Position position)
     {
@@ -257,6 +270,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Entfernt alle Rohstoffe rohstoffe aus den karten. Aktualisiert die anzahlKarten.
      * 
      * @param rohstoffe
+     *            die abgegeben werden müssen
      */
     public void removeKarten(Collection<Rohstoff> rohstoffe)
     {
@@ -271,6 +285,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Entfernt den Rohstoff rohstoff aus den karten. Aktualisiert die anzahlKarten.
      * 
      * @param rohstoff
+     *            der abgegeben werden muss
      */
     public void removeKarte(Rohstoff rohstoff)
     {
@@ -282,6 +297,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Fügt die Rohstoffe rohstoffe den karten hinzu. Aktualisiert die anzahlKarten.
      * 
      * @param rohstoffe
+     *            die hinzugefügt werden sollen
      */
     public void addKarten(Collection<Rohstoff> rohstoffe)
     {
@@ -296,6 +312,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Fügt den Rohstoff rohstoff den karten hinzu. Aktualisiert die anzahlKarten.
      * 
      * @param rohstoff
+     *            der hinz7ugefügt werden soll
      */
     public void addKarte(Rohstoff rohstoff)
     {
@@ -307,6 +324,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Überprüft ob die kosten gedeckt sind.
      * 
      * @param kosten
+     *            Baukosten
      * @return true, wenn kosten in karten enthalten sind.
      */
     private boolean decktKosten(Collection<Rohstoff> kosten)
@@ -374,7 +392,7 @@ public class Spieler implements PropertyChangeListener, Serializable
     }
 
     /**
-     * Setzt den Zustand des Spiels auf LANDSCHAFTSFELD.
+     * Setzt den Zustand des Spiels auf LANDSCHAFTSFELD, damit der Räuber versetzt werden kann.
      */
     public void versetzeRauber()
     {
@@ -387,6 +405,7 @@ public class Spieler implements PropertyChangeListener, Serializable
      * Entfernt eine zufällige Karte von Spieler spieler und fügt sie den karten hinzu.
      * 
      * @param spieler
+     *            von dem gezogen wird
      */
     public void zieheKarte(Spieler spieler)
     {
@@ -495,7 +514,8 @@ public class Spieler implements PropertyChangeListener, Serializable
     }
 
     /**
-     * Erhöht die siegpunkte um 1. Falls danach mehr als 10 Siegpunkte erreicht sind wird der Sieger auf this gesetzt.
+     * Erhöht die siegpunkte um 1. Falls danach mehr als 10 Siegpunkte erreicht sind wird der Sieger auf diesen Spieler
+     * gesetzt.
      */
     public void erhoeheSiegpunkte()
     {

@@ -15,6 +15,13 @@ import siedlervoncatan.enums.Hafen;
 import siedlervoncatan.enums.Landschaft;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Das Spielfeld besteht aus 6-eckigen Landschaftsfeldern und bildet eine Insel mit einigen Häfen an der Küste. Auf dem
+ * Spielfeld können Ortschaften und Strassen gebaut werden.
+ * 
+ * @author mvr
+ *
+ */
 public class Spielfeld implements Serializable
 {
     private static final long                               serialVersionUID       = 1L;
@@ -123,7 +130,8 @@ public class Spielfeld implements Serializable
     }
 
     /**
-     * Erzeugt aus den LANDSCHAFTEN und ZAHLENCHIPS ein zufälliges Spielfeld.
+     * Erzeugt aus den LANDSCHAFTEN und ZAHLENCHIPS ein zufälliges Spielfeld. Dabei dürfen jedoch keine 6-er oder 8-er
+     * Zahlenchip auf benachbarten Landschaften liegen.
      */
     private void erzeugeSpielfeld()
     {

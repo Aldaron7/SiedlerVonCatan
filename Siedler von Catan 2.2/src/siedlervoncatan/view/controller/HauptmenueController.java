@@ -10,6 +10,12 @@ import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für die Anzeige des Hauptmenüs
+ * 
+ * @author mvr
+ *
+ */
 public class HauptmenueController implements Controller
 {
     private Spielstart           spielstart;

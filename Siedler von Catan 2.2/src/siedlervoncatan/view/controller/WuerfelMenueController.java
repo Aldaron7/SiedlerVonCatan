@@ -18,6 +18,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller zur Anzeige des Würfel Menüs
+ * 
+ * @author mvr
+ *
+ */
 public class WuerfelMenueController implements Controller
 {
 

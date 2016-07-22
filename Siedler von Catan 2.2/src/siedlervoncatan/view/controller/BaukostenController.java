@@ -5,6 +5,12 @@ import javafx.scene.Node;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für die Anzeige der Baukostenübersicht
+ * 
+ * @author mvr
+ *
+ */
 public class BaukostenController implements Controller
 {
     private Node                 self;

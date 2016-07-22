@@ -6,6 +6,12 @@ import javafx.stage.Stage;
 import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 
+/**
+ * Ein Info Popup um Informationen anzuzeigen
+ * 
+ * @author mvr
+ *
+ */
 public class Info extends Popup
 {
     private Stage stage;

@@ -7,6 +7,12 @@ import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für die Anzeige des Siegers
+ * 
+ * @author mvr
+ *
+ */
 public class SiegerController implements Controller
 {
     @FXML

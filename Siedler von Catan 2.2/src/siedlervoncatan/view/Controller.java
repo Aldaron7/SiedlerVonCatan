@@ -4,6 +4,12 @@ import javafx.scene.Node;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.controller.RootLayoutController;
 
+/**
+ * Controller Interface von dem alle Menü-Controller ableiten
+ * 
+ * @author mvr
+ *
+ */
 public interface Controller
 {
     public void setSpiel(Spiel spiel);

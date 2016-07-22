@@ -11,6 +11,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für das Anzeigen des NeueSpiel Menüs
+ * 
+ * @author mvr
+ *
+ */
 public class NeuesSpielMenueController implements Controller
 {
     @FXML

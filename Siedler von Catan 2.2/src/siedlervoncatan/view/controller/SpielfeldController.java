@@ -30,6 +30,12 @@ import siedlervoncatan.spielfeld.Strasse;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für die Anzeige und Aktualisierung des Spielfeldes und der Interaktionen mit diesem
+ * 
+ * @author mvr
+ *
+ */
 public class SpielfeldController implements MapChangeListener, PropertyChangeListener, Controller
 {
 

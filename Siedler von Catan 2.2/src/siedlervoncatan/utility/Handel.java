@@ -5,6 +5,13 @@ import javafx.collections.ObservableList;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.spiel.Spieler;
 
+/**
+ * Kapselt alle Eigenschaften eines Handels wie den Anbieter, den Nachfrager, das Angebot und gegen was getauscht werden
+ * soll.
+ * 
+ * @author mvr
+ *
+ */
 public class Handel
 {
     private ObservableList<Rohstoff> angebot;
@@ -24,7 +31,7 @@ public class Handel
     }
 
     /**
-     * Nach Bestätigung eines Confirmation Alerts wird der Handel ausgeführt.
+     * Nach Bestätigung einer Confirmation wird der Handel ausgeführt zwischen Anbieter und Nachfrager.
      */
     public void handeln()
     {

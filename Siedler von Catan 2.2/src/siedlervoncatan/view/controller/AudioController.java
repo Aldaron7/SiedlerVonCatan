@@ -8,6 +8,12 @@ import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für das Audio Menü.
+ * 
+ * @author mvr
+ *
+ */
 public class AudioController implements Controller
 {
     @FXML
@@ -43,6 +49,7 @@ public class AudioController implements Controller
         this.musikS.setValue(this.musikVolume);
         this.soundeffekteVolume = this.sound.getSoundeffekteVolume();
         this.soundeffekteS.setValue(this.soundeffekteVolume);
+        // bindet die Checkboxes und Slider an die entsprechende Aktion
         this.musikAnCB.selectedProperty().addListener((obs, o, n) -> this.sound.setMusikAn(n));
         this.soundeffekteAnCB.selectedProperty().addListener((obs, o, n) -> this.sound.setSoundeffekteAn(n));
         this.musikS.valueProperty().addListener((obs, o, n) -> this.sound.changeMusikVolume(n.doubleValue()));

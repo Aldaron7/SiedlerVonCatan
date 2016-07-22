@@ -10,6 +10,13 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Der Raüber versperrt das Landschaftsfeld auf dessen Position er steht, so dass dort kein Rohstoff erhalten werden
+ * kann. Nach dem Versetzen darf einmalig bei einem angrenzenden Spieler gezogen werden.
+ * 
+ * @author mvr
+ *
+ */
 public class Raeuber implements Serializable
 {
     private static final long                  serialVersionUID = 1L;
@@ -54,7 +61,7 @@ public class Raeuber implements Serializable
     }
 
     /**
-     * Setzt angrenzende Spieler auf alle Spieler an der neuen Position.
+     * Setzt angrenzende Spieler auf alle Spieler, die angrenzend an der neuen Position eine Ortschaft haben.
      * 
      * @param neuePosition
      */

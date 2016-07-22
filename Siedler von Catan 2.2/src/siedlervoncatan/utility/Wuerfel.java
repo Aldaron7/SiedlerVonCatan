@@ -5,6 +5,13 @@ import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * Ein Würfelobjekt besteht aus zwei W6 Würfeln deren Ergebnisse addiert werden. Es kann aber auch eine Zufallszahl
+ * zwischen 1 und einem maxWert generiert werden.
+ * 
+ * @author mvr
+ *
+ */
 public class Wuerfel implements Serializable
 {
     private static final long   serialVersionUID = 1L;

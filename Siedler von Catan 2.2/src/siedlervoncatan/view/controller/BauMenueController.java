@@ -21,6 +21,12 @@ import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Baukosten;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für das Baumenü.
+ * 
+ * @author mvr
+ *
+ */
 public class BauMenueController implements Controller
 {
     @FXML
@@ -68,6 +74,7 @@ public class BauMenueController implements Controller
         this.anzahlKornL.setText(this.getAnzahlAsString(spieler.getKarten(), Rohstoff.KORN));
         this.anzahlErzL.setText(this.getAnzahlAsString(spieler.getKarten(), Rohstoff.ERZ));
 
+        // bindet die Karten des Spielers an die jeweilige Anzeige
         spieler.getKarten().addListener((ListChangeListener.Change<? extends Rohstoff> c) -> {
             while (c.next())
             {

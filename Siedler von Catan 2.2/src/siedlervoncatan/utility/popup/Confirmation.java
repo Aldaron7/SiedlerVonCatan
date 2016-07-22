@@ -9,6 +9,12 @@ import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.ConfirmationController;
 
+/**
+ * Ein Confirmation Popup mit einer Ja/Nein Abfrage
+ * 
+ * @author mvr
+ *
+ */
 public class Confirmation extends Popup implements PropertyChangeListener
 {
     private Stage   stage;

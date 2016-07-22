@@ -10,6 +10,12 @@ import siedlervoncatan.utility.Pfade;
 import siedlervoncatan.view.ViewController;
 import siedlervoncatan.view.controller.RohstoffauswahlController;
 
+/**
+ * Zeigt alle Rohstoffarten zur Auswahl eines Rohstoffes an
+ * 
+ * @author mvr
+ *
+ */
 public class Rohstoffauswahl extends Popup implements PropertyChangeListener
 {
     private Rohstoff rohstoff;

@@ -13,6 +13,12 @@ import siedlervoncatan.Spielstart;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.controller.RootLayoutController;
 
+/**
+ * Erzeugt mit FXMLLoader die Parents und Stages aus den .fxml Dateien zum Anzeigen der Menüs und Popups
+ * 
+ * @author mvr
+ *
+ */
 public class ViewController
 {
     private Spiel                spiel;
@@ -27,6 +33,14 @@ public class ViewController
         this.primaryStage = Spielstart.getPrimaryStage();
     }
 
+    /**
+     * Erzeugt das Parent pane aus dem angegebenen Pfad zur fxml Datei
+     * 
+     * @param view
+     *            der Pfad zur fxml Datei
+     * @return das erzeugte Parent pane
+     * @throws IOException
+     */
     public Pane initPane(String view) throws IOException
     {
         this.loader = new FXMLLoader();
@@ -42,6 +56,16 @@ public class ViewController
         return pane;
     }
 
+    /**
+     * Erzeugt eine Stage mit der Parent pane aus der angegebenen fxml Datei.
+     * 
+     * @param view
+     *            der Pfad zur fxml Datei
+     * @param text
+     *            der angezeigt werden soll
+     * @return Stage
+     * @throws IOException
+     */
     public Stage createStage(String view, String text) throws IOException
     {
         this.loader = new FXMLLoader();

@@ -25,6 +25,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für die Anzeige des Handel Menüs zur Erstellung eines Handels
+ * 
+ * @author mvr
+ *
+ */
 public class HandelMenueController implements Controller
 {
     @FXML

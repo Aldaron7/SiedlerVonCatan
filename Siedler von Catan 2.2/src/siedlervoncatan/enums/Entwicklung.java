@@ -4,6 +4,13 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Enthält alle Entwicklungen mit ihren jeweiligen erklärenden Texten. Erzeugt einen Stapel aus den im Spiel verfügbaren
+ * Entwicklungen in zufälliger Reihenfolge in der jeweils von den Spielregeln vorgegebenen Anzahl.
+ * 
+ * @author mvr
+ *
+ */
 public enum Entwicklung
 {
     RITTER("Wenn Sie diese Karte ausspielen, versetzen Sie den Räuber und ziehen bei einem der betroffenen Spieler eine Karte."),

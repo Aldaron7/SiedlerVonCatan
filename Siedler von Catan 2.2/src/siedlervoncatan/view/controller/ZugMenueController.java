@@ -18,6 +18,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller zur Anzeige des Zug Menüs
+ * 
+ * @author mvr
+ *
+ */
 public class ZugMenueController implements Controller
 {
     @FXML

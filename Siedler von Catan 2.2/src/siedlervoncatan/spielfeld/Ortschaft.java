@@ -4,6 +4,12 @@ import javafx.scene.image.Image;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Interface für Siedlung und Stadt
+ * 
+ * @author mvr
+ *
+ */
 public interface Ortschaft
 {
 

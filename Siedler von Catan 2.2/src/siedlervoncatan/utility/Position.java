@@ -4,12 +4,18 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Eine 2D Position mit x und y Koordinate und einer Liste aus allen benachbarten Positionen.
+ * 
+ * @author mvr
+ *
+ */
 public class Position implements Serializable
 {
-    private static final long   serialVersionUID = 1L;
-    private int                 xAchse;
-    private int                 yAchse;
-    private Set<Position>       nachbarn;
+    private static final long serialVersionUID = 1L;
+    private int               xAchse;
+    private int               yAchse;
+    private Set<Position>     nachbarn;
 
     public Position(int xAchse, int yAchse)
     {
@@ -76,7 +82,7 @@ public class Position implements Serializable
     }
 
     /**
-     * Überprüft, ob Position position Nachbar von this ist.
+     * Überprüft, ob Position position Nachbar von dieser Position ist.
      * 
      * @param position
      * @return true, wenn position Nachbar ist.

@@ -16,6 +16,13 @@ import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für das Rootlayout. Hier wird das Spielfeld und die Menüs auf einem Stackpane animiert hinzugefügt und
+ * gelöscht.
+ * 
+ * @author mvr
+ *
+ */
 public class RootLayoutController implements Controller
 {
     @FXML

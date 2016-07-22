@@ -19,6 +19,12 @@ import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Handel;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller zur Anzeige der Auswahl eines Handelspartners
+ * 
+ * @author mvr
+ *
+ */
 public class SpielerHandelAuswahlController implements Controller
 {
     @FXML

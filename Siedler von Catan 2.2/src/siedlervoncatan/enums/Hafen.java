@@ -1,5 +1,11 @@
 package siedlervoncatan.enums;
 
+/**
+ * Die Häfen mit ihren zu tauschenden Rohstoffen.
+ * 
+ * @author mvr
+ *
+ */
 public enum Hafen
 {
     DREI_ZU_EINS(null), HOLZ_HAFEN(Rohstoff.HOLZ), LEHM_HAFEN(Rohstoff.LEHM), WOLLE_HAFEN(Rohstoff.WOLLE), ERZ_HAFEN(Rohstoff.ERZ), KORN_HAFEN(Rohstoff.KORN);

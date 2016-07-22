@@ -27,6 +27,12 @@ import siedlervoncatan.view.controller.SpielerHandelAuswahlController;
 import siedlervoncatan.view.controller.SpielerInfosController;
 import siedlervoncatan.view.controller.SpielfeldController;
 
+/**
+ * Die Implementierung von @UserInterface in JavaFX.
+ * 
+ * @author mvr
+ *
+ */
 public class Menuefx implements UserInterface
 {
     private Spielstart           spielstart;
@@ -50,7 +56,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das Hauptmenue im Zentrum des Rootlayouts Menue: Neu, Laden, Beenden.
+     * Erzeugt das Hauptmenue im Zentrum des Rootlayouts. Menü: Neu, Laden, Beenden.
      */
     @Override
     public void zeigeHauptmenue()
@@ -70,6 +76,9 @@ public class Menuefx implements UserInterface
         }
     }
 
+    /**
+     * Menü: Musik An/Aus, Musik Lautstärke, Soundeffekte An/Aus, Soundeffekte Lautstärke.
+     */
     @Override
     public void zeigeAudiomenue()
     {
@@ -84,6 +93,9 @@ public class Menuefx implements UserInterface
         }
     }
 
+    /**
+     * Zeigt eine Liste der Baukosten.
+     */
     @Override
     public void zeigeBaukosten()
     {
@@ -99,7 +111,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das Spielfeld im Zentrum des RootLayouts. Übergibt den SpielfeldController an Spielstart.
+     * Erzeugt das Spielfeld im Zentrum des RootLayouts.
      */
     @Override
     public void zeigeSpielfeld()
@@ -111,7 +123,6 @@ public class Menuefx implements UserInterface
             this.layoutController.addToCenter(pane);
             SpielfeldController controller = this.viewController.getLoader().getController();
             this.spielfeldController = controller;
-            // this.spielstart.setSpielfeldController(controller);
             Sound.getInstanz().playMusik(Sound.MUSIK_MEER);
         }
         catch (IOException e)
@@ -139,7 +150,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das SpielerAnlegenMenü in einem Popup Fenster. Menü: Name, Farbe, Ok, Abbrechen.
+     * Erzeugt das SpielerAnlegenMenü im Zentrum des Rootlayout. Menü: Name, Farbe, Ok, Abbrechen.
      */
     @Override
     public void spielerAnlegen()
@@ -194,7 +205,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das EntwicklungskartenMenü in einem Popup Fenster. Zeigt die Entwicklungskarten mit Text und lässt sie
+     * Erzeugt das EntwicklungskartenMenü im Zentrum des Rootlayout. Zeigt die Entwicklungskarten mit Text und lässt sie
      * ausspielen.
      */
     @Override
@@ -212,8 +223,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das Baumenü rechts im RootLayout. Menü: Strasse, Siedlung, Stadt, Entwicklung, Abbrechen. Wird disabled
-     * wenn gebaut wird.
+     * Erzeugt das Baumenü rechts im RootLayout. Menü: Strasse, Siedlung, Stadt, Entwicklung, Abbrechen.
      */
     @Override
     public void zeigeBau()
@@ -231,8 +241,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt die SpielInfo Anzeige links im RootLayout. Zeigt Spieler, Siegpunkte, Anzahl Karten, Anzahl ausgespielter
-     * Ritter.
+     * Erzeugt das Layout in dem die SpielerAvatare angezeigt werden können oben links im Rootlayout.
      */
     @Override
     public void zeigeSpielInfos()
@@ -250,8 +259,8 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das HandelMenü in einem Popup Fenster. Auswahl des Angebots und der Nachfrage, die in einem HandelObjekt
-     * gespeichert werden.
+     * Erzeugt das HandelMenü im Zentrum des Rootlayout. Auswahl des Angebots und der Nachfrage, die in einem
+     * HandelObjekt gespeichert werden.
      */
     @Override
     public void zeigeHandel()
@@ -268,7 +277,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das SpielerHandelMenü in einem Popup Fenster. Zeigt Angebot und Nachfrage aus dem übergebenen
+     * Erzeugt das SpielerHandelMenü im Zentrum des Rootlayout. Zeigt Angebot und Nachfrage aus dem übergebenen
      * HandelObjekt und die Auswahl des Handelspartners aus den restlichen Mitspielern. Speichert alles im handelObjekt.
      * 
      * @param handel
@@ -290,10 +299,13 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt das KarteAbgebenMenü in einem Popup Fenster. Zeigt alle Karten des Spielers und entfernt die ausgewählte
-     * Karte aus den Handkarten.
+     * Erzeugt das KarteAbgebenMenü im Zentrum des Rootlayout. Zeigt alle Karten des Spielers spieler und die Karten die
+     * ausgewählt werden zum abgeben.
      * 
      * @param spieler
+     *            der Karten abgeben muss
+     * @param anzahl
+     *            der abzugebnden Karten
      */
     @Override
     public void zeigeKartenAbgeben(Spieler spieler, int anzahl)
@@ -315,7 +327,7 @@ public class Menuefx implements UserInterface
     }
 
     /**
-     * Erzeugt eine Glückwünsch Nachricht mit dem Sieger in einem Popup Fenster.
+     * Erzeugt eine Glückwünsch Nachricht mit dem Sieger im Zentrum des Rootlayout. Menü: Neues Spiel, Beenden.
      */
     @Override
     public void zeigeSieger()
@@ -332,6 +344,10 @@ public class Menuefx implements UserInterface
         }
     }
 
+    /**
+     * Erzeugt die SpielInfo Anzeige für einen Spieler im Zentrum des RootLayout. Zeigt Spieler, Siegpunkte, Karten,
+     * Anzahl ausgespielter Ritter, längste Handelsstrasse.
+     */
     @Override
     public Pane zeigeSpielerInfos(Spieler spieler)
     {
@@ -351,6 +367,11 @@ public class Menuefx implements UserInterface
         }
     }
 
+    /**
+     * Zeigt den Avatar des Spielers spieler in SpielInfo.
+     * 
+     * @param spieler
+     */
     @Override
     public Pane zeigeAvatar(Spieler spieler)
     {
@@ -375,6 +396,13 @@ public class Menuefx implements UserInterface
         this.layoutController.removeFromCenterAnimatedH(node);
     }
 
+    /**
+     * Zeigt ein Popup Confirmation
+     * 
+     * @param text
+     *            der angezeigt wird
+     * @return true, wenn bestätigt wurde
+     */
     @Override
     public boolean zeigeConfirmation(String text)
     {
@@ -383,6 +411,13 @@ public class Menuefx implements UserInterface
         return antwort;
     }
 
+    /**
+     * Zeigt ein Auswahl aller Rohstoffe.
+     * 
+     * @param text
+     *            der angezeigt wird
+     * @return den ausgewählten Rohstoff
+     */
     @Override
     public Rohstoff zeigeRohstoffauswahl(String text)
     {
@@ -391,12 +426,24 @@ public class Menuefx implements UserInterface
         return rohstoff;
     }
 
+    /**
+     * Zeigt ein Popup Info
+     * 
+     * @param text
+     *            der angezeigt wird
+     */
     @Override
     public void zeigeInfo(String text)
     {
         new Info(text).showAndWait();
     }
 
+    /**
+     * Zeigt ein Popup Error
+     * 
+     * @param text
+     *            der angezeigt wird
+     */
     @Override
     public void zeigeError(String text)
     {
@@ -409,6 +456,11 @@ public class Menuefx implements UserInterface
         return this.spielfeldController;
     }
 
+    /**
+     * Zeigt die Nachricht auf dem Spielfeld.
+     * 
+     * @param message
+     */
     @Override
     public void zeigeMessage(String message)
     {

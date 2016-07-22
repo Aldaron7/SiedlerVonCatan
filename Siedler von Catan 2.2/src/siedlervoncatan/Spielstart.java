@@ -49,6 +49,9 @@ public class Spielstart extends Application
         this.ui.zeigeHauptmenue();
     }
 
+    /**
+     * Lädt die UserSettings bezüglich Audio und Window settings.
+     */
     private void loadProperties()
     {
         Properties properties = new Properties();
@@ -80,6 +83,9 @@ public class Spielstart extends Application
         }
     }
 
+    /**
+     * Speichert die UserSettings bezüglich Audio und Window settings.
+     */
     private void saveProperties()
     {
         try
@@ -114,6 +120,9 @@ public class Spielstart extends Application
         Application.launch(args);
     }
 
+    /**
+     * Erzeugt das Rootlayout und zeigt die PRIMARYSTAGE.
+     */
     private void initRootLayout()
     {
         try
@@ -164,6 +173,11 @@ public class Spielstart extends Application
         }
     }
 
+    /**
+     * Speichert den Spielstand in der Datei file.
+     * 
+     * @param file
+     */
     public void spielSpeichern(File file)
     {
         if (this.spiel != null)
@@ -172,6 +186,9 @@ public class Spielstart extends Application
         }
     }
 
+    /**
+     * Legt ein neues Spiel an und startet es.
+     */
     public void neuesSpiel()
     {
         this.spiel = new Spiel();
@@ -180,6 +197,9 @@ public class Spielstart extends Application
         this.spiel.starten();
     }
 
+    /**
+     * Beendet nach einer Confirmation die Applikation.
+     */
     public void beenden()
     {
         boolean antwort = this.ui.zeigeConfirmation("Möchten Sie das Spiel wirklich beenden?");

@@ -10,6 +10,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spielfeld.Entwicklungskarte;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller zur Anzeige der Entwicklungskarten eines Spielers
+ * 
+ * @author mvr
+ *
+ */
 public class EntwicklungskartenController implements Controller
 {
     @FXML

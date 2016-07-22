@@ -17,14 +17,18 @@ public interface UserInterface
     void setSpiel(Spiel spiel);
 
     /**
-     * Erzeugt das Hauptmenue im Zentrum des Rootlayouts Menue: Neu, Laden, Beenden.
+     * Erzeugt das Hauptmenue im Zentrum des Rootlayouts. Menü: Neu, Laden, Beenden.
      */
     void zeigeHauptmenue();
 
+    /**
+     * Menü: Musik An/Aus, Musik Lautstärke, Soundeffekte An/Aus, Soundeffekte Lautstärke.
+     * 
+     */
     void zeigeAudiomenue();
 
     /**
-     * Erzeugt das Spielfeld im Zentrum des RootLayouts. Übergibt den SpielfeldController an Spielstart.
+     * Erzeugt das Spielfeld im Zentrum des RootLayouts.
      */
     void zeigeSpielfeld();
 
@@ -34,7 +38,7 @@ public interface UserInterface
     void zeigeNeuesspielMenue();
 
     /**
-     * Erzeugt das SpielerAnlegenMenü in einem Popup Fenster. Menü: Name, Farbe, Ok, Abbrechen.
+     * Erzeugt das SpielerAnlegenMenü im Zentrum des Rootlayout. Menü: Name, Farbe, Ok, Abbrechen.
      */
     void spielerAnlegen();
 
@@ -50,31 +54,29 @@ public interface UserInterface
     void zeigeZug();
 
     /**
-     * Erzeugt das EntwicklungskartenMenü in einem Popup Fenster. Zeigt die Entwicklungskarten mit Text und lässt sie
+     * Erzeugt das EntwicklungskartenMenü im Zentrum des Rootlayout. Zeigt die Entwicklungskarten mit Text und lässt sie
      * ausspielen.
      */
     void zeigeEntwicklungskarten();
 
     /**
-     * Erzeugt das Baumenü rechts im RootLayout. Menü: Strasse, Siedlung, Stadt, Entwicklung, Abbrechen. Wird disabled
-     * wenn gebaut wird.
+     * Erzeugt das Baumenü rechts im RootLayout. Menü: Strasse, Siedlung, Stadt, Entwicklung, Abbrechen.
      */
     void zeigeBau();
 
     /**
-     * Erzeugt die SpielInfo Anzeige links im RootLayout. Zeigt Spieler, Siegpunkte, Anzahl Karten, Anzahl ausgespielter
-     * Ritter.
+     * Erzeugt das Layout in dem die SpielerAvatare angezeigt werden können oben links im Rootlayout.
      */
     void zeigeSpielInfos();
 
     /**
-     * Erzeugt das HandelMenü in einem Popup Fenster. Auswahl des Angebots und der Nachfrage, die in einem HandelObjekt
-     * gespeichert werden.
+     * Erzeugt das HandelMenü im Zentrum des Rootlayout. Auswahl des Angebots und der Nachfrage, die in einem
+     * HandelObjekt gespeichert werden.
      */
     void zeigeHandel();
 
     /**
-     * Erzeugt das SpielerHandelMenü in einem Popup Fenster. Zeigt Angebot und Nachfrage aus dem übergebenen
+     * Erzeugt das SpielerHandelMenü im Zentrum des Rootlayout. Zeigt Angebot und Nachfrage aus dem übergebenen
      * HandelObjekt und die Auswahl des Handelspartners aus den restlichen Mitspielern. Speichert alles im handelObjekt.
      * 
      * @param handel
@@ -82,36 +84,82 @@ public interface UserInterface
     void zeigeSpielerHandel(Handel handel);
 
     /**
-     * Erzeugt das KarteAbgebenMenü in einem Popup Fenster. Zeigt alle Karten des Spielers und entfernt die ausgewählte
-     * Karte aus den Handkarten.
+     * Erzeugt das KarteAbgebenMenü im Zentrum des Rootlayout. Zeigt alle Karten des Spielers spieler und die Karten die
+     * ausgewählt werden zum abgeben.
      * 
      * @param spieler
+     *            der Karten abgeben muss
+     * @param anzahl
+     *            der abzugebnden Karten
      */
     void zeigeKartenAbgeben(Spieler spieler, int anzahl);
 
     /**
-     * Erzeugt eine Glückwünsch Nachricht mit dem Sieger in einem Popup Fenster.
+     * Erzeugt eine Glückwünsch Nachricht mit dem Sieger im Zentrum des Rootlayout. Menü: Neues Spiel, Beenden.
      */
     void zeigeSieger();
 
+    /**
+     * Zeigt ein Popup Info
+     * 
+     * @param text
+     *            der angezeigt wird
+     */
     void zeigeInfo(String text);
 
+    /**
+     * Zeigt ein Popup Error
+     * 
+     * @param text
+     *            der angezeigt wird
+     */
     void zeigeError(String text);
 
+    /**
+     * Zeigt ein Auswahl aller Rohstoffe.
+     * 
+     * @param text
+     *            der angezeigt wird
+     * @return den ausgewählten Rohstoff
+     */
     Rohstoff zeigeRohstoffauswahl(String text);
 
+    /**
+     * Zeigt ein Popup Confirmation
+     * 
+     * @param text
+     *            der angezeigt wird
+     * @return true, wenn bestätigt wurde
+     */
     boolean zeigeConfirmation(String text);
 
+    /**
+     * Erzeugt die SpielInfo Anzeige für einen Spieler im Zentrum des RootLayout. Zeigt Spieler, Siegpunkte, Karten,
+     * Anzahl ausgespielter Ritter, längste Handelsstrasse.
+     */
     Pane zeigeSpielerInfos(Spieler spieler);
 
+    /**
+     * Zeigt den Avatar des Spielers spieler in SpielInfo.
+     * 
+     * @param spieler
+     */
     Pane zeigeAvatar(Spieler spieler);
 
     void removeFromCenterAnimatedH(Node node);
 
     SpielfeldController getSpielfeldController();
 
+    /**
+     * Zeigt die Nachricht auf dem Spielfeld.
+     * 
+     * @param message
+     */
     void zeigeMessage(String message);
 
+    /**
+     * Zeigt eine Liste der Baukosten.
+     */
     void zeigeBaukosten();
 
 }

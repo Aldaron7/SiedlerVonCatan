@@ -13,6 +13,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.popup.Rohstoffauswahl;
 import siedlervoncatan.view.PopupController;
 
+/**
+ * Controller für das Anzeigen einer Rohstoffauswahl als Popup
+ * 
+ * @author mvr
+ *
+ */
 public class RohstoffauswahlController implements PopupController
 {
     @FXML

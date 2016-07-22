@@ -6,6 +6,12 @@ import java.util.Collection;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.utility.popup.Popup;
 
+/**
+ * Hilfsklasse für die Baukosten von Ortschaften, Strassen und Entwicklungskarten.
+ * 
+ * @author mvr
+ *
+ */
 public class Baukosten extends Popup
 {
     public static final Collection<Rohstoff> SIEDLUNG;

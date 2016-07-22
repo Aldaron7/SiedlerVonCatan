@@ -13,6 +13,13 @@ import siedlervoncatan.io.UserInterface;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Eine Entwicklungskarte enthält ihren Besitzer, ihre Art und ob sie ausgespielt werden darf. Verwaltet das Ausspielen
+ * von Entwicklungskarten.
+ * 
+ * @author mvr
+ *
+ */
 public class Entwicklungskarte implements Serializable, PropertyChangeListener
 {
     private static final long serialVersionUID = 1L;
@@ -36,7 +43,10 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Führt die Aktion entsprechend der entwicklung aus.
+     * Führt die Aktion entsprechend der Art der Entwicklung aus. Bei einem Siegpunkt werden diese erhöht, bei einem
+     * Ritter wird der Räuber versetzt und bei einem angrenzenden Spieler gezogen, bei einem Rohstoffmonopol werden alle
+     * Rohstoffe des gewählten Typs auf den Spieler übertragen, bei einem Strassenbau dürfen zwei Strassen gebaut werden
+     * und bei einer Erfindung zwei Rohstoffe gezogen werden.
      * 
      * @return true, wenn die Aktion ausgeführt wurde.
      */
@@ -116,7 +126,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
 
     /**
      * Baut eine Strasse zwischen den angegebenen Positionen positionen. Falls starsse1 = false wird this als Listener
-     * des SpielfeldControllers entfernt.
+     * des SpielfeldControllers entfernt, damit keine weitere Strasse gebaut werden kann.
      * 
      * @param positionen
      */
@@ -140,6 +150,9 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
         }
     }
 
+    /**
+     * Zeigt das weiterführende Menü je nachdem ob der Spieler bereits gewürfelt hat.
+     */
     private void zeigeMenue()
     {
         this.besitzer.getSpiel().setSaveable();

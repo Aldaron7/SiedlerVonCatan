@@ -4,6 +4,12 @@ import javafx.animation.ScaleTransition;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Hiervon leiten alle Popups ab. Verwaltet die animierte Anzeige von Popupfenstern.
+ * 
+ * @author mvr
+ *
+ */
 public abstract class Popup
 {
 

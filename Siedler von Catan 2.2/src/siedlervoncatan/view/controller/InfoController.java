@@ -7,6 +7,12 @@ import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.view.PopupController;
 
+/**
+ * Controller für die Anzeige eines Info Popups
+ * 
+ * @author mvr
+ *
+ */
 public class InfoController implements PopupController
 {
     @FXML

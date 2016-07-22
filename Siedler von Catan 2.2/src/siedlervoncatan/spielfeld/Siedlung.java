@@ -8,6 +8,14 @@ import javafx.scene.image.Image;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Eine Siedlung kann nur an Ecken gebaut werden an deren Nachbarfeldern keine Ortschaft steht. Wird die Zahl einer
+ * angrenzenden Landschaft gewürfelt erhält der Besitzer der Siedlung den entsprechenden Rohstoff. Eine Siedlung kann zu
+ * einer Stadt ausgebaut werden. Eine Siedlung ist einen Siegpunkt wert.
+ * 
+ * @author mvr
+ *
+ */
 public class Siedlung implements Ortschaft, Serializable
 {
     private static final long serialVersionUID = 1L;

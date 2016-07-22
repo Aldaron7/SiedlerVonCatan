@@ -10,6 +10,13 @@ import java.util.Set;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.spielfeld.Strasse;
 
+/**
+ * Zusatzpunkte gibt es für die längste Handelsstrasse (ab mindestlänge 5) und für die größte Rittermacht (ab 3
+ * ausgespielten Rittern). Beides ist 2 Siegpunkte wert.
+ * 
+ * @author mvr
+ *
+ */
 public class Zusatzpunkte implements Serializable
 {
     private static final long serialVersionUID = 1L;

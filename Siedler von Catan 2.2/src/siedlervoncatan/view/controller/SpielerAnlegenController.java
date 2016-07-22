@@ -10,6 +10,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller zur Anzeige des SpielerAnlegen Menüs
+ * 
+ * @author mvr
+ *
+ */
 public class SpielerAnlegenController implements Controller
 {
     private Spiel                spiel;

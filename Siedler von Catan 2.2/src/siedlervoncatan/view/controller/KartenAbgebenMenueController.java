@@ -17,6 +17,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für das Anziegen des Kartenabgeben Menüs
+ * 
+ * @author mvr
+ *
+ */
 public class KartenAbgebenMenueController implements Controller
 {
     @FXML

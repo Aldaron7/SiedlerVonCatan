@@ -11,6 +11,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.view.Controller;
 
+/**
+ * Controller für die Anzeige der SpielInfos, einem Container für die Spieleravatare
+ * 
+ * @author mvr
+ *
+ */
 public class SpielInfosController implements Controller
 {
     @FXML

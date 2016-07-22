@@ -10,6 +10,12 @@ import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.utility.popup.Confirmation;
 import siedlervoncatan.view.PopupController;
 
+/**
+ * Controller zum Anzeigen eines Confirmation Popups
+ * 
+ * @author mvr
+ *
+ */
 public class ConfirmationController implements PopupController
 {
     @FXML

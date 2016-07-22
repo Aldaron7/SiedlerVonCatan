@@ -32,6 +32,12 @@ import siedlervoncatan.spielfeld.Spielfeld;
 import siedlervoncatan.utility.Position;
 import siedlervoncatan.utility.Wuerfel;
 
+/**
+ * Hier wird die gesamte Spiellogik definiert und der Spielablauf gesteuert.
+ * 
+ * @author mvr
+ *
+ */
 public class Spiel implements Serializable, PropertyChangeListener
 {
     private static final long                 serialVersionUID = 1L;
@@ -87,6 +93,9 @@ public class Spiel implements Serializable, PropertyChangeListener
         this.ui.zeigeNeuesspielMenue();
     }
 
+    /**
+     * Nach jeder Runde wird der Spielstand automatisch gespeichert.
+     */
     private void autosave()
     {
         try
@@ -103,8 +112,8 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Speichert this in file. Führt zuvor die preSave Methoden aus. Es kann nur im WürfelMenü und ZugMenü gespeichert
-     * werden.
+     * Speichert den Spielstand in der Datei file. Führt zuvor die preSave Methoden aus. Es kann nur im WürfelMenü und
+     * ZugMenü gespeichert werden.
      * 
      * @param file
      */
@@ -143,6 +152,9 @@ public class Spiel implements Serializable, PropertyChangeListener
         this.ui.spielerAnlegen();
     }
 
+    /**
+     * Nimmt alle eingehenden Events auf und verarbeitet sie anhand des Spielzustandes und der Art des Events.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
@@ -222,6 +234,7 @@ public class Spiel implements Serializable, PropertyChangeListener
 
     /**
      * Führt die erste Runde aus. Dabei werden zwei Siedlungen und zwei angrenzende Starssen der Reihe nach gesetzt.
+     * Danach wird mit naechsteRunde weitergemacht.
      */
     private void ersteRunde()
     {
@@ -252,7 +265,8 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Setzt den Zustand auf ERSTE_SIEDLUNG wenn siedlungGebaut = false oder ERSTE_STRASSE wenn siedlungGebaut = true.
+     * Unterscheidet ob die Siedlung oder die angrenznde Strasse gebaut werden soll anhand von siedlungGebaut und setzt
+     * entsprechend den Spielzustand.
      * 
      * @param siedlungGebaut
      */
@@ -260,7 +274,6 @@ public class Spiel implements Serializable, PropertyChangeListener
     {
         if (!siedlungGebaut)
         {
-            // this.aktiverSpieler = this.naechsterSpieler();
             this.zustand = Zustand.ERSTE_SIEDLUNG;
             this.ui.zeigeMessage(this.aktiverSpieler + " wählen Sie einen Bauplatz für Ihre Siedlung.");
 
@@ -274,7 +287,7 @@ public class Spiel implements Serializable, PropertyChangeListener
 
     /**
      * Der aktive Spieler setzt seine Siedlung. Speichert die Position der Siedlung in posSiedlung. Ruft setzeErsteRunde
-     * mit siedlungGebaut = true auf.
+     * mit siedlungGebaut = true auf um seine angrenzende Strasse bauen zu können.
      * 
      * @param position
      */
@@ -302,7 +315,7 @@ public class Spiel implements Serializable, PropertyChangeListener
 
     /**
      * Der aktive Spieler setzt seine Strasse angrenzend an die gesetzte Siedlung. Setzt aktiverSpieler auf hatGesetzt =
-     * true. Ruft ersteRunde auf.
+     * true. Ruft ersteRunde auf um den nächsten Spieler setzen zu lassen oder die Setzrunde zu beenden.
      * 
      * @param positionen
      */
@@ -407,7 +420,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Der aktive Spieler baut eine Stadt an der Position position. Setzt den Zustand auf null und ruft zeigeZug auf.
+     * Der aktive Spieler baut eine Stadt an der Position position. Setzt den Zustand auf null.
      * 
      * @param position
      */
@@ -422,7 +435,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Der aktive Spieler baut eine Siedlung an der Position position. Setzt den Zustand auf null und ruft zeigeZug auf.
+     * Der aktive Spieler baut eine Siedlung an der Position position. Setzt den Zustand auf null.
      * 
      * @param position
      */
@@ -437,7 +450,7 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Der aktive Spieler baut eine Strasse an der Position position. Setzt den Zustand auf null und ruft zeigeZug auf.
+     * Der aktive Spieler baut eine Strasse zwischen den Positionen positionen. Setzt den Zustand auf null.
      * 
      * @param positionen
      */
@@ -452,8 +465,8 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Der aktive Spieler versetzt den Räuber. Setzt den Zustand auf null, falls der Räuber versetzt wurde, ansonsten
-     * auf SPIELER.
+     * Der aktive Spieler versetzt den Räuber. Setzt den Zustand auf SPIELER damit eine Karte von einem angrenzenden
+     * Spieler gezogen werden kann.
      * 
      * @param position
      */
@@ -482,6 +495,7 @@ public class Spiel implements Serializable, PropertyChangeListener
      * den Zustand auf null und ruft zeigeZug auf.
      * 
      * @param spieler
+     *            von dem gezogen wird
      */
     private void angrenzenderSpieler(Spieler spieler)
     {
@@ -520,9 +534,10 @@ public class Spiel implements Serializable, PropertyChangeListener
     }
 
     /**
-     * Fügt alleSpieler den Spieler spieler und dem wuerfel als Listener hinzu.
+     * Fügt den Spieler spieler alleSpieler und dem wuerfel als Listener hinzu.
      * 
      * @param spieler
+     *            der hinzugefügt werden soll
      */
     public void addSpieler(Spieler spieler)
     {

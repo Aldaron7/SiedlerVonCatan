@@ -6,6 +6,12 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Erzeugt alle Media Objekte zum abspielen der Hintergrundmusik und der Soundeffekte.
+ * 
+ * @author mvr
+ *
+ */
 public class Sound
 {
     public static final MediaPlayer MUSIK_MENUE        = new MediaPlayer(new Media(new File("sounds/menue.wav").toURI().toString()));
