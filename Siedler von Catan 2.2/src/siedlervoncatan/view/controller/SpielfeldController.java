@@ -8,8 +8,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableMap;
 import javafx.event.Event;
@@ -865,24 +863,22 @@ public class SpielfeldController implements MapChangeListener, PropertyChangeLis
         spiel.getWuerfel().addListener(this);
 
         // passt die Spielfeldgröße dem Fenster an
-        this.spiel.getSpielstart().getRootLayout().boundsInParentProperty().addListener(new ChangeListener<Bounds>()
-        {
+        this.spiel.getSpielstart().getRootLayout().boundsInParentProperty().addListener((observable, oldValue, newValue) -> this.scaleSpielfeld(newValue));
 
-            @Override
-            public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue)
-            {
-                double height = newValue.getHeight() - 100;
-                double width = newValue.getWidth() - 300;
-                double scale = Math.min(height, width) / 600;
-
-                if (Math.abs(SpielfeldController.this.groupInsel.getScaleX() - scale) > 0.01)
-                {
-                    SpielfeldController.this.groupInsel.setScaleX(scale);
-                    SpielfeldController.this.groupInsel.setScaleY(scale);
-                }
-            }
-        });
         this.erzeugeSpielfeld();
+    }
+
+    private void scaleSpielfeld(Bounds newValue)
+    {
+        double height = newValue.getHeight() - 100;
+        double width = newValue.getWidth() - 300;
+        double scale = Math.min(height, width) / 600;
+
+        if (Math.abs(SpielfeldController.this.groupInsel.getScaleX() - scale) > 0.01)
+        {
+            SpielfeldController.this.groupInsel.setScaleX(scale);
+            SpielfeldController.this.groupInsel.setScaleY(scale);
+        }
     }
 
     @Override
