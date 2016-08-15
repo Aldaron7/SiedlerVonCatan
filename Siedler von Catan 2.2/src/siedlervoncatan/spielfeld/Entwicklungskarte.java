@@ -193,6 +193,7 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener
         return this.entwicklung;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
