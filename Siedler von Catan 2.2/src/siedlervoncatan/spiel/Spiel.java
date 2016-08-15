@@ -575,6 +575,11 @@ public class Spiel implements Serializable, PropertyChangeListener
         return this.aktiverSpieler;
     }
 
+    public void setAktiverSpieler(Spieler spieler)
+    {
+        this.aktiverSpieler = spieler;
+    }
+
     public Spielstart getSpielstart()
     {
         return this.spielstart;

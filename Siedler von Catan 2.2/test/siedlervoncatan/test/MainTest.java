@@ -18,13 +18,13 @@ public class MainTest extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Result result = JUnitCore.runClasses(HandelTest.class, PositionTest.class);
-
+        Result result = JUnitCore.runClasses(HandelTest.class, PositionTest.class, SpielerTest.class, SpielTest.class, ZusatzpunkteTest.class);
         for (Failure failure : result.getFailures())
         {
             System.out.println(failure);
             System.out.println(failure.getTrace());
         }
+        System.out.println("Anzahl Testklassen: " + result.getRunCount());
         System.out.println("Anzahl failures: " + result.getFailureCount());
         System.exit(0);
     }

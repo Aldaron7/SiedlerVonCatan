@@ -58,15 +58,20 @@ public class EntwicklungskartenController implements Controller
     {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         Entwicklungskarte selectedItem = this.entwicklungskarten.getSelectionModel().getSelectedItem();
-        if (selectedItem != null && selectedItem.getDarfGespieltWerden())
+        if (selectedItem == null)
         {
-            this.layoutController.removeFromCenterAnimatedH(this.self);
-            selectedItem.ausspielen();
+            this.spiel.getUserInterface().zeigeError("Sie haben keine Karte ausgewählt.");
         }
         else
-        {
-            this.spiel.getUserInterface().zeigeError("Ungültige Auswahl.");
-        }
+            if (!selectedItem.getDarfGespieltWerden())
+            {
+                this.spiel.getUserInterface().zeigeError("Sie dürfen Entwicklungskarten nicht im selben Zug ausspielen in dem Sie erworben wurden.");
+            }
+            else
+            {
+                this.layoutController.removeFromCenterAnimatedH(this.self);
+                selectedItem.ausspielen();
+            }
     }
 
     @FXML
