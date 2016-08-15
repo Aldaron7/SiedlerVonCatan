@@ -7,6 +7,13 @@ import javafx.scene.image.Image;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Eine Stadt kann durch ausbau einer Siedlung erhalten werden. Sie ist 2 Siegpunkte wert und der Spieler erhält 2
+ * Rohstoffe von angrenzenden Landschaften.
+ * 
+ * @author mvr
+ *
+ */
 public class Stadt implements Ortschaft, Serializable
 {
     private static final long serialVersionUID = 1L;

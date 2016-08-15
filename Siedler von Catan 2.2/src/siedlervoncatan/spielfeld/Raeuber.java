@@ -8,9 +8,15 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import siedlervoncatan.spiel.Spiel;
 import siedlervoncatan.spiel.Spieler;
-import siedlervoncatan.utility.Error;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Der Raüber versperrt das Landschaftsfeld auf dessen Position er steht, so dass dort kein Rohstoff erhalten werden
+ * kann. Nach dem Versetzen darf einmalig bei einem angrenzenden Spieler gezogen werden.
+ * 
+ * @author mvr
+ *
+ */
 public class Raeuber implements Serializable
 {
     private static final long                  serialVersionUID = 1L;
@@ -25,7 +31,7 @@ public class Raeuber implements Serializable
         this.position = new SimpleObjectProperty<Position>(zentrum);
         this.angrenzendeSpieler = new HashSet<>();
         this.spiel = spiel;
-        this.position.addListener(e -> spiel.getSpielstart().getSpielfeldController().erzeugeSpielfeld());
+        this.position.addListener(e -> spiel.getUserInterface().getSpielfeldController().erzeugeSpielfeld());
     }
 
     public Set<Spieler> getAngrenzendeSpieler()
@@ -43,7 +49,7 @@ public class Raeuber implements Serializable
     {
         if (this.position.equals(neuePosition))
         {
-            new Error("Der Räuber muss auf eine neue Position gesetzt werden.");
+            this.spiel.getUserInterface().zeigeError("Der Räuber muss auf eine neue Position gesetzt werden.");
             return false;
         }
         else
@@ -55,7 +61,7 @@ public class Raeuber implements Serializable
     }
 
     /**
-     * Setzt angrenzende Spieler auf alle Spieler an der neuen Position.
+     * Setzt angrenzende Spieler auf alle Spieler, die angrenzend an der neuen Position eine Ortschaft haben.
      * 
      * @param neuePosition
      */
@@ -96,7 +102,7 @@ public class Raeuber implements Serializable
     public void postLoad()
     {
         this.position = new SimpleObjectProperty<Position>(this.positionSave);
-        this.position.addListener(e -> this.spiel.getSpielstart().getSpielfeldController().erzeugeSpielfeld());
+        this.position.addListener(e -> this.spiel.getUserInterface().getSpielfeldController().erzeugeSpielfeld());
     }
 
 }

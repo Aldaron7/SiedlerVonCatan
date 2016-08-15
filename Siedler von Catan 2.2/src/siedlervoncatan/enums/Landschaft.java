@@ -2,6 +2,13 @@ package siedlervoncatan.enums;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Alle möglichen Landschaftsarten, die im Spiel vorkommen mit ihren jeweiligen Rohstoffen, die darauf erhalten werden
+ * können.
+ * 
+ * @author mvr
+ *
+ */
 public enum Landschaft
 {
     WALD(Rohstoff.HOLZ, Color.DARKGREEN), WEIDELAND(Rohstoff.WOLLE, Color.CHARTREUSE), ACKERLAND(Rohstoff.KORN, Color.GOLDENROD),

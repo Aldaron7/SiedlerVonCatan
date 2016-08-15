@@ -2,13 +2,16 @@ package siedlervoncatan.utility;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
-import javafx.stage.StageStyle;
 import siedlervoncatan.enums.Rohstoff;
 import siedlervoncatan.spiel.Spieler;
 
+/**
+ * Kapselt alle Eigenschaften eines Handels wie den Anbieter, den Nachfrager, das Angebot und gegen was getauscht werden
+ * soll.
+ * 
+ * @author mvr
+ *
+ */
 public class Handel
 {
     private ObservableList<Rohstoff> angebot;
@@ -28,24 +31,19 @@ public class Handel
     }
 
     /**
-     * Nach Bestätigung eines Confirmation Alerts wird der Handel ausgeführt.
+     * Nach Bestätigung einer Confirmation wird der Handel ausgeführt zwischen Anbieter und Nachfrager.
      */
     public void handeln()
     {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add("siedlervoncatan/view/stylesheet.css");
-        alert.initStyle(StageStyle.UNDECORATED);
-        alert.setContentText(String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK)
-            {
-                this.anbieter.removeKarten(this.angebot);
-                this.anbieter.addKarten(this.nachfrage);
-                this.nachfrager.removeKarten(this.nachfrage);
-                this.nachfrager.addKarten(this.angebot);
-            }
-        });
-
+        boolean antwort = this.anbieter.getSpiel().getUserInterface().zeigeConfirmation(
+                        String.format("%s wollen Sie %s gegen %s mit %s tauschen?", this.anbieter, this.angebot, this.nachfrage, this.nachfrager));
+        if (antwort)
+        {
+            this.anbieter.removeKarten(this.angebot);
+            this.anbieter.addKarten(this.nachfrage);
+            this.nachfrager.removeKarten(this.nachfrage);
+            this.nachfrager.addKarten(this.angebot);
+        }
     }
 
     public void addAngebot(Rohstoff rohstoff)
@@ -107,5 +105,4 @@ public class Handel
     {
         this.anbieter = anbieter;
     }
-
 }

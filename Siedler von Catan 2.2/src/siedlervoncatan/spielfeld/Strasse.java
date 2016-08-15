@@ -8,6 +8,13 @@ import javafx.scene.image.Image;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Eine Strasse wird zum ausbau des eigenen Reiches gebaut. Sie führt zu neuen Bauplätzen für Siedlungen. Wer die
+ * längste Handelsstrasse besitzt erhält 2 Siegpunkte. Strassen werden an Kanten gebaut.
+ * 
+ * @author mvr
+ *
+ */
 public class Strasse implements Serializable
 {
     private static final long serialVersionUID = 1L;

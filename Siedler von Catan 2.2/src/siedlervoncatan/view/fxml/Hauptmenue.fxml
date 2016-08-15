@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.HauptmenueController">
+   <children>
+      <AnchorPane maxHeight="180.0" maxWidth="230.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="230.0" styleClass="pergamentrolle2" stylesheets="@stylesheet.css">
+         <children>
+            <GridPane layoutX="24.0" layoutY="35.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="35.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox alignment="CENTER" spacing="5.0" stylesheets="@stylesheet.css">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleNeu" prefHeight="35.0" prefWidth="150.0" text="Neu" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#handleLaden" prefHeight="35.0" prefWidth="150.0" text="Laden" />
+                        <Button mnemonicParsing="false" onAction="#handleBeenden" prefHeight="35.0" prefWidth="150.0" text="Beenden" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

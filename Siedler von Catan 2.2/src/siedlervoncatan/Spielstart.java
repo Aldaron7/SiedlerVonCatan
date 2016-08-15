@@ -5,50 +5,114 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Optional;
+import java.util.Properties;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import siedlervoncatan.io.Menuefx;
+import siedlervoncatan.io.UserInterface;
+import siedlervoncatan.sound.Sound;
 import siedlervoncatan.spiel.Spiel;
-import siedlervoncatan.utility.Error;
-import siedlervoncatan.view.RootLayoutController;
-import siedlervoncatan.view.SpielfeldController;
+import siedlervoncatan.utility.Pfade;
+import siedlervoncatan.view.controller.RootLayoutController;
 
 public class Spielstart extends Application
 {
-    private Stage               primaryStage;
-    private BorderPane          rootLayout;
-    private Spiel               spiel;
-    private SpielfeldController spielfeldController;
-    private Menuefx             menue;
+    private static Stage         PRIMARYSTAGE;
+    private BorderPane           rootLayout;
+    private RootLayoutController layoutController;
+    private Spiel                spiel;
+    private UserInterface        ui;
 
-    // test für github
-    // test 2 
     @Override
     public void start(Stage primaryStage)
     {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Siedler von Catan");
-        this.primaryStage.getIcons().add(new Image("file:bilder/logo.png"));
-        this.primaryStage.initStyle(StageStyle.UNIFIED);
-        this.primaryStage.setMinHeight(750);
-        this.primaryStage.setMinWidth(920);
+        Spielstart.PRIMARYSTAGE = primaryStage;
+        primaryStage.setTitle("Siedler von Catan");
+        primaryStage.getIcons().add(new Image("file:bilder/logo.png"));
+        primaryStage.initStyle(StageStyle.UNIFIED);
+        primaryStage.setMinHeight(730);
+        primaryStage.setMinWidth(920);
 
-        this.menue = new Menuefx();
-        this.menue.setSpielstart(this);
+        this.loadProperties();
         this.initRootLayout();
-        this.menue.zeigeHauptmenue();
+        this.ui = new Menuefx();
+        this.ui.setSpielstart(this);
+        this.ui.zeigeHauptmenue();
+    }
+
+    /**
+     * Lädt die UserSettings bezüglich Audio und Window settings.
+     */
+    private void loadProperties()
+    {
+        Properties properties = new Properties();
+        try
+        {
+            File file = new File(Pfade.PROPERTIES);
+            Path path = file.toPath();
+            if (file.exists())
+            {
+                InputStream is = Files.newInputStream(path);
+                properties.load(is);
+
+                Sound sound = Sound.getInstanz();
+                Boolean musikAn = new Boolean(properties.getProperty("musikAn"));
+                sound.setMusikAn(musikAn);
+                Double musikVolume = new Double(properties.getProperty("musikVolume"));
+                sound.changeMusikVolume(musikVolume);
+                Boolean soundeffekteAn = new Boolean(properties.getProperty("soundeffekteAn"));
+                sound.setSoundeffekteAn(soundeffekteAn);
+                Double soundeffekteVolume = new Double(properties.getProperty("soundeffekteVolume"));
+                sound.changeSoundeffekteVolume(soundeffekteVolume);
+                Spielstart.PRIMARYSTAGE.setMaximized(new Boolean(properties.getProperty("maximized")));
+                is.close();
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Speichert die UserSettings bezüglich Audio und Window settings.
+     */
+    private void saveProperties()
+    {
+        try
+        {
+            Sound sound = Sound.getInstanz();
+            Properties properties = new Properties();
+            File file = new File(Pfade.PROPERTIES);
+            Path path = file.toPath();
+            if (!file.exists())
+            {
+                path = Files.createFile(path);
+            }
+            OutputStream os = Files.newOutputStream(path);
+            properties.setProperty("musikAn", String.valueOf(sound.getMusikAn()));
+            properties.setProperty("musikVolume", String.valueOf(sound.getMusikVolume()));
+            properties.setProperty("soundeffekteAn", String.valueOf(sound.getSoundeffekteAn()));
+            properties.setProperty("soundeffekteVolume", String.valueOf(sound.getSoundeffekteVolume()));
+            properties.setProperty("maximized", String.valueOf(Spielstart.PRIMARYSTAGE.isMaximized()));
+
+            properties.store(os, "");
+            os.flush();
+            os.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args)
@@ -56,20 +120,23 @@ public class Spielstart extends Application
         Application.launch(args);
     }
 
+    /**
+     * Erzeugt das Rootlayout und zeigt die PRIMARYSTAGE.
+     */
     private void initRootLayout()
     {
         try
         {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource("view/RootLayout.fxml"));
+            loader.setLocation(Spielstart.class.getResource(Pfade.ROOTLAYOUT));
             this.rootLayout = loader.load();
             Scene scene = new Scene(this.rootLayout);
-            this.primaryStage.setScene(scene);
+            Spielstart.PRIMARYSTAGE.setScene(scene);
 
-            RootLayoutController controller = loader.getController();
-            controller.setSpielstart(this);
+            this.layoutController = loader.getController();
+            this.layoutController.setSpielstart(this);
 
-            this.primaryStage.show();
+            Spielstart.PRIMARYSTAGE.show();
         }
         catch (IOException e)
         {
@@ -95,17 +162,22 @@ public class Spielstart extends Application
             is.close();
             this.spiel.postLoad();
             this.spiel.setSpielstart(this);
-            this.spiel.getMenue().zeigeSpielfeld();
-            this.spiel.getMenue().zeigeSpielInfos();
+            this.ui.zeigeSpielfeld();
+            this.ui.zeigeSpielInfos();
             this.spiel.weiterspielen();
         }
         catch (Exception e)
         {
-            new Error("Spielstand konnte nicht geladen werden aus der Datei:\n" + file.getPath());
+            this.ui.zeigeError("Spielstand konnte nicht geladen werden aus der Datei:\n" + file.getPath());
             e.printStackTrace();
         }
     }
 
+    /**
+     * Speichert den Spielstand in der Datei file.
+     * 
+     * @param file
+     */
     public void spielSpeichern(File file)
     {
         if (this.spiel != null)
@@ -114,33 +186,33 @@ public class Spielstart extends Application
         }
     }
 
+    /**
+     * Legt ein neues Spiel an und startet es.
+     */
     public void neuesSpiel()
     {
         this.spiel = new Spiel();
         this.spiel.setSpielstart(this);
-        this.spiel.getMenue().zeigeSpielfeld();
-        this.spiel.getMenue().zeigeSpielInfos();
+        this.ui.zeigeSpielfeld();
         this.spiel.starten();
     }
 
+    /**
+     * Beendet nach einer Confirmation die Applikation.
+     */
     public void beenden()
     {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.getDialogPane().getScene().getStylesheets().add("siedlervoncatan/view/stylesheet.css");
-        alert.setTitle("Spiel beenden?");
-        alert.setContentText("Möchten Sie das Spiel ohne zu speichern beenden?");
-        alert.initStyle(StageStyle.UNDECORATED);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK)
+        boolean antwort = this.ui.zeigeConfirmation("Möchten Sie das Spiel wirklich beenden?");
+        if (antwort)
         {
+            this.saveProperties();
             System.exit(0);
         }
     }
 
-    public Stage getPrimaryStage()
+    public static Stage getPrimaryStage()
     {
-        return this.primaryStage;
+        return Spielstart.PRIMARYSTAGE;
     }
 
     public BorderPane getRootLayout()
@@ -148,19 +220,19 @@ public class Spielstart extends Application
         return this.rootLayout;
     }
 
-    public SpielfeldController getSpielfeldController()
-    {
-        return this.spielfeldController;
-    }
-
-    public void setSpielfeldController(SpielfeldController spielfeldController)
-    {
-        this.spielfeldController = spielfeldController;
-    }
-
     public Spiel getSpiel()
     {
         return this.spiel;
+    }
+
+    public UserInterface getUserInterface()
+    {
+        return this.ui;
+    }
+
+    public RootLayoutController getLayoutController()
+    {
+        return this.layoutController;
     }
 
 }

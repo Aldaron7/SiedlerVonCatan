@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="anchorP" maxHeight="650.0" maxWidth="150.0" prefHeight="650.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.SpielInfosController">
+   <children>
+      <Group fx:id="groupG" layoutY="55.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+         <children>
+            <VBox fx:id="spielerVB" prefHeight="200.0" prefWidth="100.0" spacing="10.0" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

@@ -6,6 +6,13 @@ import javafx.scene.image.Image;
 import siedlervoncatan.enums.Landschaft;
 import siedlervoncatan.utility.Position;
 
+/**
+ * Ein Spielfeldobjekt mit einer Landschaft, ihrer Position auf dem Spielfeld, der Zahl mit der der Rohstoff erhalten
+ * wird und dem Image zum Anzeigen.
+ * 
+ * @author mvr
+ *
+ */
 public class Landschaftsfeld implements Serializable
 {
     private static final long serialVersionUID = 1L;

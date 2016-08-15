@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="900.0" prefHeight="700.0" prefWidth="900.0" styleClass="hintergrundbild" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siedlervoncatan.view.controller.RootLayoutController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Menü">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleNeu" text="Neu" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleLaden" text="Laden" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSpeichern" text="Speichern" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleBeenden" text="Beenden" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Optionen">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleAudio" text="Audio" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleVollbild" text="Vollbild" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Hilfe">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleAnleitung" text="Anleitung" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleBaukosten" text="Baukosten" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <StackPane fx:id="centerSP" minHeight="630.0" minWidth="600.0" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

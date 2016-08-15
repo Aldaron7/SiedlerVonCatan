@@ -1,0 +1,91 @@
+.root{
+	-fx-base: goldenrod;
+	
+	-fx-accent:derive(-fx-base,-20%);
+	
+	-fx-default-button: derive(maroon,90%);
+	
+	-fx-focus-color: derive(-fx-base,-20%);
+    -fx-faint-focus-color: derive(-fx-base, -20%);
+    
+	-fx-dark-text-color: maroon;
+    -fx-mid-text-color: derive(-fx-dark-text-color, 20%);
+    -fx-light-text-color: derive(-fx-dark-text-color, 80%);
+    
+    -fx-hover-base: derive(-fx-base, 20%);
+    
+    
+    
+}
+
+.hintergrundbild{
+	-fx-background-image: url("file:bilder/hintergrund.png"); 
+	-fx-background-size: 100%;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat  ;
+}
+
+.pergamentrolle{
+	-fx-background-image: url("file:bilder/pergamentrolle.png");
+	-fx-background-size: stretch ;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat ;
+	-fx-background-color: transparent ;
+}
+
+.pergamentrolle2{
+	-fx-background-image: url("file:bilder/pergamentrolle2.png");
+	-fx-background-size: stretch ;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat ;
+	-fx-background-color: transparent ;
+}
+
+.holztafel{
+	-fx-background-image: url("file:bilder/holztafel.png"); 
+	-fx-background-size: stretch ;
+	-fx-background-position: center ;
+	-fx-background-repeat: no-repeat ;
+	-fx-background-color: transparent ;
+	-fx-font-weight: bold;
+	-fx-font-size: 18px;
+}
+
+.blau{
+	-fx-background-color: #3e8dc9;
+	}
+
+.button{
+	-fx-effect: dropshadow(one-pass-box, black, 10,0,2,2);
+}
+
+.wolle{
+	-fx-text-fill: chartreuse ;
+	-fx-effect: innershadow(gaussian, black, 1,0,1,1) ;
+}  
+.holz{
+	-fx-text-fill: darkgreen  ;
+	-fx-effect: innershadow(gaussian, black, 1,0,1,1) ;
+}  
+.lehm{
+	-fx-text-fill: coral   ;
+	-fx-effect: innershadow(gaussian, black, 1,0,1,1) ;
+}  
+.korn{
+	-fx-text-fill: yellow   ;
+	-fx-effect: innershadow(gaussian, black, 1,0,1,1) ;
+}  
+.erz{
+	-fx-text-fill: grey   ;
+	-fx-effect: innershadow(gaussian, black, 1,0,1,1) ;
+}  
+.black{
+	-fx-text-fill: black;
+}
+
+.label:disabled{
+	-fx-opacity: 1.0;
+}
+
+
+

@@ -10,6 +10,13 @@ import java.util.Set;
 import siedlervoncatan.spiel.Spieler;
 import siedlervoncatan.spielfeld.Strasse;
 
+/**
+ * Zusatzpunkte gibt es für die längste Handelsstrasse (ab mindestlänge 5) und für die größte Rittermacht (ab 3
+ * ausgespielten Rittern). Beides ist 2 Siegpunkte wert.
+ * 
+ * @author mvr
+ *
+ */
 public class Zusatzpunkte implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -52,7 +59,7 @@ public class Zusatzpunkte implements Serializable
         spieler.bekommtGroessteRittermacht();
         spieler.erhoeheSiegpunkte();
         spieler.erhoeheSiegpunkte();
-        spieler.getSpiel().getSpielstart().getSpielfeldController().setMessages(spieler + " hat nun die größte Rittermacht.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat nun die größte Rittermacht.");
     }
 
     /**
@@ -69,7 +76,7 @@ public class Zusatzpunkte implements Serializable
         andererSpieler.verliertGroessteRittermacht();
         andererSpieler.erniedrigeSiegpunkte();
         andererSpieler.erniedrigeSiegpunkte();
-        spieler.getSpiel().getSpielstart().getSpielfeldController().setMessages(spieler + " hat nun die größte Rittermacht.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat nun die größte Rittermacht.");
     }
 
     /**
@@ -135,7 +142,7 @@ public class Zusatzpunkte implements Serializable
      * 
      * @param spieler
      */
-    public static void prüfeLaengsteHandelsstrasse(Spieler spieler)
+    public static void pruefeLaengsteHandelsstrasse(Spieler spieler)
     {
         if (!spieler.hatLaengsteHandelsstrasse())
         {
@@ -168,7 +175,7 @@ public class Zusatzpunkte implements Serializable
         spieler.bekommtLaengsteHandelsstrasse();
         spieler.erhoeheSiegpunkte();
         spieler.erhoeheSiegpunkte();
-        spieler.getSpiel().getSpielstart().getSpielfeldController().setMessages(spieler + " hat nun die längste Handelsstraße.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat die längste Handelsstraße.");
     }
 
     /**
@@ -186,6 +193,6 @@ public class Zusatzpunkte implements Serializable
         andererSpieler.verliertLaengsteHandelsstrasse();
         andererSpieler.erniedrigeSiegpunkte();
         andererSpieler.erniedrigeSiegpunkte();
-        spieler.getSpiel().getSpielstart().getSpielfeldController().setMessages(spieler + " hat nun die längste Handelsstraße.");
+        spieler.getSpiel().getUserInterface().zeigeInfo(spieler + " hat nun die längste Handelsstraße.");
     }
 }
